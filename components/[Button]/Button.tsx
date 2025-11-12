@@ -2,19 +2,21 @@
 
 import React from "react";
 import Image from "next/image";
-import theme from '@/themes/pantone2025.json';
+import { useTheme } from "@/lib/themes/state/ThemeContext";
 
 interface ButtonProps {
-  styles: any,
   children: React.ReactNode; // allows text or JSX
   onClick: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ styles, children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+
+  const { theme } = useTheme();
+
   return (
     <button
       onClick={onClick}
-      className={`${styles.button}`}
+      className={`${theme.styles.button}`}
     >
       {children}
       <Image 

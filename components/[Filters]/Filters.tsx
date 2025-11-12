@@ -8,7 +8,7 @@ import type { FiltersConfig } from "@/lib/filters/types/FiltersConfig";
 import FiltersOptions from "./[FiltersOptions]/FiltersOptions";
 
 interface FilterProps {
-  itemsToFilter: unknown[];
+  itemsToFilter: object[];
   filtersOptions: FiltersConfig[];
 }
 

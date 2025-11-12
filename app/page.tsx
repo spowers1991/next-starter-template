@@ -19,7 +19,7 @@ export default function Page() {
         </TextReveal>
       </h1>
 
-      <Button styles={theme.styles} onClick={toggleTheme}>
+      <Button onClick={toggleTheme}>
         Toggle Theme
       </Button>   
 

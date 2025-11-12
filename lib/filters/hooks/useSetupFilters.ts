@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { FiltersConfig } from "@/lib/filters/types/FiltersConfig";
 
 export const useSetupFilters = (
-  itemsToFilter: unknown[],
+  itemsToFilter: object[],
   filtersOptions: FiltersConfig[],
-  STATE_setItemsToFilter: React.Dispatch<React.SetStateAction<unknown[]>>,
+  STATE_setItemsToFilter: React.Dispatch<React.SetStateAction<object[]>>,
   STATE_setFiltersOptions: React.Dispatch<React.SetStateAction<FiltersConfig[]>>
 ) => {
   useEffect(() => {
