@@ -1,4 +1,5 @@
 {
+  "name" : "Pantone 2025",
   "styles": {
     "body": "font-poppins text-base leading-relaxed text-[#333333] bg-[#A47864]",
     "header": "w-full bg-white p-4 flex items-center mb-12",

@@ -1,11 +1,13 @@
 "use client";
 
 import MainMenu from "./[MainMenu]/MainMenu"; 
-import theme from '@/themes/pantone2025.json'
+import { useThemes } from "@/lib/themes/state/ThemeContext";
 
 export default function Header() {
+  const { THEMES_activeTheme } = useThemes();
+
   return (
-    <header className={theme.styles.header}>
+    <header className={THEMES_activeTheme.styles.header}>
       <MainMenu />
     </header>
   );

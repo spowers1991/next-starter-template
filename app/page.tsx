@@ -1,27 +1,22 @@
 "use client"; 
 
-import { useTheme } from "@/lib/themes/state/ThemeContext";
+import { useThemes } from "@/lib/themes/state/ThemeContext";
 import TextReveal from "@/components/[TextReveal]/TextReveal";
-import Button from "@/components/[Button]/Button";
 import ThemeSelector from "@/components/[ThemeSelector]/ThemeSelector";
 
 export default function Page() {
-  const { theme, toggleTheme } = useTheme();
+  const { THEMES_activeTheme } = useThemes();
 
   return (
-    <main className={`${theme.styles.main}`}>
+    <main className={`${THEMES_activeTheme.styles.main}`}>
 
       <ThemeSelector/>
       
-      <h1 className={`${theme.styles.h1}`}>
+      <h1 className={`${THEMES_activeTheme.styles.h1}`}>
         <TextReveal>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </TextReveal>
       </h1>
-
-      <Button onClick={toggleTheme}>
-        Toggle Theme
-      </Button>   
 
     </main>
   );
