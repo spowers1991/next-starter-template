@@ -1,4 +1,5 @@
 {
+  "name" : "Theme 2025",
   "styles": {
     "body": "font-sans text-base leading-relaxed text-[#1F2937] bg-[#F9FAFB]",
     "header": "w-full bg-white shadow-md p-6 flex items-center justify-between mb-12",

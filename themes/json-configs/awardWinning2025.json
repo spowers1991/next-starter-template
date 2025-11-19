@@ -1,7 +1,8 @@
 {
+  "name" : "Award Winning 2025",
   "styles": {
     "body": "font-sans text-base leading-relaxed text-[#1C1C1C] bg-[#F0F8FF]",
-    "header": "w-full bg-[#001F3F] p-4 flex items-center mb-12 text-white",
+    "header": "w-full bg-[#001F3F] p-4 flex items-center justify-between mb-12 mx-auto text-white",
     "main": "container mx-auto min-h-screen max-w-7xl",
     "p": "mb-4 text-base leading-relaxed text-[#333333]",
     "a": "text-[#FF4136] underline hover:text-[#FF725C]",

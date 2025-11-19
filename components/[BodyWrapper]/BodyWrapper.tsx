@@ -1,17 +1,17 @@
 "use client";
 
 import { ReactNode } from "react";
-import { useTheme } from "@/lib/themes/state/ThemeContext";
+import { useThemes } from "@/lib/themes/state/ThemeContext";
 
 interface BodyWrapperProps {
   children: ReactNode;
 }
 
 export default function BodyWrapper({ children }: BodyWrapperProps) {
-  const { theme } = useTheme();
+  const { THEMES_activeTheme } = useThemes();
 
   return (
-    <div className={theme.styles.body}>
+    <div className={THEMES_activeTheme.styles.body}>
       {children}
     </div>
   );

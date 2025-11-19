@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useTheme } from "@/lib/themes/state/ThemeContext";
+import { useThemes } from "@/lib/themes/state/ThemeContext";
 
 interface ButtonProps {
   children: React.ReactNode; // allows text or JSX
@@ -11,12 +11,12 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
 
-  const { theme } = useTheme();
+  const { THEMES_activeTheme } = useThemes();
 
   return (
     <button
       onClick={onClick}
-      className={`${theme.styles.button}`}
+      className={`${THEMES_activeTheme.styles.button}`}
     >
       {children}
       <Image 
