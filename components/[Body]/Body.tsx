@@ -3,16 +3,16 @@
 import { ReactNode } from "react";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 
-interface BodyWrapperProps {
+interface BodyProps {
   children: ReactNode;
 }
 
-export default function BodyWrapper({ children }: BodyWrapperProps) {
+export default function Body({ children }: BodyProps) {
   const { THEMES_activeTheme } = useThemes();
 
   return (
-    <div className={THEMES_activeTheme.styles.body}>
+    <body className={THEMES_activeTheme.styles.body}>
       {children}
-    </div>
+    </body>
   );
 }
