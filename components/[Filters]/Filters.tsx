@@ -1,18 +1,19 @@
 "use client";
 
 import React from "react";
-import FilteredListing from "./[FilteredListing]/FilteredListing";
-import Button from "../[Button]/Button";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 import type { FiltersConfig } from "@/lib/filters/types/FiltersConfig";
+
+import FilteredListing from "./[FilteredListing]/FilteredListing";
 import FiltersOptions from "./[FiltersOptions]/FiltersOptions";
+import Button from "@/components/[Button]/Button";
 
 interface FilterProps {
   itemsToFilter: object[];
   filtersOptions: FiltersConfig[];
 }
 
-const Filters: React.FC<FilterProps> = ({ itemsToFilter, filtersOptions }) => {
+function Filters({ itemsToFilter, filtersOptions }: FilterProps) {
   const {
     STATE_setupFilters,
     STATE_filtersValues,
@@ -32,7 +33,7 @@ const Filters: React.FC<FilterProps> = ({ itemsToFilter, filtersOptions }) => {
                 STATE_clearFilters();
                 STATE_setShowAnimation(true);
               }}
-              >
+            >
               Clear Filters  
             </Button>
           )}
@@ -46,6 +47,6 @@ const Filters: React.FC<FilterProps> = ({ itemsToFilter, filtersOptions }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Filters;

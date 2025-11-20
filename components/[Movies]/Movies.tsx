@@ -1,26 +1,28 @@
 "use client";
 
-import { useMovies } from "@/services/sanity/movies/state/MoviesContext";
-import Grid from "@/components/[Grid]/Grid";
-import GridItem from "@/components/[Grid]/[GridItem]/GridItem";
+import React from "react";
+import Link from "next/link";
+import Movie from "./[Movie]/Movie";
+import type { Movie as MovieType } from "@/services/sanity/movies/types/Movie";
+import H1 from "../[H1]/H1";
 
-export default function Movies() {
-  const { movies } = useMovies();
+interface PostProps {
+  movies: MovieType[]; 
+}
 
+export default function Movies({ movies }: PostProps) {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1 className="text-2xl font-semibold mb-6">
-        Movie Archive
-      </h1>
-      <Grid>
-        {movies.map((movie) => (
-          <GridItem
-            key={movie._id}
-            label={movie.title}
-            slug={movie._type+'s/'+movie.slug?.current}
-          />
-        ))}
-      </Grid>
-    </div>
+      <div>
+        <H1>
+          Movies
+        </H1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {movies.map((movie: MovieType, index) => (
+            <Link key={index} href={`/movies/${movie.slug.current}`}>
+              <Movie data={movie} />
+            </Link>
+          ))}
+        </div>
+      </div>
   );
 }

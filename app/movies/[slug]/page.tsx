@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
 import { getMovie } from "@/services/sanity/movies/queries/getMovie";
 import { setMetadata } from "@/lib/seo/actions/setMetadata";
-import JsonLdScript from "@/lib/seo/components/JsonLdScript";
-import Movie from "@/components/[Movies]/[Movie]/Movie";
+import Post from "@/components/[Post]/Post";
 
 interface PageProps {
   params: {
@@ -36,7 +35,7 @@ export default async function MoviePage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen">
-      <Movie movie={movie} />
+      <Post data={movie} />
     </div>
   );
 }

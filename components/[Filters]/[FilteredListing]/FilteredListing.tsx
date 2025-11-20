@@ -3,7 +3,7 @@ import React from "react";
 import FiltersCard from "./[FiltersCard]/FiltersCard";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 
-const FilteredListing: React.FC = () => {
+function FilteredListing() {
 
 const { STATE_filteredItems } = useFilters();
 

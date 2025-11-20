@@ -2,20 +2,16 @@
 
 import React from "react";
 import { extractPropertiesNames } from "@/lib/filters/helpers/extractPropertiesNames";
-import { handleCheckboxChange } from "@/components/[Filters]/[FiltersOptions]/[Checkboxes]/actions/handleCheckboxChange";
+import { handleCheckboxChange } from "@/components/filters/[Filters]/[FiltersOptions]/[Checkboxes]/actions/handleCheckboxChange";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
-import Checkbox from "@/components/[Filters]/[FiltersOptions]/[Checkboxes]/[Checkbox]/Checkbox";
+import Checkbox from "@/components/filters/[Filters]/[FiltersOptions]/[Checkboxes]/[Checkbox]/Checkbox";
 
 interface CheckboxProps {
   label: string;
   propertyToSearch: string;
 }
 
-const Checkboxes: React.FC<CheckboxProps> = ({
-  label,
-  propertyToSearch,
-}) => {
-
+function Checkboxes({ label, propertyToSearch }: CheckboxProps) {
   const { 
     STATE_itemsToFilter, 
     STATE_filtersValues, 
@@ -53,6 +49,6 @@ const Checkboxes: React.FC<CheckboxProps> = ({
       </div>
     </div>
   );
-};
+}
 
 export default Checkboxes;

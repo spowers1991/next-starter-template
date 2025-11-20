@@ -5,8 +5,7 @@ import Checkboxes from "./[Checkboxes]/Checkboxes";
 // import TextSearch from "./[TextSearch]/TextSearch"; // Uncomment when ready
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 
-const FiltersOptions: React.FC = () => {
-
+function FiltersOptions() {
   const { STATE_filtersOptions } = useFilters();
 
   return (
@@ -41,6 +40,6 @@ const FiltersOptions: React.FC = () => {
       })}
     </div>
   );
-};
+}
 
 export default FiltersOptions;

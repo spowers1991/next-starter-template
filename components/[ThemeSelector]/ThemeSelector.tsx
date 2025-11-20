@@ -3,7 +3,7 @@
 import React from "react";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 
-const ThemeSelector: React.FC = () => {
+function ThemeSelector() {
   const { 
     THEMES_themes, 
     THEMES_activeTheme, 
@@ -21,14 +21,13 @@ const ThemeSelector: React.FC = () => {
         className={`${THEMES_activeTheme.styles.select}`}
       >
         {THEMES_themes.map((theme, index) => ( 
-            <option key={index} value={theme.name}>
-              {theme.name.toUpperCase()}
-            </option>
-          ))
-        }
+          <option key={index} value={theme.name}>
+            {theme.name.toUpperCase()}
+          </option>
+        ))}
       </select>
     </>
   );
-};
+}
 
 export default ThemeSelector;

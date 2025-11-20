@@ -11,9 +11,17 @@ const items = movies;
 
   return (
     <div className="flex w-full py-3 px-3">
-      <ThemeSelector />
+      <div>
+        <ThemeSelector />
+      </div>
       <ul className="ml-auto flex gap-2">
-        {items.map((item) => (
+        <li>
+          <Link href="/movies">
+            All Movies
+          </Link>
+        </li>
+        {items.map((item, index) => (
+          index < 5 &&
           <MenuItem key={item._id} item={item} />
         ))}
       </ul>

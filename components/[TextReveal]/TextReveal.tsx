@@ -7,7 +7,7 @@ interface AnimatedTextProps {
   children: ReactNode;
 }
 
-const TextReveal: React.FC<AnimatedTextProps> = ({ children }) => {
+function TextReveal({ children }: AnimatedTextProps) {
   const textRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -35,6 +35,6 @@ const TextReveal: React.FC<AnimatedTextProps> = ({ children }) => {
       </div>
     </div>
   );
-};
+}
 
 export default TextReveal;

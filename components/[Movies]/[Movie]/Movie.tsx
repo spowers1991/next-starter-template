@@ -1,50 +1,17 @@
-"use client"
+"use client";
 
-import Filters from "@/components/[Filters]/Filters";
-import MovieContent from "@/components/[Movies]/[Movie]/[MovieContent]/MovieContent";
-import { Movie as MovieType } from "@/services/sanity/movies/types/Movie";
-import { useMovies } from "@/services/sanity/movies/state/MoviesContext";
-import { urlForImage } from "@/lib/sanity/helpers/image";
+import React from "react";
+import type { Movie } from "@/services/sanity/movies/types/Movie";
+import H2 from "@/components/[H2]/H2";
 
 interface MovieProps {
-  movie: MovieType;
+  data: Movie;
 }
 
-export default function Movie({ movie }: MovieProps) {
-
-  const { movies } = useMovies();
-
-  const movieImage = movie.poster ? urlForImage(movie.poster).url() : undefined;
-
+export default function Movie({ data }: MovieProps) {
   return (
-    <div className="flex flex-row w-full">
-      <div className="w-2/4">
-        <Filters
-          itemsToFilter={movies}
-          filtersOptions={[
-            {
-              type: "checkbox",
-              label: "Cast Members",
-              propertyToSearch: "castMembers.characterName",
-            },
-            {
-              type: "textSearch",
-              label: "Search by Title",
-              propertyToSearch: "title",
-            },
-          ]}
-        />
-      </div>
-      <div className="w-2/4">
-        <MovieContent
-          title={movie.title}
-          posterUrl={movieImage!}
-          releaseDate={movie.releaseDate}
-          popularity={movie.popularity}
-          overview={movie.overview?.[0]?.children?.[0]?.text || ""}
-          castMembers={movie.castMembers}
-        />
-      </div>
-    </div>
+    <H2>
+        {data.title}
+    </H2>
   );
 }

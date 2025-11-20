@@ -11,7 +11,7 @@ interface FiltersCardProps {
   index?: number;
 }
 
-const FiltersCard: React.FC<FiltersCardProps> = ({ filteredItem, index = 0 }) => {
+function FiltersCard( { filteredItem, index = 0 } : FiltersCardProps ) {
 
   const { STATE_setShowAnimation, STATE_showAnimation } = useFilters();
   
