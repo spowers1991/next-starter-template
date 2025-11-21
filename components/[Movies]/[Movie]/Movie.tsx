@@ -3,6 +3,7 @@
 import React from "react";
 import type { Movie } from "@/services/sanity/movies/types/Movie";
 import H2 from "@/components/[H2]/H2";
+import LoginForm from "@/components/[Form]/[LoginForm]/LoginForm";
 
 interface MovieProps {
   data: Movie;
@@ -10,8 +11,10 @@ interface MovieProps {
 
 export default function Movie({ data }: MovieProps) {
   return (
-    <H2>
-        {data.title}
-    </H2>
+    <>
+      <H2>
+          {data.title}
+      </H2>
+    </>
   );
 }
