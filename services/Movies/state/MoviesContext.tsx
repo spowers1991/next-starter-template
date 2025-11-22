@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import type { Movie } from "../types/Movie";
+import type { Movie } from "../Movie/types/Movie";
 
 interface MoviesContextValue {
   movies: Movie[];

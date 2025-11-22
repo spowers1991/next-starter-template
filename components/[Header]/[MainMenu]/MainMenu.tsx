@@ -2,7 +2,7 @@
 
 import ThemeSelector from '@/components/[ThemeSelector]/ThemeSelector';
 import MenuItem from './[MenuItem]/MenuItem';
-import { useMovies } from '@/services/sanity/movies/state/MoviesContext';
+import { useMovies } from '@/services/Movies/state/MoviesContext';
 import Link from 'next/link';
 
 export default function MainMenu() {

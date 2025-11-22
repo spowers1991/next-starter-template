@@ -7,7 +7,7 @@ import { handleFormSubmit } from "@/lib/forms/actions/handleFormSubmit";
 import Form from "@/components/[Form]/Form";
 import FormField from "@/components/[Form]/[FormField]/FormField";
 
-import { useUser } from "@/services/user/UserContext";
+import { useUser } from "@/services/Users/User/UserContext";
 
 export default function RegisterForm() {
   const [formValues, setFormValues] = useState<Record<string, string>>({});

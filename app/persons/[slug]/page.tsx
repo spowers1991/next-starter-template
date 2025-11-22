@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
-import { getMovie } from "@/services/Movies/queries/getMovie";
+import { getPerson } from "@/services/Persons/queries/getPerson";
 import { setMetadata } from "@/lib/seo/actions/setMetadata";
 import Post from "@/components/[Post]/Post";
 
@@ -13,29 +13,28 @@ interface PageProps {
 export const revalidate = 60; // ISR seconds
 
 export async function generateStaticParams() {
-  return generateStaticParamsForType("movie", ["slug"]);
+  return generateStaticParamsForType("person", ["slug"]);
 }
-
+/*
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const movie = await getMovie(slug);
+  const person = await getPerson(slug);
 
-  // Pass the full movie object directly to setMetadata (which handles image conversion)
-  return setMetadata(movie);
+  return setMetadata(person);
 }
-
-export default async function MoviePage({ params }: PageProps) {
+*/
+export default async function PersonPage({ params }: PageProps) {
   const { slug } = await params;
 
-  const movie = await getMovie(slug);
+  const person = await getPerson(slug);
 
-  if (!movie) {
-    return <p className="text-center text-gray-500">Movie not found</p>;
+  if (!person) {
+    return <p className="text-center text-gray-500">Person not found</p>;
   }
-
+  console.log(person)
   return (
     <div className="min-h-screen">
-      <Post data={movie} />
+      <Post data={person} />
     </div>
   );
 }

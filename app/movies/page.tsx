@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setMetadata } from "@/lib/seo/actions/setMetadata";
 import JsonLdScript from "@/lib/seo/components/JsonLdScript";
-import { getMovies } from "@/services/sanity/movies/queries/getMovies";
+import { getMovies } from "@/services/Movies/queries/getMovies";
 import Movies from "@/components/[Movies]/Movies"; 
 
 export const metadata: Metadata = setMetadata({
