@@ -1,9 +1,10 @@
+import Main from "@/components/[Main]/Main";
 import LoginForm from "@/components/[Form]/[LoginForm]/LoginForm";
 
 export default function LoginPage() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <Main>
       <LoginForm />
-    </div>
+    </Main>
   );
 }

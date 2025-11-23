@@ -8,8 +8,9 @@ export interface Movie extends Omit<Post, "_type" | "publishedAt" | "body"> {
   _rev: string;
   externalId: number;
   name: string;
-  overview: PortableTextBlock[]; // assuming overview is rich text
+  overview: PortableTextBlock[];
   popularity: number;
+
   poster: {
     _type: "image";
     asset: {
@@ -18,36 +19,33 @@ export interface Movie extends Omit<Post, "_type" | "publishedAt" | "body"> {
       _id?: string;
       url?: string;
     };
-    crop?: {
-      _type: "sanity.imageCrop";
-      top: number;
-      bottom: number;
-      left: number;
-      right: number;
-    };
-    hotspot?: {
-      _type: "sanity.imageHotspot";
-      x: number;
-      y: number;
-      height: number;
-      width: number;
-    };
   };
+
   releaseDate: string;
+
   castMembers: Array<{
     _key: string;
     characterName?: string;
     person: {
-      _type: "reference";
-      _ref: string;
+      name: string;
+      image?: {
+        asset?: {
+          url?: string;
+        };
+      };
     };
   }>;
+
   crewMembers: Array<{
     _key: string;
     job?: string;
     person: {
-      _type: "reference";
-      _ref: string;
+      name: string;
+      image?: {
+        asset?: {
+          url?: string;
+        };
+      };
     };
   }>;
 }

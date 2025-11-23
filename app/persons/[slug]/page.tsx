@@ -3,6 +3,7 @@ import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticPara
 import { getPerson } from "@/services/Persons/queries/getPerson";
 import { setMetadata } from "@/lib/seo/actions/setMetadata";
 import Post from "@/components/[Post]/Post";
+import Main from "@/components/[Main]/Main";
 
 interface PageProps {
   params: {
@@ -31,10 +32,10 @@ export default async function PersonPage({ params }: PageProps) {
   if (!person) {
     return <p className="text-center text-gray-500">Person not found</p>;
   }
-  console.log(person)
+
   return (
-    <div className="min-h-screen">
+    <Main>
       <Post data={person} />
-    </div>
+    </Main>
   );
 }

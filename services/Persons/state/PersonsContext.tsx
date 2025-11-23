@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import type { Person } from "../types/Person";
+import type { Person } from "../Person/types/Person";
 
 interface PersonsContext {
   persons: Person[];

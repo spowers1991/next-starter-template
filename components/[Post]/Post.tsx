@@ -1,27 +1,26 @@
 "use client"
 
 import React from "react";
-import { useThemes } from "@/lib/themes/state/ThemeContext";
 import { PortableText } from "@portabletext/react";
 import Article from "@/components/[Article]/Article";
+import Section from "../[Section]/Section";
 
 interface PostProps {
   data: any;
 }
 
 function Post( { data } : PostProps) {
-  const { THEMES_activeTheme } = useThemes();
 
   return (
-    <>
+    <div>
       <Article>
-        {data.title}
+        {data.title || data.name }
       </Article>
 
-      <section className={THEMES_activeTheme.styles.section}>
+      <Section>
         <PortableText value={data.overview} />
-      </section>
-    </>
+      </Section>
+    </div>
   );
 }
 
