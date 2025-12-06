@@ -14,9 +14,14 @@ export const loginUser = async (email: string, password: string) => {
     const sessionToken = data.session?.access_token;  
 
     return { success: true, message: 'Login successful!', user: data.user, sessionToken };
-  } catch (err: any) {
-    console.error('Unexpected Error:', err.message);
-    return { success: false, message: err.message || 'An unexpected error occurred.' };
+  } catch (err: unknown) {
+    let message = 'An error occurred during login.';
+
+    if (err instanceof Error) {
+      message = err.message;
+    }
+
+    return { success: false, message };
   }
 };
 

@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
 import { getPerson } from "@/services/Persons/queries/getPerson";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
 import Post from "@/components/[Post]/Post";
 import Main from "@/components/[Main]/Main";
 

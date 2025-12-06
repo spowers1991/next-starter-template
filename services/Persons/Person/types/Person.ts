@@ -1,7 +1,6 @@
 import type { Post } from "@/lib/sanity/types/Post";
 
-export interface Person
-  extends Omit<Post, "_type" | "publishedAt" | "body"> {
+export interface Person extends Post{
   name: string;
   slug: {
     current: string;

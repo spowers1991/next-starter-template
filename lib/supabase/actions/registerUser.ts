@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase/supabaseClient';
 export const registerUser = async (email: string, password: string) => {
   
   try {
-    const { data, error } = await supabase.auth.signUp({
+    const { data } = await supabase.auth.signUp({
       email,
       password,
     });
@@ -11,8 +11,14 @@ export const registerUser = async (email: string, password: string) => {
     return { success: true, message: 'Registration successful!', user: data.user };
   
 
-  } catch (err: any) {
-    return { success: false, message: err.message || 'An error occurred during registration.' };
+  } catch (err: unknown) {
+    let message = 'An error occurred during registration.';
+
+    if (err instanceof Error) {
+      message = err.message;
+    }
+
+    return { success: false, message };
   }
 };
 

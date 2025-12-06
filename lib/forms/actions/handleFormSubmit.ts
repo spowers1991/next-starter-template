@@ -19,16 +19,22 @@ export const handleFormSubmit = (
       if (!result.success) {
         setMessage(result.message);
         setLoading(false);
-        console.log('not working')
         return;
       }
 
       setMessage(successMessage || "Action successful!");
-      console.log(result)
       setLoading(false);
-    } catch (err: any) {
-      setMessage(err.message || "An unexpected error occurred.");
-      setLoading(false);
+    } catch (err: unknown) {
+        let message = 'An error occurred during login.';
+        setMessage(message || "An unexpected error occurred.");
+        setLoading(false);
+        if (err instanceof Error) {
+          message = err.message;
+          setMessage(err.message || "An unexpected error occurred.");
+          setLoading(false);
+        }
+
+      return { success: false, message };
     }
   };
 };
