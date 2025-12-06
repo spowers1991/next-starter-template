@@ -29,7 +29,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       }
     };
 
-    fetchData().catch(console.error);
+    fetchData().catch();
   }, []);
 
   return (
