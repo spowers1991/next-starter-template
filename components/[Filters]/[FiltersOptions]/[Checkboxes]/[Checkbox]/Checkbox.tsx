@@ -8,7 +8,7 @@ interface CheckboxProps {
   onChange: (checked: boolean) => void;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ option, checked, onChange }) => {
+function Checkbox({ option, checked, onChange } : CheckboxProps) {
   return (
     <label className="col-span-1 flex flex-row gap-x-1 items-center cursor-pointer">
       <input

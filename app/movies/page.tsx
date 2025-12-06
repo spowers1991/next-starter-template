@@ -1,0 +1,22 @@
+import type { Metadata } from "next";
+import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import JsonLdScript from "@/lib/seo/components/JsonLdScript";
+import { getMovies } from "@/services/Movies/queries/getMovies";
+import Movies from "@/components/[Movies]/Movies"; 
+import Main from "@/components/[Main]/Main";
+
+export const metadata: Metadata = setMetadata({
+  title: "Movie Archive",
+  description: "Browse all movies from our Sanity collection.",
+});
+
+export default async function MoviesArchivePage() {
+
+  const movies = await getMovies();
+
+  return (
+    <Main>
+      <Movies movies={movies}/>
+    </Main>
+  );
+}

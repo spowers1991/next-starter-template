@@ -8,7 +8,7 @@ interface MenuItemProps {
   item: MenuItemType;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
+function MenuItem({ item }: MenuItemProps) {
   return (
     <li key={item._id} className="hover:underline">
       <Link href={`/${item._type}s/${item.slug.current}`}>
@@ -16,6 +16,6 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
       </Link>
     </li>
   );
-};
+}
 
 export default MenuItem;

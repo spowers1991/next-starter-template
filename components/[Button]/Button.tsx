@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import SVG from "@/components/[SVG]/SVG";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 
 interface ButtonProps {
@@ -9,7 +9,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+function Button( { children, onClick } : ButtonProps ) {
 
   const { THEMES_activeTheme } = useThemes();
 
@@ -19,12 +19,12 @@ const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
       className={`${THEMES_activeTheme.styles.button}`}
     >
       {children}
-      <Image 
-        src="/images/svg/arrow-right.svg" 
-        alt="Arrow" 
-        className="relative group-hover:left-1 transition duration-1000"
-        width={20} 
-        height={20} 
+      <SVG 
+        src="/images/svg/arrow-right.svg"
+        alt="Cart" 
+        width={30} 
+        height={30} 
+        className="text-blue-500" 
       />
     </button>
   );
