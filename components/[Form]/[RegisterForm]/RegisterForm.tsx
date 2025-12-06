@@ -13,10 +13,9 @@ export default function RegisterForm() {
   const [formValues, setFormValues] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  const { user } = useUser();
 
   const handleSubmit = handleFormSubmit(registerUser, formValues, setMessage, setLoading, "Registration successful!");
-  console.log(user)
+
   return (
     <Form onChange={setFormValues} onSubmit={handleSubmit} className="max-w-sm mx-auto space-y-4 p-6 bg-white rounded shadow">
       {message && (
