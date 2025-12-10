@@ -1,7 +1,7 @@
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
-import { getPerson } from "@/services/Persons/queries/getPerson";
-import Post from "@/components/[Post]/Post";
-import Main from "@/components/[Main]/Main";
+import { getPerson } from "@/services/[Persons]/{Person}/queries/getPerson";
+import Post from "@/components/{Post}/Post";
+import Main from "@/components/{Main}/Main";
 
 interface PageProps {
   params: {

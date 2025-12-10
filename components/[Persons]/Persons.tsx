@@ -2,9 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import Post from "../[Post]/Post";
-import type { Person as PersonType } from "@/services/Persons/Person/types/Person";
-import H1 from "../[H1]/H1";
+import Post from "@/components/{Post}/Post"
+import H1 from "@/components/{H1}/H1"
+import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
 
 interface PostProps {
   persons: PersonType[]; 
