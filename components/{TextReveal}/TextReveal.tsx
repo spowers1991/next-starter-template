@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, ReactNode } from "react";
-import { animateText } from "@/components/[TextReveal]/actions/animateText";
+import { animateText } from "@/components/{TextReveal}/actions/animateText";
 
 interface AnimatedTextProps {
   children: ReactNode;

@@ -8,7 +8,7 @@ import H2 from "@/components/{H2}/H2";
 import P from "@/components/{P}/P"
 import Span from "@/components/{Span}/Span";
 import UL from "@/components/{UL}/UL";
-import LI from "@/components/{UL}/[LI]/LI";
+import LI from "@/components/{UL}/{LI}/LI";
 import Section from "@/components/{Section}/Section";
 import CastMember from "@/components/[Movies]/{Movie}/[CastMembers]/{CastMember}/CastMember";
 
