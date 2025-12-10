@@ -14,7 +14,6 @@ export default function CastMember({ castMember }: CastMemberProps) {
   const { persons } = usePersons();
 
   const person = persons.find((p: Person) => p._id === personRef);
-  console.log(castMember, person)
   if (!person) return null;
 
   return (
