@@ -12,7 +12,6 @@ import LI from "@/components/[UL]/[LI]/LI";
 import Section from "@/components/[Section]/Section";
 import CastMember from "@/components/[Movies]/[Movie]/[CastMembers]/[CastMember]/CastMember";
 
-
 interface MoviePageProps {
   data: Movie;
 }

@@ -7,7 +7,6 @@ export default function Page() {
 
   return (
     <Main>
-      <ThemeSelector/>  
       <H1>
         <TextReveal>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit

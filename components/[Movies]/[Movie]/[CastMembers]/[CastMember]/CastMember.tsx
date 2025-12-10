@@ -1,40 +1,45 @@
 import Image from "next/image";
-import type { Movie } from "@/services/Movies/Movie/types/Movie";
 import P from "@/components/[P]/P";
+import Link from "next/link";
+import { usePersons } from "@/services/Persons/state/PersonsContext";
+import type { Person } from "@/services/Persons/Person/types/Person";
+import type { CastMember } from "./types/CastMember";
 
 interface CastMemberProps {
-  castMember: Movie["castMembers"][number];
+  castMember: CastMember;
 }
 
 export default function CastMember({ castMember }: CastMemberProps) {
-  const person = castMember.person;
+  const personRef = castMember.person._ref;
+  const { persons } = usePersons();
+
+  const person = persons.find((p: Person) => p._id === personRef);
+  console.log(castMember, person)
+  if (!person) return null;
 
   return (
     <div className="flex items-center gap-3">
-        
       {person?.image?.asset?.url ? (
-        <Image
-          src={person.image.asset.url}
-          alt={person.name}
-          width={50}
-          height={50}
-          className="rounded-md object-cover"
-        />
+        <Link href={`/persons/${person.slug.current}`}>
+          <Image
+            src={person.image.asset.url}
+            alt={person.name}
+            width={50}
+            height={50}
+            className="rounded-md object-cover"
+          />
+        </Link>
       ) : (
         <div className="w-[50px] h-[50px] bg-gray-300 rounded-md" />
       )}
-
       <div>
-        <P>
-            {person?.name}
-        </P>
-        {castMember.characterName && (
-          <P>
-            as {castMember.characterName}
-          </P>
-        )}
+        <Link href={`/persons/${person.slug.current}`}>
+          <P>{person.name}</P>
+          {castMember.characterName && (
+            <P>as {castMember.characterName}</P>
+          )}
+        </Link>
       </div>
-
     </div>
   );
 }
