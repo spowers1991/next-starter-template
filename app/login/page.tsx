@@ -1,4 +1,4 @@
-import Main from "@/components/[Main]/Main";
+import Main from "@/components/{Main}/Main";
 import LoginForm from "@/components/[Form]/[LoginForm]/LoginForm";
 
 export default function LoginPage() {

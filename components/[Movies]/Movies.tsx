@@ -2,9 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import type { Movie as MovieType } from "@/services/Movies/Movie/types/Movie";
-import Movie from "@/components/[Movies]/[Movie]/Movie"
-import H1 from "../[H1]/H1";
+import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
+import Movie from "@/components/[Movies]/{Movie}/Movie"
+import H1 from "../{H1}/H1";
 
 interface MovieProps {
   movies: MovieType[]; 
