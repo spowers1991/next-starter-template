@@ -2,27 +2,34 @@
 
 import React from "react";
 import Link from "next/link";
-import Post from "@/components/{Post}/Post"
 import H1 from "@/components/{H1}/H1"
-import type { Person as PersonType } from "@/services/[Persons]/{Person}/types/Person";
+import H3 from "../{H3}/H3";
+import Section from "../{Section}/Section";
+import Grid from "../{Grid}/Grid";
+import type { Person } from "@/services/[Persons]/{Person}/types/Person";
+import type { Post } from "@/lib/sanity/types/Post";
 
-interface PostProps {
-  persons: PersonType[]; 
+interface PersonsProps {
+  persons: Post[]; 
 }
 
-export default function Persons({ persons }: PostProps) {
+export default function Persons({ persons }: PersonsProps) {
+
   return (
-    <div>
+    <Section>
       <H1>
-        Movies
+        Persons
       </H1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {persons.map((person: PersonType) => (
+      <Grid
+        items={persons}
+        renderItem={(person) => (
           <Link key={person._id} href={`/persons/${person.slug.current}`}>
-            <Post data={person} />
+            <H3>
+              {person.name}
+            </H3>
           </Link>
-        ))}
-      </div>
-    </div>
+        )}
+      />
+    </Section>
   );
 }
