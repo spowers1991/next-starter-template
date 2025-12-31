@@ -18,7 +18,7 @@ interface MoviePageProps {
 
 export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
-console.log(data)
+
   return (
     <Section>
 
@@ -44,13 +44,15 @@ console.log(data)
 
         <div className="md:col-span-2 space-y-6">
           <Article>
+            <H2>
+              Summary
+            </H2>
             <P>
               <Span>
                 Release Date:
               </Span>{" "}
               {new Date(data.releaseDate).toLocaleDateString()}
             </P>
-
             <P>
               <Span>
                 Popularity:

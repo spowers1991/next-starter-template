@@ -12,11 +12,11 @@ import { transformString } from "@/lib/parsers/transformString";
 
 import type { Post } from "@/lib/sanity/types/Post";
 
-interface PersonsProps {
+interface PostsProps {
   posts: Post[]; 
 }
 
-export default function Persons({ posts }: PersonsProps) {
+export default function Persons({ posts }: PostsProps) {
   const pathname = usePathname()
   const cleanPath = removeLeadingSlash(pathname);
   return (
