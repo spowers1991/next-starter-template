@@ -7,10 +7,10 @@ import H1 from "@/components/{H1}/H1";
 import H2 from "@/components/{H2}/H2";
 import P from "@/components/{P}/P"
 import Span from "@/components/{Span}/Span";
-import UL from "@/components/{UL}/UL";
-import LI from "@/components/{UL}/{LI}/LI";
 import Section from "@/components/{Section}/Section";
-import CastMember from "@/components/[Movies]/{Movie}/[CastMembers]/{CastMember}/CastMember";
+import Article from "@/components/{Article}/Article";
+import CastMembers from "./[CastMembers]/CastMembers";
+import CrewMembers from "./[CrewMembers]/CrewMembers";
 
 interface MoviePageProps {
   data: Movie;
@@ -20,7 +20,7 @@ export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
 
   return (
-    <div>
+    <Section>
 
       <H1>
         {title}
@@ -43,81 +43,37 @@ export default function MoviePage({ data }: MoviePageProps) {
         </div>
 
         <div className="md:col-span-2 space-y-6">
-          <P>
-            <Span>
-              Release Date:
-            </Span>{" "}
-            {new Date(data.releaseDate).toLocaleDateString()}
-          </P>
+          <Article>
+            <H2>
+              Summary
+            </H2>
+            <P>
+              <Span>
+                Release Date:
+              </Span>{" "}
+              {new Date(data.releaseDate).toLocaleDateString()}
+            </P>
+            <P>
+              <Span>
+                Popularity:
+              </Span>
+              {data.popularity}
+            </P>
+          </Article>
 
-          <P>
-            <Span>
-              Popularity:
-            </Span>
-            {data.popularity}
-          </P>
-
-          <Section>
+          <Article>
             <H2>
               Overview
             </H2>
-            <div className="prose prose-gray max-w-none">
-              <PortableText value={data.overview} />
-            </div>
-          </Section>
+            <PortableText value={data.overview} />
+          </Article>
 
-          {data.castMembers?.length > 0 && (
-            <Section>
-              <H2>
-                Cast
-              </H2>
-              <UL>
-                {data.castMembers.map((castMember) => (
-                  <LI key={castMember._key}>
-                    <CastMember castMember={castMember} />
-                  </LI>
-                ))}
-              </UL>
-            </Section>
-          )}
+          <CastMembers castMembers={data.castMembers} />
 
-          {data.crewMembers?.length > 0 && (
-            <Section>
-              <H2>
-                Crew
-              </H2>
-              <UL>
-                {data.crewMembers.map((member) => (
-                  <LI key={member._key}>
-                    {member.person?.image?.asset?.url ? (
-                      <Image
-                        src={member.person.image.asset.url}
-                        alt={member.person.name}
-                        width={50}
-                        height={50}
-                        className="rounded-md object-cover"
-                      />
-                    ) : (
-                      <div className="w-[50px] h-[50px] bg-gray-300 rounded-md" />
-                    )}
-                    <div>
-                      <P>
-                        {member.person?.name}
-                      </P>
+          <CrewMembers crewMembers={data.crewMembers} />
 
-                      {member.job && (
-                        <P>
-                          {member.job}
-                        </P>
-                      )}
-                    </div>
-                  </LI>
-                ))}
-              </UL>
-            </Section>
-          )}
         </div>
       </div>
-    </div>
+    </Section>
   );
 }

@@ -16,6 +16,11 @@ const items = movies;
       </div>
       <ul className="ml-auto flex gap-2">
         <li>
+          <Link href="/persons">
+            All Persons
+          </Link>
+        </li>
+        <li>
           <Link href="/movies">
             All Movies
           </Link>

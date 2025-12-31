@@ -17,20 +17,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   
   return (
     <UserProvider>
-      <PersonsProvider initialPersons={persons}>
         <ThemeProvider themes={Themes}>
-          <MoviesProvider initialMovies={movies}>
-            <FiltersProvider>
-              <Html>
-                <Body>
-                  <Header />
-                  {children}
-                </Body>
-              </Html>
-            </FiltersProvider>
-          </MoviesProvider>
+          <PersonsProvider initialPersons={persons}>
+            <MoviesProvider initialMovies={movies}>
+              <FiltersProvider>
+                <Html>
+                  <Body>
+                    <Header />
+                    {children}
+                  </Body>
+                </Html>
+              </FiltersProvider>
+            </MoviesProvider>
+          </PersonsProvider>
         </ThemeProvider>
-      </PersonsProvider>
     </UserProvider>
   );
 }
