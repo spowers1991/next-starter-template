@@ -3,7 +3,7 @@ import P from "@/components/{P}/P";
 import Link from "next/link";
 import { usePersons } from "@/services/[Persons]/state/PersonsContext";
 import type { Person } from "@/services/[Persons]/{Person}/types/Person";
-import type { CastMember } from "./types/CastMember";
+import type { CastMember } from "../../../../../services/[Movies]/{Movie}/[CastMembers]/{CastMember}/types/CastMember";
 
 interface CastMemberProps {
   castMember: CastMember;

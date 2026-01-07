@@ -21,7 +21,7 @@ export default function LoginForm() {
       <FormField label="Email" name="email" type="email" />
       <FormField label="Password" name="password" type="password" />
 
-      <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+      <button type="submit" disabled={loading} className="text-lg uppercase w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
         {loading ? "Logging in..." : "Login"}
       </button>
     </Form>

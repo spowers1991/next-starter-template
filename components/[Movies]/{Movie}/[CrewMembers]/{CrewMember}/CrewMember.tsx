@@ -7,7 +7,7 @@ import P from "@/components/{P}/P";
 import Article from "@/components/{Article}/Article";
 
 import { usePersons } from "@/services/[Persons]/state/PersonsContext";
-import type { CrewMember as CrewMemberType } from "./types/CrewMember";
+import type { CrewMember as CrewMemberType } from "../../../../../services/[Movies]/{Movie}/[CrewMembers]/{CrewMember}/CrewMember";
 
 interface CrewMemberProps {
   crewMember: CrewMemberType;

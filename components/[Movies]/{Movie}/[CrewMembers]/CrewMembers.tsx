@@ -5,7 +5,7 @@ import H2 from "@/components/{H2}/H2";
 import UL from "@/components/{UL}/UL";
 import LI from "@/components/{LI}/LI";
 import CrewMember from "./{CrewMember}/CrewMember";
-import type { CrewMember as CrewMemberType } from "./{CrewMember}/types/CrewMember";
+import type { CrewMember as CrewMemberType } from "../../../../services/[Movies]/{Movie}/[CrewMembers]/{CrewMember}/CrewMember";
 
 interface CrewMembersProps {
   crewMembers: CrewMemberType[];

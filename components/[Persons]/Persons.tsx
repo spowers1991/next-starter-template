@@ -16,7 +16,7 @@ export default function Persons({ persons }: PersonsProps) {
 
   return (
     <Section>
-      <H1>
+      <H1 animations={["text-reveal"]}>
         Persons
       </H1>
       <Grid

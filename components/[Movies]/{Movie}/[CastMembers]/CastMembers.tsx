@@ -3,7 +3,7 @@ import H2 from "@/components/{H2}/H2";
 import UL from "@/components/{UL}/UL";
 import LI from "@/components/{LI}/LI";
 import CastMember from "./{CastMember}/CastMember";
-import type { CastMember as CastMemberType } from "./{CastMember}/types/CastMember";
+import type { CastMember as CastMemberType } from "../../../../services/[Movies]/{Movie}/[CastMembers]/{CastMember}/types/CastMember";
 
 interface CastMembersProps {
   castMembers: CastMemberType[];

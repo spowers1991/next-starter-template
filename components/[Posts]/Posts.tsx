@@ -21,7 +21,7 @@ export default function Persons({ posts }: PostsProps) {
   const cleanPath = removeLeadingSlash(pathname);
   return (
     <Section>
-      <H1>
+      <H1 animations={["text-reveal"]}>
         {transformString(cleanPath, "pascal")}
       </H1>
       <Grid
