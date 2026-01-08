@@ -1,22 +1,21 @@
 "use client";
 
 import { useEffect } from "react";
-import { AnimationName } from "../types/AnimationName";
-import { textReveal } from "@/lib/animations/{textReveal}/textReveal";
+import type { RefObject } from "react";
+import type { AnimationName } from "@/lib/animations/types/AnimationName";
+import { animate } from "../actions/animate";
 
 export function useAnimations(
-  ref: React.RefObject<HTMLElement>,
-  animations: AnimationName[]
+  ref: RefObject<HTMLElement>,
+  animationNames: AnimationName[]
 ) {
   useEffect(() => {
     if (!ref.current) return;
-
     const element = ref.current;
-    console.log(animations)
-    animations.map((letter, letterIndex) => (
-      textReveal(element)
-    ))
-    //textReveal(element)
 
-  }, [ref, animations]);
+    animationNames.forEach((animationName) => {
+      animate(element, animationName)
+    });
+
+  }, [ref, animationNames]);
 }

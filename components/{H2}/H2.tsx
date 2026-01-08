@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
-import { animationsHandler } from "@/lib/animations/animationsHandler";
+import { animationsHandler } from "@/lib/animations/actions/animationsHandler";
 import type { AnimationName } from "@/lib/animations/types/AnimationName";
 
 interface H2Props {

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
-import { animationsHandler } from "@/lib/animations/animationsHandler";
+import { animationsHandler } from "@/lib/animations/actions/animationsHandler";
 import type { AnimationName } from "@/lib/animations/types/AnimationName";
 
 interface H1Props {
@@ -16,8 +16,10 @@ function H1( { animations, children } : H1Props ) {
 
   const ref = useRef<HTMLDivElement | null>(null);
 
+  animationsHandler(ref, animations)
+
   return (
-    <h1 ref={ref} className={`${THEMES_activeTheme.styles.h1}`} data-animate={animationsHandler(ref, animations)}>
+    <h1 ref={ref} className={`${THEMES_activeTheme.styles.h1}`}>
       {children}
     </h1>
   );
