@@ -1,5 +1,5 @@
-import Main from "@/components/{Main}/Main";
-import H1 from "@/components/{H1}/H1";
+import Main from "@/components/html/{Main}/Main";
+import H1 from "@/components/html/{H1}/H1";
 
 export default function Page() {
 

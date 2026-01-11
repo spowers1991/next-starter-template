@@ -6,14 +6,14 @@ import type { AnimationName } from "@/lib/animations/types/AnimationName";
 import { animate } from "../actions/animate";
 
 export function useAnimations(
-  ref: RefObject<HTMLElement>,
-  animationNames: AnimationName[]
+  ref: RefObject<HTMLDivElement | null>,
+  animationNames: AnimationName[] | undefined
 ) {
   useEffect(() => {
     if (!ref.current) return;
     const element = ref.current;
 
-    animationNames.forEach((animationName) => {
+    animationNames?.forEach((animationName) => {
       animate(element, animationName)
     });
 
