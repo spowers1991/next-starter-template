@@ -12,7 +12,7 @@ function Main( { children } : MainProps ) {
   const { THEMES_activeTheme } = useThemes();
 
   return (
-    <main className={`${THEMES_activeTheme.styles.h1}`}>
+    <main className={`${THEMES_activeTheme.styles.main}`}>
       {children}
     </main>
   );
