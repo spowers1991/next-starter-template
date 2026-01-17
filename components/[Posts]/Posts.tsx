@@ -2,10 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import H1 from "@/components/{H1}/H1"
-import H3 from "../{H3}/H3";
-import Section from "../{Section}/Section";
-import Grid from "../{Grid}/Grid";
+import H1 from "@/components/html/{H1}/H1"
+import H3 from "@/components/html/{H3}/H3";
+import Section from "@/components/html/{Section}/Section";
+import Grid from "@/components/layout/{Grid}/Grid";
 import { usePathname } from 'next/navigation'
 import { removeLeadingSlash } from "@/lib/parsers/removeLeadingSlash";
 import { transformString } from "@/lib/parsers/transformString";
@@ -21,7 +21,7 @@ export default function Persons({ posts }: PostsProps) {
   const cleanPath = removeLeadingSlash(pathname);
   return (
     <Section>
-      <H1>
+      <H1 animations={["text-reveal"]}>
         {transformString(cleanPath, "pascal")}
       </H1>
       <Grid

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { setMetadata } from "@/lib/seo/actions/setMetadata";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
-import Persons from "@/components/[Persons]/Persons"; 
-import Main from "@/components/{Main}/Main";
+import Persons from "@/components/services/[Persons]/Persons"; 
+import Main from "@/components/html/{Main}/Main";
 
 export const metadata: Metadata = setMetadata({
   title: "Movie Archive",

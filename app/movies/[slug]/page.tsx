@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
 import { getMovie } from "@/services/[Movies]/{Movie}/queries/getMovie";
 import { setMetadata } from "@/lib/seo/actions/setMetadata";
-import Movie from "@/components/[Movies]/{Movie}/Movie";
-import Main from "@/components/{Main}/Main";
+import Movie from "@/components/services/[Movies]/{Movie}/Movie";
+import Main from "@/components/html/{Main}/Main";
 
 interface PageProps {
   params: {
