@@ -1,36 +1,28 @@
-
 import React from "react";
-import FiltersCard from "./{FiltersCard}/FiltersCard";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 
-function FilteredListing() {
+interface FilteredListingProps {
+  children: (item: any, index: number) => React.ReactNode;
+}
 
-const { STATE_filteredItems } = useFilters();
+export default function FilteredListing({
+  children,
+}: FilteredListingProps) {
+  const { STATE_filteredItems } = useFilters();
+
+  if (!STATE_filteredItems.length) {
+    return (
+      <div className="text-center text-lg">
+        No project available for these filters...
+      </div>
+    );
+  }
 
   return (
     <>
-      {STATE_filteredItems?.length > 0 ? (
-        <div
-          className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-3"
-        >
-          {STATE_filteredItems.map((filteredItem, index) => {
-            const item = filteredItem as {
-              _id: string;
-              _type: string;
-              slug: { current: string };
-              title: string;
-            };
-
-            return <FiltersCard key={item._id} filteredItem={item} index={index} />;
-          })}
-        </div>
-      ) : (
-        <div className="text-center text-lg">
-          No project available for these filters...
-        </div>
+      {STATE_filteredItems.map((item, index) =>
+        children(item, index)
       )}
     </>
   );
-};
-
-export default FilteredListing;
+}

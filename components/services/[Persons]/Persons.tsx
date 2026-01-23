@@ -5,7 +5,7 @@ import Link from "next/link";
 import H1 from "@/components/html/{H1}/H1"
 import H3 from "@/components/html/{H3}/H3";
 import Section from "@/components/html/{Section}/Section";
-import Grid from "@/components/layout/{Grid}/Grid";
+import GridRepeater from "@/components/layout/grid/{GridRepeater}/GridRepeater";
 import type { Post } from "@/lib/sanity/types/Post";
 
 interface PersonsProps {
@@ -19,7 +19,7 @@ export default function Persons({ persons }: PersonsProps) {
       <H1 animations={["text-reveal"]}>
         Persons
       </H1>
-      <Grid
+      <GridRepeater
         items={persons}
         renderItem={(person) => (
           <Link key={person._id} href={`/persons/${person.slug.current}`}>
@@ -28,6 +28,7 @@ export default function Persons({ persons }: PersonsProps) {
             </H3>
           </Link>
         )}
+        cols={4}
       />
     </Section>
   );
