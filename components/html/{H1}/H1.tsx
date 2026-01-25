@@ -3,10 +3,10 @@
 import { useRef } from "react";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 import { useAnimations } from "@/lib/animations/hooks/useAnimations";
-import type { AnimationName } from "@/lib/animations/types/AnimationName";
+import type { Animation } from "@/lib/animations/types/Animation";
 
 interface H1Props {
-  animations?: AnimationName[] | undefined,
+  animations?: Animation[] | undefined,
   children: React.ReactNode
 }
 

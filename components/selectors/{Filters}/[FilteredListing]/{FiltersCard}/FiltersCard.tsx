@@ -1,26 +1,29 @@
 "use client";
 
+import{ useRef } from "react";
 import Link from "next/link";
-import { handleCardClick } from "./animations/handleCardClick";
-import { useAnimatedFilterCard } from "./actions/useAnimatedFilterCard";
+import { useAnimations } from "@/lib/animations/hooks/useAnimations";
+import type { Animation } from "@/lib/animations/types/Animation";
 
 interface FiltersCardProps {
   filteredItem: unknown;
-  index?: number;
+  children?: React.ReactNode;
+  animations?: Animation[] | undefined;
 }
 
-function FiltersCard({ filteredItem, index = 0 }: FiltersCardProps) {
-  const { cardRef, STATE_setShowAnimation } = useAnimatedFilterCard(index);
+function FiltersCard({ filteredItem, children, animations }: FiltersCardProps) {
+
+  const ref = useRef<HTMLDivElement | null>(null);
+  useAnimations(ref, animations);
 
   const item = filteredItem as any;
 
   return (
     <Link href={`/${item._type}s/${item.slug.current}`} className="block">
       <div
-        ref={cardRef}
-        onClick={() => handleCardClick(STATE_setShowAnimation)}
+        ref={ref}
       >
-        {item.title}
+        {children}
       </div>
     </Link>
   );

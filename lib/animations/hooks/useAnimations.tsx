@@ -2,20 +2,19 @@
 
 import { useEffect } from "react";
 import type { RefObject } from "react";
-import type { AnimationName } from "@/lib/animations/types/AnimationName";
+import type { Animation } from "../types/Animation";
 import { animate } from "../actions/animate";
 
 export function useAnimations(
   ref: RefObject<HTMLDivElement | null>,
-  animationNames: AnimationName[] | undefined
+  animations: Animation[] | undefined
 ) {
   useEffect(() => {
     if (!ref.current) return;
     const element = ref.current;
-
-    animationNames?.forEach((animationName) => {
-      animate(element, animationName)
+    animations?.forEach((animation) => {
+      animate(element, animation)
     });
 
-  }, [ref, animationNames]);
+  }, [ref, animations]);
 }

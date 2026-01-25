@@ -10,6 +10,8 @@ import FiltersCard from "@/components/selectors/{Filters}/[FilteredListing]/{Fil
 import Flex from "@/components/layout/flex/{Flex}/Flex";
 import Grid from "@/components/layout/grid/{Grid}/Grid";
 
+import ContentCard from "@/components/content/{ContentCard}/ContentCard";
+
 interface MovieProps {
   movies: Movie[];
 }
@@ -32,11 +34,22 @@ export default function MoviesFilters({ movies }: MovieProps) {
         <Grid cols={3} gap={4}>
           <FilteredListing>
             {(movie, index) => (
-              <FiltersCard
-                key={movie._id}
-                filteredItem={movie}
-                index={index}
-              />
+              <FiltersCard 
+                key={movie._id} 
+                filteredItem={movie} 
+                animations={
+                  [
+                    { 
+                      name: "fade-up", 
+                      config: { index, delay: 0.2 }
+                    }
+                  ]
+                }
+                >
+                <ContentCard 
+                  content={movie} 
+                />
+              </FiltersCard>
             )}
           </FilteredListing>
         </Grid>
