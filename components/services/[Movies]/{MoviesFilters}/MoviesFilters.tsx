@@ -12,25 +12,11 @@ import Grid from "@/components/layout/grid/{Grid}/Grid";
 
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
 
-import { useAnimations } from "@/lib/animations/state/AnimationContext"
-
 interface MovieProps {
   movies: Movie[];
 }
 
 export default function MoviesFilters({ movies }: MovieProps) {
-
-  const { ANIMATIONS_register } = useAnimations();
-  const animationsRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    ANIMATIONS_register(
-      'Movies.MoviesFilters.fadeUp',
-      animationsRef.current, [
-      { name: "fade-up-children", config: { delay: 0.2 } },
-    ]
-  );
-  }, [ANIMATIONS_register]);
 
   return (
     <Filters
@@ -46,7 +32,14 @@ export default function MoviesFilters({ movies }: MovieProps) {
       <Flex>
         <FiltersOptions />
 
-          <Grid ref={animationsRef} cols={3} gap={4}>
+          <Grid 
+            animations={[
+            { 
+              name: 'fade-up-children', 
+              config: { delay: 0.2 }
+            }]} 
+            cols={3} 
+            gap={4}>
             <FilteredListing>
               {(movie) => (
                 <FiltersCard key={movie._id} filteredItem={movie}>

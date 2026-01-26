@@ -12,6 +12,7 @@ import Article from "@/components/html/{Article}/Article";
 import CastMembers from "./[CastMembers]/CastMembers";
 import CrewMembers from "./[CrewMembers]/CrewMembers";
 
+import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
 
 interface MoviePageProps {
   data: Movie;
@@ -19,6 +20,14 @@ interface MoviePageProps {
 
 export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
+
+
+  const animations = useAnimationsRegistration(
+      'Movie.H1.textReveal',
+      [{ name: 'text-reveal', config: { delay: 0.2 } }]
+  );
+
+  console.log(animations)
 
   return (
     <Section>

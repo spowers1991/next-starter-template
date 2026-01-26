@@ -27,7 +27,8 @@ interface AnimationsContextType {
     element: HTMLDivElement | null,
     animations: Animation[]
   ) => void;
-  ANIMATIONS_reset: (entryNames: string[]) => void
+  ANIMATIONS_reset: (entryNames: string[]) => void,
+  ANIMATIONS_unregister: (name : string) => void,
 }
 
 // --------------------------------
@@ -55,17 +56,25 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
     ) => {
       if (!element) return;
 
-      ANIMATIONS_setEntries(prev => [
-        ...prev,
-        {
-          ANIMATIONS_name: name,
-          ANIMATIONS_element: element,
-          ANIMATIONS_animations: animations
+      ANIMATIONS_setEntries(prev => {
+        // already registered → return previous state unchanged
+        if (prev.some(entry => entry.ANIMATIONS_name === name)) {
+          return prev;
         }
-      ]);
+
+        return [
+          ...prev,
+          {
+            ANIMATIONS_name: name,
+            ANIMATIONS_element: element,
+            ANIMATIONS_animations: animations
+          }
+        ];
+      });
     },
     []
   );
+
 
   // Reset animations
   const ANIMATIONS_reset = (entryNames: string[]) => {
@@ -73,8 +82,6 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
     const matchingEntries = ANIMATIONS_entries.filter(entry =>
       entryNames.includes(entry.ANIMATIONS_name ?? "")
     );
-
-    console.log("Resetting entries:", matchingEntries);
 
     // 2. Copy them
     const savedEntries = [...matchingEntries];
@@ -90,8 +97,16 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
+  const ANIMATIONS_unregister = useCallback((name: string) => {
+    ANIMATIONS_setEntries(prev =>
+      prev.filter(entry => entry.ANIMATIONS_name !== name)
+    );
+  }, []);
+
+
   // Run animations when entries change
   useEffect(() => {
+    console.log(ANIMATIONS_entries);
     ANIMATIONS_entries.forEach(entry => {
       entry.ANIMATIONS_animations.forEach(animation => {
         animate(entry.ANIMATIONS_element, animation);
@@ -104,7 +119,8 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         ANIMATIONS_entries,
         ANIMATIONS_register,
-        ANIMATIONS_reset
+        ANIMATIONS_reset,
+        ANIMATIONS_unregister
       }}
     >
       {children}
