@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { useEffect, useRef } from "react";
 import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 
 import Filters from "@/components/selectors/{Filters}/Filters";
@@ -12,11 +12,26 @@ import Grid from "@/components/layout/grid/{Grid}/Grid";
 
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
 
+import { useAnimations } from "@/lib/animations/state/AnimationContext"
+
 interface MovieProps {
   movies: Movie[];
 }
 
 export default function MoviesFilters({ movies }: MovieProps) {
+
+  const { ANIMATIONS_register } = useAnimations();
+  const animationsRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    ANIMATIONS_register(
+      'Movies.MoviesFilters.fadeUp',
+      animationsRef.current, [
+      { name: "fade-up-children", config: { delay: 0.2 } },
+    ]
+  );
+  }, [ANIMATIONS_register]);
+
   return (
     <Filters
       itemsToFilter={movies}
@@ -31,28 +46,15 @@ export default function MoviesFilters({ movies }: MovieProps) {
       <Flex>
         <FiltersOptions />
 
-        <Grid cols={3} gap={4}>
-          <FilteredListing>
-            {(movie, index) => (
-              <FiltersCard 
-                key={movie._id} 
-                filteredItem={movie} 
-                animations={
-                  [
-                    { 
-                      name: "fade-up", 
-                      config: { index, delay: 0.2 }
-                    }
-                  ]
-                }
-                >
-                <ContentCard 
-                  content={movie} 
-                />
-              </FiltersCard>
-            )}
-          </FilteredListing>
-        </Grid>
+          <Grid ref={animationsRef} cols={3} gap={4}>
+            <FilteredListing>
+              {(movie) => (
+                <FiltersCard key={movie._id} filteredItem={movie}>
+                  <ContentCard content={movie} />
+                </FiltersCard>
+              )}
+            </FilteredListing>
+          </Grid>
 
       </Flex>
     </Filters>

@@ -14,7 +14,6 @@ function Filters({ itemsToFilter, filtersOptions, children }: FilterProps) {
   const {
     STATE_setupFilters,
     STATE_filtersValues,
-    STATE_setShowAnimation,
     STATE_clearFilters,
   } = useFilters();
 

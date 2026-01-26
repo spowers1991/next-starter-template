@@ -5,10 +5,11 @@ export function handleCheckboxChange(
   STATE_filtersValues: Record<string, string[]>,
   STATE_setFiltersValues: React.Dispatch<React.SetStateAction<Record<string, string[]>>>, 
   STATE_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void,
-  STATE_setShowAnimation: React.Dispatch<React.SetStateAction<boolean>>
+  ANIMATIONS_reset: (names: string[]) => void
 ) {
-  STATE_setShowAnimation(true);
-
+  
+  ANIMATIONS_reset(['Movies.MoviesFilters.fadeUp']);
+  
   // Update selected options from global state
   const currentOptions = STATE_filtersValues[propertyPath] ?? [];
   const updatedOptions = isChecked

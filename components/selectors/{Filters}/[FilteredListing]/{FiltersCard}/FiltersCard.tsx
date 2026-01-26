@@ -1,8 +1,6 @@
 "use client";
 
-import{ useRef } from "react";
 import Link from "next/link";
-import { useAnimations } from "@/lib/animations/hooks/useAnimations";
 import type { Animation } from "@/lib/animations/types/Animation";
 
 interface FiltersCardProps {
@@ -11,20 +9,13 @@ interface FiltersCardProps {
   animations?: Animation[] | undefined;
 }
 
-function FiltersCard({ filteredItem, children, animations }: FiltersCardProps) {
-
-  const ref = useRef<HTMLDivElement | null>(null);
-  useAnimations(ref, animations);
+function FiltersCard({ filteredItem, children }: FiltersCardProps) {
 
   const item = filteredItem as any;
 
   return (
     <Link href={`/${item._type}s/${item.slug.current}`} className="block">
-      <div
-        ref={ref}
-      >
-        {children}
-      </div>
+      {children}
     </Link>
   );
 }
