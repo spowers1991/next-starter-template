@@ -17,7 +17,7 @@ import { animate } from "../actions/animate";
 interface ANIMATIONS_Entry {
   ANIMATIONS_name?: string;
   ANIMATIONS_element: HTMLDivElement | null;
-  ANIMATIONS_animations: Animation[];
+  ANIMATIONS_animations: Animation[] | undefined;
 }
 
 interface AnimationsContextType {
@@ -25,7 +25,7 @@ interface AnimationsContextType {
   ANIMATIONS_register: (
     name: string,
     element: HTMLDivElement | null,
-    animations: Animation[]
+    animations: Animation[] | undefined,
   ) => void;
   ANIMATIONS_reset: (entryNames: string[]) => void,
   ANIMATIONS_unregister: (name : string) => void,
@@ -52,7 +52,7 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
     (
       name: string,
       element: HTMLDivElement | null,
-      animations: Animation[]
+      animations: Animation[] | undefined,
     ) => {
       if (!element) return;
 
@@ -108,7 +108,7 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     console.log(ANIMATIONS_entries);
     ANIMATIONS_entries.forEach(entry => {
-      entry.ANIMATIONS_animations.forEach(animation => {
+      entry.ANIMATIONS_animations?.forEach(animation => {
         animate(entry.ANIMATIONS_element, animation);
       });
     });

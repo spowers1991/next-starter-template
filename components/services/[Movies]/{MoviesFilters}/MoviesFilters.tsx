@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 
 import Filters from "@/components/selectors/{Filters}/Filters";
@@ -9,7 +8,6 @@ import FilteredListing from "@/components/selectors/{Filters}/[FilteredListing]/
 import FiltersCard from "@/components/selectors/{Filters}/[FilteredListing]/{FiltersCard}/FiltersCard";
 import Flex from "@/components/layout/flex/{Flex}/Flex";
 import Grid from "@/components/layout/grid/{Grid}/Grid";
-
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
 
 interface MovieProps {
@@ -31,13 +29,13 @@ export default function MoviesFilters({ movies }: MovieProps) {
     >
       <Flex>
         <FiltersOptions />
-
-          <Grid 
+          <Grid
             animations={[
-            { 
-              name: 'fade-up-children', 
-              config: { delay: 0.2 }
-            }]} 
+              { 
+                name: 'fade-up-children', 
+                config: { delay: 0.2 }
+              }
+            ]} 
             cols={3} 
             gap={4}>
             <FilteredListing>
@@ -48,7 +46,6 @@ export default function MoviesFilters({ movies }: MovieProps) {
               )}
             </FilteredListing>
           </Grid>
-
       </Flex>
     </Filters>
   );

@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef } from "react";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
-import { useAnimations } from "@/lib/animations/hooks/useAnimations";
 import type { AnimationName } from "@/lib/animations/types/AnimationName";
+import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
 
 interface H2Props {
   animations?: AnimationName[] | undefined;
@@ -14,10 +13,10 @@ function H2( { animations, children } : H2Props ) {
 
   const { THEMES_activeTheme } = useThemes();
 
-  const ref = useRef<HTMLDivElement | null>(null);
+  const animationsRef = useAnimationsRegistration('h2', animations)
 
   return (
-    <h2 className={`${THEMES_activeTheme.styles.h2}`} data-animate={useAnimations(ref, animations)}>
+    <h2 ref={animationsRef} className={`${THEMES_activeTheme.styles.h2}`}>
       {children}
     </h2>
   );

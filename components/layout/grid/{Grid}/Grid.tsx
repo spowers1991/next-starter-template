@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import type { GridConfig } from "./types/GridConfig";
 import type { Animation } from "@/lib/animations/types/Animation";
-import { useAnimations } from "@/lib/animations/hooks/useAnimations";
 import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
 
 type GridProps = GridConfig & {
-  animations?: Animation[];
+  animations?: Animation[] | undefined;
 };
 
 function Grid({
@@ -20,14 +19,7 @@ function Grid({
 }: GridProps) {
 
 
-  const animationRef = useAnimationsRegistration(
-    'Movies.MoviesFilters.fadeUp',
-    [{ name: 'fade-up-children', config: { delay: 0.2 } }]
-  );
-
-  //const ref = useRef<HTMLDivElement | null>(null);
-
-  //useAnimations(animationRef, animations);
+  const animationRef = useAnimationsRegistration('grid', animations);
 
   const gridColsClass = `grid-cols-${cols}`;
   const gridRowsClass = rows ? `grid-rows-${rows}` : "";
