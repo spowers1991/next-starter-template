@@ -13,10 +13,10 @@ function H2( { animations, children } : H2Props ) {
 
   const { THEMES_activeTheme } = useThemes();
 
-  const animationsRef = useAnimationsRegistration('h2', animations)
+  //const animationsRef = useAnimationsRegistration('h2', animations)
 
   return (
-    <h2 ref={animationsRef} className={`${THEMES_activeTheme.styles.h2}`}>
+    <h2 className={`${THEMES_activeTheme.styles.h2}`}>
       {children}
     </h2>
   );
