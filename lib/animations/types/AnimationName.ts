@@ -1,1 +1,1 @@
-export type AnimationName = "text-reveal" | "fade-in" | "slide-up" | "scale-pop" | "none";
+export type AnimationName = "text-reveal" | "fade-in" | "fade-up" | "fade-up-children" | "slide-up" | "scale-pop" | "none";

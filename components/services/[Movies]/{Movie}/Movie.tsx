@@ -12,7 +12,6 @@ import Article from "@/components/html/{Article}/Article";
 import CastMembers from "./[CastMembers]/CastMembers";
 import CrewMembers from "./[CrewMembers]/CrewMembers";
 
-
 interface MoviePageProps {
   data: Movie;
 }
@@ -23,7 +22,7 @@ export default function MoviePage({ data }: MoviePageProps) {
   return (
     <Section>
 
-      <H1 animations={["text-reveal"]}>
+      <H1 animations={[{name: "text-reveal"}]}>
         {title}
       </H1>
 

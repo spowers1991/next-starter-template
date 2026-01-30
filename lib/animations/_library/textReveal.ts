@@ -1,7 +1,20 @@
 import { gsap } from "gsap";
+import type { AnimationConfig } from "../types/AnimationConfig";
 
-export function textReveal(element: HTMLElement | null) {
+export function textReveal(element: HTMLDivElement | null, config?: AnimationConfig) {
   if (!element) return;
+
+  if (config?.status === 'restart') {
+    let text = '';
+    element.childNodes.forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).tagName === 'SPAN') {
+        text += (node as HTMLElement).textContent || '';
+      } else if (node.nodeType === Node.TEXT_NODE) {
+        text += node.textContent || '';
+      }
+    });
+    element.textContent = text;
+  }
 
   const text = element.textContent || "";
   element.textContent = "";

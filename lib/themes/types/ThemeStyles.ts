@@ -1,65 +1,65 @@
 export interface ThemeStyles {
-  body: string;
-  header: string;
-  main: string;
+  body?: string;
+  header?: string;
+  main?: string;
 
-  p: string;
-  a: string;
-  ul: string;
-  ol: string;
-  li: string;
+  p?: string;
+  a?: string;
+  ul?: string;
+  ol?: string;
+  li?: string;
 
-  h1: string;
-  h2: string;
-  h3: string;
-  h4: string;
-  h5: string;
-  h6: string;
+  h1?: string;
+  h2?: string;
+  h3?: string;
+  h4?: string;
+  h5?: string;
+  h6?: string;
 
-  button: string;
-  input: string;
-  textarea: string;
-  select: string;
-  label: string;
+  button?: string;
+  input?: string;
+  textarea?: string;
+  select?: string;
+  label?: string;
 
-  table: string;
-  th: string;
-  td: string;
+  table?: string;
+  th?: string;
+  td?: string;
 
-  blockquote: string;
-  code: string;
-  pre: string;
-  hr: string;
-  span: string;
+  blockquote?: string;
+  code?: string;
+  pre?: string;
+  hr?: string;
+  span?: string;
 
   // New semantic / structural tags
-  section: string;
-  article: string;
-  aside: string;
-  footer: string;
-  "header-article": string;
-  hgroup: string;
+  section?: string;
+  article?: string;
+  aside?: string;
+  footer?: string;
+  "header-article"?: string;
+  hgroup?: string;
 
-  time: string;
-  mark: string;
+  time?: string;
+  mark?: string;
 
-  details: string;
-  summary: string;
+  details?: string;
+  summary?: string;
 
-  figure: string;
-  figcaption: string;
+  figure?: string;
+  figcaption?: string;
 
-  meter: string;
-  progress: string;
-  
-  address: string;
+  meter?: string;
+  progress?: string;
 
-  dialog: string;
-  data: string;
-  datalist: string;
-  output: string;
-  ruby: string;
-  rt: string;
-  rp: string;
-  wbr: string;
+  address?: string;
+
+  dialog?: string;
+  data?: string;
+  datalist?: string;
+  output?: string;
+  ruby?: string;
+  rt?: string;
+  rp?: string;
+  wbr?: string;
 }

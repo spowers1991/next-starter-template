@@ -1,53 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
-import { useFilters } from "@/lib/filters/state/FiltersContext";
-import { animateCard } from "./animations/animateCard";
-import { handleCardClick } from "./animations/handleCardClick";
+import type { Animation } from "@/lib/animations/types/Animation";
+import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
 
 interface FiltersCardProps {
   filteredItem: unknown;
-  index?: number;
+  children?: React.ReactNode;
+  animations?: Animation[] | undefined;
+  idx?: number;
 }
 
-function FiltersCard( { filteredItem, index = 0 } : FiltersCardProps ) {
-
-  const { STATE_setShowAnimation, STATE_showAnimation } = useFilters();
-  
-  const cardRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!cardRef.current || !STATE_showAnimation) return;
-
-    const tl = animateCard(cardRef.current, index);
-
-    return () => {
-      tl.kill();
-    };
-  }, [STATE_showAnimation, index]);
-
-  const item = filteredItem as {
-    _type: string;
-    slug: { current: string };
-    title: string;
-  };
+function FiltersCard({ filteredItem, children, animations, idx }: FiltersCardProps) {
+  // Safely assert the expected structure for item
+  const item = filteredItem as { _type?: string; _id?: string; slug?: { current?: string } };
+  const name = typeof idx === 'number' ? `filters-card-${idx}` : `filters-card-${item._id ?? item.slug?.current ?? ''}`;
+  const animationRef = useAnimationsRegistration(name, animations);
 
   return (
-    <Link href={`/${item._type}s/${item.slug.current}`} className="block">
-      <div
-        ref={cardRef}
-        onClick={() => handleCardClick(STATE_setShowAnimation)}
-        className={`bg-white flex flex-col xl:flex-nowrap gap-4 border p-4 h-full min-w-fit cursor-pointer transform ${STATE_showAnimation ? 'opacity-0' : 'opacity-100' }`}
-      >
-        <div className="m-auto">
-          <div className="flex gap-3 items-top text-[#555] text-center text-xl font-bold">
-            {item.title}
-          </div>
-        </div>
-      </div>
-    </Link>
+    <div ref={animationRef} className="block">
+      <Link href={`/${item._type ?? ''}s/${item.slug?.current ?? ''}`}>
+        {children}
+      </Link>
+    </div>
   );
-};
+}
 
 export default FiltersCard;

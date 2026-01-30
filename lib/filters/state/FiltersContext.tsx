@@ -17,8 +17,6 @@ interface FiltersContextType {
   STATE_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void;
   STATE_filteredItems: object[];
   STATE_setFilteredItems: React.Dispatch<React.SetStateAction<object[]>>;
-  STATE_showAnimation: boolean;
-  STATE_setShowAnimation: React.Dispatch<React.SetStateAction<boolean>>;
   STATE_clearFilters: () => void;
 }
 
@@ -29,7 +27,6 @@ export const FiltersProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [STATE_filtersOptions, STATE_setFiltersOptions] = useState<FiltersConfig[]>([]);
   const [STATE_filtersValues, STATE_setFiltersValues] = useState<Record<string, string[]>>({});
   const [STATE_filteredItems, STATE_setFilteredItems] = useState<object[]>([]);
-  const [STATE_showAnimation, STATE_setShowAnimation] = useState<boolean>(true);
 
   const STATE_setupFilters = ( itemsToFilter: object[], filtersOptions: FiltersConfig[]) => {
     useSetupFilters(itemsToFilter, filtersOptions, STATE_setItemsToFilter, STATE_setFiltersOptions);
@@ -60,8 +57,6 @@ export const FiltersProvider: React.FC<{ children: React.ReactNode }> = ({ child
         STATE_filtersOptionsHandler,
         STATE_filteredItems,
         STATE_setFilteredItems,
-        STATE_showAnimation,
-        STATE_setShowAnimation,
         STATE_clearFilters,
       }}
     >
