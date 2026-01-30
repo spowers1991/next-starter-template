@@ -2,7 +2,7 @@ import React from "react";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 
 interface FilteredListingProps {
-  children: (item: any, index: number) => React.ReactNode;
+  children: (item: unknown, index: number) => React.ReactNode;
 }
 
 export default function FilteredListing({

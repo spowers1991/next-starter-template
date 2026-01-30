@@ -6,18 +6,20 @@ import type { AnimationConfig } from "../types/AnimationConfig";
 export const fadeUpChildren = (
   element: HTMLDivElement | null,
   config: AnimationConfig
-): gsap.core.Timeline | null => {
+): { timeline: gsap.core.Timeline | null; rerun: () => void } => {
 
-  if (!element || element.children.length === 0) return null;
+  if (!element || element.children.length === 0) {
+    return { timeline: null, rerun: () => {} };
+  }
 
-  const children = Array.from(
-    element.children
-  ) as HTMLElement[];
+
+  const children = Array.from(element.children) as HTMLElement[];
 
   const tl = gsap.timeline({
     defaults: {
       ease: "power3.out",
     },
+    paused: true,
   });
 
   tl.fromTo(
@@ -29,11 +31,23 @@ export const fadeUpChildren = (
     {
       opacity: 1,
       y: 0,
-      duration: config.delay ?? 0.6,
-      stagger: config.delay ?? 2,
-      //delay: config.delay ?? 0,
+      duration: config.delay ?? 1,
+      stagger: config.delay ?? 0.2,
     }
   );
 
-  return tl;
+  if (config.status === 'restart') {
+    gsap.set(children, { opacity: 0, y: 30 });
+    tl.restart(true);
+  } else {
+    tl.play();
+  }
+
+  return { 
+    timeline: tl, 
+    rerun: () => {
+      gsap.set(children, { opacity: 0, y: 30 });
+      tl.restart(true);
+    }
+  };
 };

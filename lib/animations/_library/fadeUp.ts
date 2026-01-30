@@ -4,12 +4,12 @@ import gsap from "gsap";
 import type { AnimationConfig } from "../types/AnimationConfig";
 
 export const fadeUp = (
-  element: HTMLDivElement | null,
+  element: HTMLDivElement | HTMLDivElement[] | null,
   config: AnimationConfig
 ): gsap.core.Timeline => {
-
-  const index = config.index ?? 0;
-  const delay = config.delay ?? 0;
+  const index = config.index ?? 1;
+  const delay = config.delay ?? 1;
+  const stagger = config.delay ?? 1;
 
   const tl = gsap.timeline();
 
@@ -21,9 +21,16 @@ export const fadeUp = (
       opacity: 1,
       duration: 1,
       ease: "power2.out",
-      delay: index * delay, 
+      delay: index * delay,
+      stagger: stagger > 0 ? stagger : undefined,
     }
   );
+
+  if (config.status === 'restart') {
+    tl.restart();
+  } else {
+    tl.play();
+  }
 
   return tl;
 };

@@ -13,8 +13,6 @@ interface FilterProps {
 function Filters({ itemsToFilter, filtersOptions, children }: FilterProps) {
   const {
     STATE_setupFilters,
-    STATE_filtersValues,
-    STATE_clearFilters,
   } = useFilters();
 
  

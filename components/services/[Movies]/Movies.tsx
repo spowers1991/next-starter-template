@@ -16,9 +16,16 @@ export default function Movies({ movies }: MovieProps) {
   return (
     <Section>
 
-      <MoviesFilters movies={movies} />
+      <H1 animations={[
+          { 
+            name: 'text-reveal'
+          }
+        ]} 
+      >
+        Movies
+      </H1>
 
-      <H1>Movies</H1>
+      <MoviesFilters movies={movies} />
 
       <Grid cols={4} gap={4}>
         {movies.map((movie) => (

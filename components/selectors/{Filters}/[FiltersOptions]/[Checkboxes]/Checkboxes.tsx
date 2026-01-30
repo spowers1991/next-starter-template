@@ -5,7 +5,7 @@ import { extractPropertiesNames } from "@/lib/filters/helpers/extractPropertiesN
 import { handleCheckboxChange } from "@/components/selectors/{Filters}/[FiltersOptions]/[Checkboxes]/actions/handleCheckboxChange";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 import Checkbox from "@/components/selectors/{Filters}/[FiltersOptions]/[Checkboxes]/{Checkbox}/Checkbox";
-import { useAnimations } from "@/lib/animations/state/AnimationContext";
+import { useAnimations } from "@/lib/animations/state/AnimationsContext";
 
 interface CheckboxProps {
   label: string;
@@ -20,7 +20,7 @@ function Checkboxes({ label, propertyToSearch }: CheckboxProps) {
     STATE_filtersOptionsHandler 
   } = useFilters();
 
-  const { ANIMATIONS_reset } = useAnimations();
+  const { ANIMATIONS_update } = useAnimations();
   
   const options = extractPropertiesNames(STATE_itemsToFilter, propertyToSearch);
 
@@ -43,7 +43,7 @@ function Checkboxes({ label, propertyToSearch }: CheckboxProps) {
                 STATE_filtersValues,
                 STATE_setFiltersValues,
                 STATE_filtersOptionsHandler,
-                ANIMATIONS_reset,
+                ANIMATIONS_update,
               )
             }
           />
