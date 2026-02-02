@@ -11,12 +11,12 @@ import { AnimationsEntry } from "../types/AnimationsEntry";
 import { ANIMATIONS_register as ANIMATIONS_register_action } from "../actions/ANIMATIONS_register";
 import { ANIMATIONS_update as ANIMATIONS_update_action } from "../actions/ANIMATIONS_update";
 import { playAnimations } from "../actions/playAnimations";
-import { AnimationConfig } from "../types/AnimationConfig";
+import { AnimationTarget } from "../types/AnimationTarget";
 
 interface AnimationsContextType {
   ANIMATIONS_entries: AnimationsEntry[];
   ANIMATIONS_register: (entries: AnimationsEntry[]) => void;
-  ANIMATIONS_update: (targets: { name: string; config?: AnimationConfig }[]) => void;
+  ANIMATIONS_update: (targets: AnimationTarget[]) => void;
 }
 
 const AnimationsContext = createContext<AnimationsContextType | undefined>(
@@ -33,13 +33,12 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
     ANIMATIONS_setEntries(prevEntries => ANIMATIONS_register_action(prevEntries, entries));
   }
 
-  const ANIMATIONS_update = (targets: { name: string; config?: AnimationConfig }[]) => {
+  const ANIMATIONS_update = (targets: AnimationTarget[]) => {
     ANIMATIONS_update_action(ANIMATIONS_entries, targets);
   };
 
   useEffect(() => {
-    // Only play (not restart) on mount/registration
-    console.log(ANIMATIONS_entries);
+    console.log(ANIMATIONS_entries)
     playAnimations(ANIMATIONS_entries);
   }, [ANIMATIONS_entries]);
 
@@ -56,9 +55,6 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-// --------------------------------
-// Hook
-// --------------------------------
 export const useAnimations = () => {
   const context = useContext(AnimationsContext);
   if (!context) {

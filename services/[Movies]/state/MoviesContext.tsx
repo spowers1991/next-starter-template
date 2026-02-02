@@ -1,11 +1,11 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import type { Movie } from "../{Movie}/types/Movie";
 
 interface MoviesContextValue {
-  movies: Movie[];
-  setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  MOVIES_movies: Movie[];
+  MOVIES_setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
 }
 
 const MoviesContext = createContext<MoviesContextValue | undefined>(undefined);
@@ -17,10 +17,15 @@ export function MoviesProvider({
   initialMovies: Movie[];
   children: React.ReactNode;
 }) {
-  const [movies, setMovies] = useState<Movie[]>(initialMovies || []);
+  const [MOVIES_movies, MOVIES_setMovies] = useState<Movie[]>(
+    initialMovies || []
+  );
+
+  useEffect(() => {
+  }, [MOVIES_movies]);
 
   return (
-    <MoviesContext.Provider value={{ movies, setMovies }}>
+    <MoviesContext.Provider value={{ MOVIES_movies, MOVIES_setMovies }}>
       {children}
     </MoviesContext.Provider>
   );

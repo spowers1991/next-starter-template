@@ -5,16 +5,18 @@ import { useAnimations } from "@/lib/animations/state/AnimationsContext";
 import type { Animation } from "../types/Animation";
 
 export function useAnimationsRegistration(
-  name: string,
-  animations?: Animation[]
+  id: string | undefined,
+  animations?: Animation[],
+  componentName?: string,
 ) {
+
   const pathname = removeLeadingSlash(usePathname());
 
   const { ANIMATIONS_register } = useAnimations();
 
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const registeredName = `${name}_${pathname}`;
+  const animationId = `ANIMATION_${id}`
 
   useEffect(() => {
     const element = ref.current;
@@ -22,14 +24,16 @@ export function useAnimationsRegistration(
 
     const animationsEntry = [
       {
-        name: registeredName,
+        id: animationId,
         element,
         animations,
+        pathname,
+        component: componentName,
       },
     ];
-    console.log(animationsEntry)
+
     ANIMATIONS_register(animationsEntry);
-  }, [registeredName, animations, ANIMATIONS_register]);
+  }, [id, animations]);
 
   return ref;
 }

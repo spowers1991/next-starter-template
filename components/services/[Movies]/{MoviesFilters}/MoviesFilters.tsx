@@ -30,11 +30,15 @@ export default function MoviesFilters({ movies }: MovieProps) {
       <Flex>
         <FiltersOptions />
           <Grid
+            id={`{MoviesFilters}_<Grid/>`}
             cols={3}
             gap={4}
-            animations={[
-              { name: 'fade-up-children', config: { delay: 0.1 } }
-            ]}
+            animations={
+              [{
+                name: 'fadeUpChildren',
+                config: { delay: 0.1, duration: 0.1, stagger: 0.1, status: 'restart' }
+              }]
+            }
           >
             <FilteredListing>
               {(movie) => {

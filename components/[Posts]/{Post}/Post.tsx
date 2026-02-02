@@ -17,8 +17,15 @@ function Post( { data } : PostProps) {
     <Section>
       
       <Article>
-        <H1 animations={[{name : "text-reveal"}]}>
-          {data.title || data.name }
+        <H1
+        id={`{Post}`}
+        animations={[
+            { 
+              name: 'textReveal'
+            }
+          ]} 
+        >
+          Movies
         </H1>
       </Article>
 

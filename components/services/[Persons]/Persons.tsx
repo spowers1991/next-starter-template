@@ -16,7 +16,14 @@ export default function Persons({ persons }: PersonsProps) {
 
   return (
     <Section>
-      <H1 animations={[{name: "text-reveal"}]}>
+      <H1
+      id={`[Persons]`}
+      animations={[
+          { 
+            name: 'textReveal'
+          }
+        ]} 
+      >
         Persons
       </H1>
       <GridRepeater

@@ -22,7 +22,9 @@ export default function MoviePage({ data }: MoviePageProps) {
   return (
     <Section>
 
-      <H1 animations={[{name: "text-reveal"}]}>
+      <H1 
+      id={`{Movie}_<H1/>`}
+      animations={[{name: "textReveal"}]}>
         {title}
       </H1>
 

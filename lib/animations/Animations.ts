@@ -3,8 +3,11 @@ import { fadeUpChildren } from "./_library/fadeUpChildren";
 import { textReveal } from "./_library/textReveal";
 
 export const Animations = {
-  textReveal,
+  text: {
+    reveal: textReveal,
+  },
   fadeUp,
-  fadeUpChildren,
+  children: {
+    fadeUp: fadeUpChildren,
+  },
 } as const;
-

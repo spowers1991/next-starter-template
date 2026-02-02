@@ -1,6 +1,7 @@
 export interface AnimationConfig {
-  order?: number;
   index?: number;
   delay?: number;
+  duration?: number;
+  stagger?: number;
   status?: 'restart' | 'play';
 }

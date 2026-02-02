@@ -16,9 +16,11 @@ export default function Movies({ movies }: MovieProps) {
   return (
     <Section>
 
-      <H1 animations={[
+      <H1
+      id={`[Movies]_<H1/>`}
+      animations={[
           { 
-            name: 'text-reveal'
+            name: 'textReveal'
           }
         ]} 
       >

@@ -1,19 +1,23 @@
 "use client";
 
+
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 import type { Animation } from "@/lib/animations/types/Animation";
 import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
 
 interface H1Props {
+  id: string | undefined;
   animations?: Animation[] | undefined,
   children: React.ReactNode,
 }
 
-export default function H1({ animations, children }: H1Props) {
+export default function H1({ id, animations, children }: H1Props) {
 
   const { THEMES_activeTheme } = useThemes();
-  
-  const animationRef = useAnimationsRegistration('h1', animations);
+
+
+  const componentName = '<H1/>'
+  const animationRef = useAnimationsRegistration(id, animations, componentName);
 
   return (
     <h1

@@ -6,8 +6,8 @@ import { useMovies } from '@/services/[Movies]/state/MoviesContext';
 import Link from 'next/link';
 
 export default function MainMenu() {
-const { movies } = useMovies();
-const items = movies;
+const { MOVIES_movies } = useMovies();
+const items = MOVIES_movies;
 
   return (
     <div className="flex w-full py-3 px-3">
