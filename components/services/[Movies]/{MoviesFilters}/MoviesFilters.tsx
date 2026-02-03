@@ -29,31 +29,27 @@ export default function MoviesFilters({ movies }: MovieProps) {
     >
       <Flex>
         <FiltersOptions />
-          <Grid
-            id={`{MoviesFilters}_<Grid/>`}
-            cols={3}
-            gap={4}
+          <FilteredListing
+            id={`{FilteredListing}_[Movies]`}
             animations={
               [{
                 name: 'fadeUpChildren',
-                config: { delay: 0.1, duration: 0.1, stagger: 0.1, status: 'restart' }
+                config: { delay: 0.1, duration: 0.1, stagger: 0.1, status: 'play' }
               }]
             }
-          >
-            <FilteredListing>
-              {(movie) => {
-                const item = movie as Movie;
-                return (
-                  <FiltersCard 
-                    key={item._id} 
-                    filteredItem={item}
-                  >
-                    <ContentCard content={item} />
-                  </FiltersCard>
-                );
-              }}
-            </FilteredListing>
-          </Grid>
+            >
+            {(movie) => {
+              const item = movie as Movie;
+              return (
+                <FiltersCard 
+                  key={item._id} 
+                  filteredItem={item}
+                >
+                  <ContentCard content={item} />
+                </FiltersCard>
+              );
+            }}
+          </FilteredListing>
       </Flex>
     </Filters>
   );

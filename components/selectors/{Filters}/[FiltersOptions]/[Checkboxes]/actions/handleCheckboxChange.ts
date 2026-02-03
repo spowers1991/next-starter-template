@@ -9,18 +9,14 @@ export function handleCheckboxChange(
   STATE_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void,
   ANIMATIONS_update: (targets: AnimationTarget[]) => void
 ) {
-  
+ 
   ANIMATIONS_update([
     { 
       id: 'ANIMATION_[Movies]_<H1/>', 
       config: { status: "restart"}
-    },
-    { 
-      id: 'ANIMATION_{MoviesFilters}_<Grid/>', 
-      config: { status: "restart"}
     }
   ])
-  
+
   // Update selected options from global state
   const currentOptions = STATE_filtersValues[propertyPath] ?? [];
   const updatedOptions = isChecked
