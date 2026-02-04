@@ -5,49 +5,35 @@ import type { AnimationConfig } from "../types/AnimationConfig";
 
 export const fadeUpChildren = (
   element: HTMLDivElement | null,
-  config: AnimationConfig
-): { timeline: gsap.core.Timeline | null; rerun: () => void } => {
+  config: AnimationConfig,
+) => {
 
-  if (!element || element.children.length === 0) {
-    return { timeline: null, rerun: () => {} };
-  }
-
+  if (!element || element.children.length === 0) return
 
   const children = Array.from(element.children) as HTMLElement[];
 
+  gsap.set(children, { opacity: 0, y: 30 });
+
   const tl = gsap.timeline({
+    paused: false,
     defaults: {
-      ease: "power3.out",
+      ease: "power2.out",
+      duration: config.duration ?? 0.1,
     },
-    paused: true,
   });
 
-  tl.fromTo(
-    children,
-    {
-      opacity: 0,
-      y: 30,
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: config.delay ?? 1,
-      stagger: config.delay ?? 0.2,
-    }
-  );
+  tl.to(children, {
+    opacity: 1,
+    y: 0,
+    stagger: config.stagger ?? 0.1,
+  });
 
-  if (config.status === 'restart') {
-    gsap.set(children, { opacity: 0, y: 30 });
-    tl.restart(true);
+  if (config?.status === 'restart') {
+    tl.restart();
   } else {
     tl.play();
   }
 
-  return { 
-    timeline: tl, 
-    rerun: () => {
-      gsap.set(children, { opacity: 0, y: 30 });
-      tl.restart(true);
-    }
-  };
+  return tl
 };
+

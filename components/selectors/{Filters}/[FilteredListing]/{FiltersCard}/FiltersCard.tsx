@@ -3,19 +3,21 @@
 import Link from "next/link";
 import type { Animation } from "@/lib/animations/types/Animation";
 import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
+import { FilteredItem } from "@/lib/filters/types/FilteredItem";
 
 interface FiltersCardProps {
   filteredItem: unknown;
-  children?: React.ReactNode;
   animations?: Animation[] | undefined;
-  idx?: number;
+  children?: React.ReactNode;
 }
 
-function FiltersCard({ filteredItem, children, animations, idx }: FiltersCardProps) {
-  // Safely assert the expected structure for item
-  const item = filteredItem as { _type?: string; _id?: string; slug?: { current?: string } };
-  const name = typeof idx === 'number' ? `filters-card-${idx}` : `filters-card-${item._id ?? item.slug?.current ?? ''}`;
-  const animationRef = useAnimationsRegistration(name, animations);
+function FiltersCard({ filteredItem, animations, children }: FiltersCardProps) {
+
+  const item = filteredItem as FilteredItem;
+
+  const id = item._id;
+  const componentName = `<FiltersCard/>`;
+  const animationRef = useAnimationsRegistration(id, animations, componentName);
 
   return (
     <div ref={animationRef} className="block">

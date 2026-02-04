@@ -7,7 +7,6 @@ import FiltersOptions from "@/components/selectors/{Filters}/[FiltersOptions]/Fi
 import FilteredListing from "@/components/selectors/{Filters}/[FilteredListing]/FilteredListing";
 import FiltersCard from "@/components/selectors/{Filters}/[FilteredListing]/{FiltersCard}/FiltersCard";
 import Flex from "@/components/layout/flex/{Flex}/Flex";
-import Grid from "@/components/layout/grid/{Grid}/Grid";
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
 
 interface MovieProps {
@@ -29,27 +28,27 @@ export default function MoviesFilters({ movies }: MovieProps) {
     >
       <Flex>
         <FiltersOptions />
-          <Grid
-            cols={3}
-            gap={4}
-            animations={[
-              { name: 'fade-up-children', config: { delay: 0.1 } }
-            ]}
-          >
-            <FilteredListing>
-              {(movie) => {
-                const item = movie as Movie;
-                return (
-                  <FiltersCard 
-                    key={item._id} 
-                    filteredItem={item}
-                  >
-                    <ContentCard content={item} />
-                  </FiltersCard>
-                );
-              }}
-            </FilteredListing>
-          </Grid>
+          <FilteredListing
+            id={`[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>`}
+            animations={
+              [{
+                name: 'fadeUpChildren',
+                config: { delay: 0.1, duration: 0.1, stagger: 0.1, status: 'play' }
+              }]
+            }
+            >
+            {(movie) => {
+              const item = movie as Movie;
+              return (
+                <FiltersCard 
+                  key={item._id} 
+                  filteredItem={item}
+                >
+                  <ContentCard content={item} />
+                </FiltersCard>
+              );
+            }}
+          </FilteredListing>
       </Flex>
     </Filters>
   );

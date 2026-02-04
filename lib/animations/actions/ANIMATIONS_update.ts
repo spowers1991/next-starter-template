@@ -1,14 +1,14 @@
 import type { AnimationsEntry } from "../types/AnimationsEntry";
-import type { AnimationConfig } from "../types/AnimationConfig";
 import { animate } from "../actions/animate";
+import { AnimationTarget } from "../types/AnimationTarget";
 
 export const ANIMATIONS_update = (
   ANIMATIONS_entries: AnimationsEntry[],
-  targets: { name: string; config?: AnimationConfig }[]
+  targets: AnimationTarget[]
 ) => {
   ANIMATIONS_entries.forEach((ANIMATIONS_entry) => {
     targets.forEach(target => {
-      if (ANIMATIONS_entry.name === target.name) {
+      if (ANIMATIONS_entry.id === target.id) {
         ANIMATIONS_entry.animations?.forEach((animation) => {
           animate(
             ANIMATIONS_entry.element,

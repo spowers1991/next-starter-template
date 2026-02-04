@@ -6,7 +6,7 @@ export const ANIMATIONS_register = (
 ): AnimationsEntry[] => {
   return [
     ...new Map(
-      [...prevEntries, ...entries].map(entry => [entry.name, entry])
+      [...prevEntries, ...entries].map(entry => [entry.id, entry])
     ).values()
   ];
 };

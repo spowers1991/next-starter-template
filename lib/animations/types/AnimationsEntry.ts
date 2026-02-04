@@ -1,7 +1,10 @@
 import type { Animation } from "../types/Animation";
 
 export interface AnimationsEntry {
-  name: string;
+  id: string | undefined,
   element: HTMLDivElement | null;
-  animations: Animation[] | undefined;
+  timeline?: gsap.core.Timeline | null;
+  animations?: Animation[] | undefined;
+  pathname?: string,
+  component?: string,
 }

@@ -5,7 +5,14 @@ export default function Page() {
 
   return (
     <Main>
-      <H1>
+      <H1
+      id={`index_H1`}
+      animations={[
+        { 
+          name: 'textReveal'
+        }
+      ]} 
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </H1>
     </Main>

@@ -6,10 +6,12 @@ import type { Animation } from "@/lib/animations/types/Animation";
 import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
 
 type GridProps = GridConfig & {
+  id?: string | undefined;
   animations?: Animation[] | undefined;
 };
 
 function Grid({
+  id,
   children,
   className = "",
   cols = 2,
@@ -19,7 +21,8 @@ function Grid({
 }: GridProps) {
 
 
-  const animationRef = useAnimationsRegistration('grid', animations);
+  const componentName = `<Grid/>`;
+  const animationRef = useAnimationsRegistration(id, animations, componentName);
 
   const gridColsClass = `grid-cols-${cols}`;
   const gridRowsClass = rows ? `grid-rows-${rows}` : "";

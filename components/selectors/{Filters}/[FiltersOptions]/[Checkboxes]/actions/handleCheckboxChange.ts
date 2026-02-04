@@ -1,4 +1,4 @@
-import type { AnimationConfig } from "@/lib/animations/types/AnimationConfig";
+import { AnimationTarget } from "@/lib/animations/types/AnimationTarget";
 
 export function handleCheckboxChange(
   value: string,
@@ -7,20 +7,16 @@ export function handleCheckboxChange(
   STATE_filtersValues: Record<string, string[]>,
   STATE_setFiltersValues: React.Dispatch<React.SetStateAction<Record<string, string[]>>>, 
   STATE_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void,
-  ANIMATIONS_update: (targets: { name: string; config?: AnimationConfig }[]) => void
+  ANIMATIONS_update: (targets: AnimationTarget[]) => void
 ) {
-  
+ 
   ANIMATIONS_update([
     { 
-      name: 'h1_movies', 
-      config: { status: "restart"}
-    },
-    { 
-      name: 'grid_movies', 
+      id: 'ANIMATION_[Movies]_<H1/>', 
       config: { status: "restart"}
     }
   ])
-  
+
   // Update selected options from global state
   const currentOptions = STATE_filtersValues[propertyPath] ?? [];
   const updatedOptions = isChecked

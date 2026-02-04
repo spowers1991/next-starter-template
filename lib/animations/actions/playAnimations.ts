@@ -8,7 +8,7 @@ export function playAnimations(entries: AnimationsEntry[]) {
         entry.element,
         {
           ...animation,
-          config: { ...animation.config, status: 'play' }
+          config: { ...animation.config, status: animation.config?.status }
         }
       );
     });
