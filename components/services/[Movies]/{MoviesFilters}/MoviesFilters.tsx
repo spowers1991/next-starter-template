@@ -7,7 +7,6 @@ import FiltersOptions from "@/components/selectors/{Filters}/[FiltersOptions]/Fi
 import FilteredListing from "@/components/selectors/{Filters}/[FilteredListing]/FilteredListing";
 import FiltersCard from "@/components/selectors/{Filters}/[FilteredListing]/{FiltersCard}/FiltersCard";
 import Flex from "@/components/layout/flex/{Flex}/Flex";
-import Grid from "@/components/layout/grid/{Grid}/Grid";
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
 
 interface MovieProps {
@@ -30,7 +29,7 @@ export default function MoviesFilters({ movies }: MovieProps) {
       <Flex>
         <FiltersOptions />
           <FilteredListing
-            id={`{FilteredListing}_[Movies]`}
+            id={`[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>`}
             animations={
               [{
                 name: 'fadeUpChildren',

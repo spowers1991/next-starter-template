@@ -50,7 +50,7 @@ export function useAnimationsRef(
         pathname,
       },
     ]);
-  }, [animationId]);
+  }, [animationId, pathname, ANIMATIONS_register]);
 
   // ▶️ Imperative API
   useImperativeHandle(ref, () => ({

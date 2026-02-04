@@ -33,7 +33,7 @@ export function useAnimationsRegistration(
     ];
 
     ANIMATIONS_register(animationsEntry);
-  }, [id, animations]);
+  }, [id, animations, animationId, componentName, pathname, ANIMATIONS_register]);
 
   return ref;
 }

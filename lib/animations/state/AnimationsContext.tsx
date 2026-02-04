@@ -5,6 +5,7 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useCallback
 } from "react";
 
 import { AnimationsEntry } from "../types/AnimationsEntry";
@@ -29,13 +30,21 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
   
   const [ANIMATIONS_entries, ANIMATIONS_setEntries] = useState<AnimationsEntry[]>([]);
 
-  const ANIMATIONS_register = (entries: AnimationsEntry[]) => {
-    ANIMATIONS_setEntries(prevEntries => ANIMATIONS_register_action(prevEntries, entries));
-  }
+  const ANIMATIONS_register = useCallback(
+    (entries: AnimationsEntry[]) => {
+      ANIMATIONS_setEntries(prevEntries =>
+        ANIMATIONS_register_action(prevEntries, entries)
+      );
+    },
+    [] // ← safe because we only use setState functional form
+  );
 
-  const ANIMATIONS_update = (targets: AnimationTarget[]) => {
-    ANIMATIONS_update_action(ANIMATIONS_entries, targets);
-  };
+  const ANIMATIONS_update = useCallback(
+    (targets: AnimationTarget[]) => {
+      ANIMATIONS_update_action(ANIMATIONS_entries, targets);
+    },
+    [ANIMATIONS_entries]
+  );
 
   useEffect(() => {
     console.log(ANIMATIONS_entries)
