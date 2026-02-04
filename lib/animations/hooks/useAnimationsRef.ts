@@ -1,7 +1,6 @@
 "use client";
 
 import { useLayoutEffect, useRef, useImperativeHandle } from "react";
-import gsap from "gsap";
 import { fadeUpChildren } from "@/lib/animations/_plugins/gsap/_library/fadeUpChildren";
 import { useAnimations } from "@/lib/animations/state/AnimationsContext";
 import { removeLeadingSlash } from "@/lib/parsers/removeLeadingSlash";
