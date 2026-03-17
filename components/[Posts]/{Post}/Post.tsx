@@ -21,7 +21,7 @@ function Post( { data: post } : PostProps) {
       
       <Article>
         <H1
-        id={`{Post}-<H1/>`}
+        id={`{Post}_<H1/>`}
         animations={[
             { 
               name: 'textReveal'
@@ -36,7 +36,7 @@ function Post( { data: post } : PostProps) {
         
         {post?.image &&
           <Animator
-            id={`{Post}-<Image/>`}
+            id={`{Post}_<Image/>`}
             animations={[
               { name: 'fadeIn', config: { delay: 0.4, duration: 1 } }
             ]}

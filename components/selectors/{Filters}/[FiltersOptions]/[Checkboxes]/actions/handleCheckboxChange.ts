@@ -14,10 +14,6 @@ export function handleCheckboxChange(
     { 
       id: 'ANIMATION_[Movies]_<H1/>', 
       config: { status: "restart"}
-    },
-    { 
-      id: 'ANIMATION_[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>', 
-      config: { status: "restart"}
     }
   ])
 

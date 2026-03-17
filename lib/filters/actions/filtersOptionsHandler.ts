@@ -6,15 +6,15 @@ export const filtersOptionsHandler = (
   setFiltersOptions: React.Dispatch<React.SetStateAction<Record<string, string[]>>>
 ) => {
   setFiltersOptions(prev => {
-    const newFilters = { ...prev };
+    const newFiltersOptions = { ...prev };
 
     if (selectedOptions.length === 0) {
       // remove key if no options selected
-      delete newFilters[propertyPath];
+      delete newFiltersOptions[propertyPath];
     } else {
-      newFilters[propertyPath] = selectedOptions;
+      newFiltersOptions[propertyPath] = selectedOptions;
     }
 
-    return newFilters;
+    return newFiltersOptions;
   });
 };

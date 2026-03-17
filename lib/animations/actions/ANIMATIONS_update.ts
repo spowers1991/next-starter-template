@@ -7,7 +7,6 @@ export const ANIMATIONS_update = (
   ANIMATIONS_entries: AnimationsEntry[],
   targets: AnimationTarget[]
 ) => {
-            console.log(ANIMATIONS_entries, targets);
   ANIMATIONS_entries.forEach((ANIMATIONS_entry) => {
     targets.forEach(target => {
       if (ANIMATIONS_entry.id === target.id) {

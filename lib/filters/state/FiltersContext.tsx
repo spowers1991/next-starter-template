@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { FiltersConfig } from "../types/FiltersConfig";
 import { useSetupFilters } from "../hooks/useSetupFilters";
 import { updateFilters } from "../actions/updateFilters";
-import { filtersOptionsHandler as handleFiltersOptions } from "../actions/filtersHandler"; 
+import { filtersOptionsHandler as handleFiltersOptions } from "../actions/filtersOptionsHandler"; 
 
 interface FiltersContextType {
   FILTERS_setupFilters:  (itemsToFilter: object[], filtersOptions: FiltersConfig[]) => void;

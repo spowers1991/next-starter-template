@@ -32,7 +32,9 @@ export function useTimelineAnimationsRef(
   // ▶️ Animate when children change
   useLayoutEffect(() => {
     if(!containerRef.current || !animations || animations.length === 0) return;
-    animateTimeline(containerRef , tlRef, animations[0]);
+    animations.forEach(animation => {
+       animateTimeline( containerRef , tlRef, animation);
+    });
 
     return () => {
       tlRef.current?.kill();
@@ -49,11 +51,12 @@ export function useTimelineAnimationsRef(
         id: animationId,
         element: containerRef.current,
         containerRef,
+        animations,
         timeline: tlRef,
         pathname,
       },
     ]);
-  }, [animationId, pathname, ANIMATIONS_register]);
+  }, [animationId, pathname, animations, ANIMATIONS_register]);
 
   // ▶️ Imperative API
   useImperativeHandle(ref, () => ({
