@@ -8,11 +8,11 @@ import React, {
   useCallback
 } from "react";
 
-import { AnimationsEntry } from "../types/AnimationsEntry";
+import type { AnimationsEntry } from "../types/AnimationsEntry";
+import type { AnimationTarget } from "../types/AnimationTarget";
 import { ANIMATIONS_register as ANIMATIONS_register_action } from "../actions/ANIMATIONS_register";
 import { ANIMATIONS_update as ANIMATIONS_update_action } from "../actions/ANIMATIONS_update";
 import { playAnimations } from "../actions/playAnimations";
-import { AnimationTarget } from "../types/AnimationTarget";
 
 interface AnimationsContextType {
   ANIMATIONS_entries: AnimationsEntry[];

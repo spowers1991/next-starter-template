@@ -14,15 +14,15 @@ interface CheckboxProps {
 
 function Checkboxes({ label, propertyToSearch }: CheckboxProps) {
   const { 
-    STATE_itemsToFilter, 
-    STATE_filtersValues, 
-    STATE_setFiltersValues,  
-    STATE_filtersOptionsHandler 
+    FILTERS_itemsToFilter, 
+    FILTERS_filtersValues, 
+    FILTERS_setFiltersValues,  
+    FILTERS_filtersOptionsHandler 
   } = useFilters();
 
   const { ANIMATIONS_update } = useAnimations();
   
-  const options = extractPropertiesNames(STATE_itemsToFilter, propertyToSearch);
+  const options = extractPropertiesNames(FILTERS_itemsToFilter, propertyToSearch);
 
   return (
     <div className="flex flex-col gap-2">
@@ -34,15 +34,15 @@ function Checkboxes({ label, propertyToSearch }: CheckboxProps) {
           <Checkbox
             key={index}
             option={option}
-            checked={STATE_filtersValues?.[propertyToSearch]?.includes(option) ?? false}
+            checked={FILTERS_filtersValues?.[propertyToSearch]?.includes(option) ?? false}
             onChange={(checked) =>
               handleCheckboxChange(
                 option,
                 checked,
                 propertyToSearch,
-                STATE_filtersValues,
-                STATE_setFiltersValues,
-                STATE_filtersOptionsHandler,
+                FILTERS_filtersValues,
+                FILTERS_setFiltersValues,
+                FILTERS_filtersOptionsHandler,
                 ANIMATIONS_update,
               )
             }

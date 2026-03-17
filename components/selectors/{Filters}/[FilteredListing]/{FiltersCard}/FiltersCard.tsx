@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { Animation } from "@/lib/animations/types/Animation";
-import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
+import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRef";
 import { FilteredItem } from "@/lib/filters/types/FilteredItem";
 
 interface FiltersCardProps {

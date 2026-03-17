@@ -6,11 +6,11 @@ import Checkboxes from "./[Checkboxes]/Checkboxes";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 
 function FiltersOptions() {
-  const { STATE_filtersOptions } = useFilters();
+  const { FILTERS_filtersOptions } = useFilters();
 
   return (
     <div className="flex flex-col gap-6">
-      {STATE_filtersOptions.map((filter, index) => {
+      {FILTERS_filtersOptions.map((filter, index) => {
         if (filter.type === "checkbox") {
           return (
             <Checkboxes

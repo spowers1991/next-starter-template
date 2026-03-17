@@ -12,11 +12,11 @@ interface FilterProps {
 
 function Filters({ itemsToFilter, filtersOptions, children }: FilterProps) {
   const {
-    STATE_setupFilters,
+    FILTERS_setupFilters,
   } = useFilters();
 
  
-  STATE_setupFilters(itemsToFilter, filtersOptions);
+  FILTERS_setupFilters(itemsToFilter, filtersOptions);
 
 
   return <>{children}</>;

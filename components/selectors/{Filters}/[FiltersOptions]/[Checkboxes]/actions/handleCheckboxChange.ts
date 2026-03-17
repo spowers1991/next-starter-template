@@ -4,9 +4,9 @@ export function handleCheckboxChange(
   value: string,
   isChecked: boolean,
   propertyPath: string,
-  STATE_filtersValues: Record<string, string[]>,
-  STATE_setFiltersValues: React.Dispatch<React.SetStateAction<Record<string, string[]>>>, 
-  STATE_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void,
+  FILTERS_filtersValues: Record<string, string[]>,
+  FILTERS_setFiltersValues: React.Dispatch<React.SetStateAction<Record<string, string[]>>>, 
+  FILTERS_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void,
   ANIMATIONS_update: (targets: AnimationTarget[]) => void
 ) {
  
@@ -14,21 +14,25 @@ export function handleCheckboxChange(
     { 
       id: 'ANIMATION_[Movies]_<H1/>', 
       config: { status: "restart"}
+    },
+    { 
+      id: 'ANIMATION_[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>', 
+      config: { status: "restart"}
     }
   ])
 
   // Update selected options from global state
-  const currentOptions = STATE_filtersValues[propertyPath] ?? [];
+  const currentOptions = FILTERS_filtersValues[propertyPath] ?? [];
   const updatedOptions = isChecked
     ? [...currentOptions, value]
     : currentOptions.filter((option) => option !== value);
 
   // Update global filters state
-  STATE_setFiltersValues({
-    ...STATE_filtersValues,
+  FILTERS_setFiltersValues({
+    ...FILTERS_filtersValues,
     [propertyPath]: updatedOptions,
   });
 
   // Trigger filtersOptionsHandler
-  STATE_filtersOptionsHandler(propertyPath, updatedOptions);
+  FILTERS_filtersOptionsHandler(propertyPath, updatedOptions);
 }

@@ -3,7 +3,7 @@
 
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 import type { Animation } from "@/lib/animations/types/Animation";
-import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
+import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRef";
 
 interface H1Props {
   id: string | undefined;

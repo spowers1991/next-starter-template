@@ -1,7 +1,7 @@
 "use client";
 
+import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 import Image from "next/image";
-import { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 import { PortableText } from "@portabletext/react";
 import H1 from "@/components/html/{H1}/H1";
 import H2 from "@/components/html/{H2}/H2";

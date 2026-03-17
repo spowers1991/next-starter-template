@@ -1,17 +1,18 @@
 import { RefObject } from "react";
 import gsap from "gsap";
+import type { AnimationConfig } from "@/lib/animations/types/AnimationConfig";
 
 export function fadeUpChildren(
   containerRef: RefObject<HTMLDivElement | null>,
-  tlRef: RefObject<gsap.core.Timeline | null>
+  tlRef: RefObject<gsap.core.Timeline | null>,
+  config?: AnimationConfig
 ) {
   const container = containerRef.current;
   if (!container) return;
 
   const elements = Array.from(container.children) as HTMLElement[];
   if (!elements.length) return;
-
-  // Kill previous timeline safely
+  
   tlRef.current?.kill();
 
   tlRef.current = gsap.timeline().fromTo(
@@ -25,5 +26,11 @@ export function fadeUpChildren(
       ease: "power2.out",
     }
   );
-}
 
+   if (config?.status === 'restart') {
+    console.log('restarting timeline');
+    tlRef.current?.restart();
+  } else {
+    tlRef.current?.play();
+  }
+}
