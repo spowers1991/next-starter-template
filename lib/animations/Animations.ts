@@ -1,13 +1,15 @@
-import { fadeUp } from "./_library/fadeUp";
-import { fadeUpChildren } from "./_library/fadeUpChildren";
+import { fadeIn } from "./_library/fadeIn";
+import { fadeUpChildren } from "./_plugins/gsap/_library/fadeUpChildren";
 import { textReveal } from "./_library/textReveal";
 
 export const Animations = {
-  text: {
-    reveal: textReveal,
+  element: {
+    fadeIn,
+    text: {
+      reveal: textReveal,
+    },
   },
-  fadeUp,
-  children: {
-    fadeUp: fadeUpChildren,
+  timelines: {
+    fadeUpChildren: fadeUpChildren,
   },
 } as const;

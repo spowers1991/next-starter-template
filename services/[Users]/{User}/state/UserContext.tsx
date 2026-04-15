@@ -25,11 +25,27 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         setUser(data.session.user as User);
         setIsLoggedIn(true);
       } else {
+        setUser(null);
         setIsLoggedIn(false);
       }
     };
 
     fetchData().catch();
+
+    // Listen for auth state changes
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        setUser(session.user as User);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => {
+      listener?.subscription.unsubscribe();
+    };
   }, []);
 
   return (

@@ -1,6 +1,7 @@
 import type { AnimationsEntry } from "../types/AnimationsEntry";
+import type { AnimationTarget } from "../types/AnimationTarget";
 import { animate } from "../actions/animate";
-import { AnimationTarget } from "../types/AnimationTarget";
+import { animateTimeline } from "../actions/animateTimeline";
 
 export const ANIMATIONS_update = (
   ANIMATIONS_entries: AnimationsEntry[],
@@ -16,6 +17,15 @@ export const ANIMATIONS_update = (
               ...animation,
               config: { ...animation.config, ...target.config }
             }
+          );
+          animateTimeline(
+            ANIMATIONS_entry.containerRef,
+            ANIMATIONS_entry.timeline,
+            {
+              ...animation,
+              config: { ...animation.config, ...target.config }
+            }
+            
           );
         });
       }

@@ -1,62 +1,39 @@
-"use client";
-
-import { useLayoutEffect, useRef, useImperativeHandle } from "react";
-import { fadeUpChildren } from "@/lib/animations/_plugins/gsap/_library/fadeUpChildren";
-import { useAnimations } from "@/lib/animations/state/AnimationsContext";
-import { removeLeadingSlash } from "@/lib/parsers/removeLeadingSlash";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { removeLeadingSlash } from "@/lib/parsers/removeLeadingSlash";
+import { useAnimations } from "@/lib/animations/state/AnimationsContext";
+import type { Animation } from "../types/Animation";
 
-export interface AnimationRefHandle {
-  restart: () => void;
-}
-
-interface UseAnimationsRefParams {
-  id: string | null;
-  children?: React.ReactNode;
-}
-
-export function useAnimationsRef(
-  { id, children }: UseAnimationsRefParams,
-  ref: React.ForwardedRef<AnimationRefHandle>
+export function useAnimationsRegistration(
+  id: string | undefined,
+  animations?: Animation[],
+  componentName?: string,
 ) {
-  const { ANIMATIONS_register } = useAnimations();
+
   const pathname = removeLeadingSlash(usePathname());
 
-  const animationId = `ANIMATION_${id}`;
+  const { ANIMATIONS_register } = useAnimations();
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
-  // ▶️ Animate when children change
-  useLayoutEffect(() => {
-    fadeUpChildren(containerRef, tlRef);
+  const animationId = `ANIMATION_${id}`
 
-    return () => {
-      tlRef.current?.kill();
-      tlRef.current = null;
-    };
-  }, [children]);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || !animations?.length) return;
 
-  // ▶️ Register once
-  useLayoutEffect(() => {
-    if (!containerRef.current) return;
-
-    ANIMATIONS_register([
+    const animationsEntry = [
       {
         id: animationId,
-        element: containerRef.current,
-        timeline: tlRef.current,
+        element,
+        animations,
         pathname,
+        component: componentName,
       },
-    ]);
-  }, [animationId, pathname, ANIMATIONS_register]);
+    ];
 
-  // ▶️ Imperative API
-  useImperativeHandle(ref, () => ({
-    restart() {
-      tlRef.current?.restart();
-    },
-  }));
+    ANIMATIONS_register(animationsEntry);
+  }, [id, animations, animationId, componentName, pathname, ANIMATIONS_register]);
 
-  return containerRef;
+  return ref;
 }

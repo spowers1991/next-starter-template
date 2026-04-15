@@ -4,60 +4,60 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { FiltersConfig } from "../types/FiltersConfig";
 import { useSetupFilters } from "../hooks/useSetupFilters";
 import { updateFilters } from "../actions/updateFilters";
-import { filtersOptionsHandler as handleFiltersOptions } from "../actions/filtersHandler"; 
+import { filtersOptionsHandler as handleFiltersOptions } from "../actions/filtersOptionsHandler"; 
 
 interface FiltersContextType {
-  STATE_setupFilters:  (itemsToFilter: object[], filtersOptions: FiltersConfig[]) => void;
-  STATE_itemsToFilter: object[];
-  STATE_setItemsToFilter: React.Dispatch<React.SetStateAction<object[]>>;
-  STATE_filtersOptions: FiltersConfig[];
-  STATE_setFiltersOptions: React.Dispatch<React.SetStateAction<FiltersConfig[]>>;
-  STATE_filtersValues: Record<string, string[]>;
-  STATE_setFiltersValues: React.Dispatch<React.SetStateAction<Record<string, string[]>>>;
-  STATE_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void;
-  STATE_filteredItems: object[];
-  STATE_setFilteredItems: React.Dispatch<React.SetStateAction<object[]>>;
-  STATE_clearFilters: () => void;
+  FILTERS_setupFilters:  (itemsToFilter: object[], filtersOptions: FiltersConfig[]) => void;
+  FILTERS_itemsToFilter: object[];
+  FILTERS_setItemsToFilter: React.Dispatch<React.SetStateAction<object[]>>;
+  FILTERS_filtersOptions: FiltersConfig[];
+  FILTERS_setFiltersOptions: React.Dispatch<React.SetStateAction<FiltersConfig[]>>;
+  FILTERS_filtersValues: Record<string, string[]>;
+  FILTERS_setFiltersValues: React.Dispatch<React.SetStateAction<Record<string, string[]>>>;
+  FILTERS_filtersOptionsHandler: (propertyPath: string, selectedOptions: string[]) => void;
+  FILTERS_filteredItems: object[];
+  FILTERS_setFilteredItems: React.Dispatch<React.SetStateAction<object[]>>;
+  FILTERS_clearFilters: () => void;
 }
 
 const FiltersContext = createContext<FiltersContextType | undefined>(undefined);
 
 export const FiltersProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [STATE_itemsToFilter, STATE_setItemsToFilter] = useState<object[]>([]);
-  const [STATE_filtersOptions, STATE_setFiltersOptions] = useState<FiltersConfig[]>([]);
-  const [STATE_filtersValues, STATE_setFiltersValues] = useState<Record<string, string[]>>({});
-  const [STATE_filteredItems, STATE_setFilteredItems] = useState<object[]>([]);
+  const [FILTERS_itemsToFilter, FILTERS_setItemsToFilter] = useState<object[]>([]);
+  const [FILTERS_filtersOptions, FILTERS_setFiltersOptions] = useState<FiltersConfig[]>([]);
+  const [FILTERS_filtersValues, FILTERS_setFiltersValues] = useState<Record<string, string[]>>({});
+  const [FILTERS_filteredItems, FILTERS_setFilteredItems] = useState<object[]>([]);
 
-  const STATE_setupFilters = ( itemsToFilter: object[], filtersOptions: FiltersConfig[]) => {
-    useSetupFilters(itemsToFilter, filtersOptions, STATE_setItemsToFilter, STATE_setFiltersOptions);
+  const FILTERS_setupFilters = ( itemsToFilter: object[], filtersOptions: FiltersConfig[]) => {
+    useSetupFilters(itemsToFilter, filtersOptions, FILTERS_setItemsToFilter, FILTERS_setFiltersOptions);
   };
 
-  const STATE_filtersOptionsHandler = ( propertyPath: string, selectedOptions: string[]) => {
-    handleFiltersOptions(propertyPath, selectedOptions, STATE_setFiltersValues);
+  const FILTERS_filtersOptionsHandler = ( propertyPath: string, selectedOptions: string[]) => {
+    handleFiltersOptions(propertyPath, selectedOptions, FILTERS_setFiltersValues);
   };
 
-  const STATE_clearFilters = () => {
-    STATE_setFiltersValues({});
+  const FILTERS_clearFilters = () => {
+    FILTERS_setFiltersValues({});
   };
 
   useEffect(() => {
-    updateFilters(STATE_itemsToFilter, STATE_filtersValues, STATE_setFilteredItems);
-  }, [STATE_itemsToFilter, STATE_filtersValues]);
+    updateFilters(FILTERS_itemsToFilter, FILTERS_filtersValues, FILTERS_setFilteredItems);
+  }, [FILTERS_itemsToFilter, FILTERS_filtersValues]);
 
   return (
     <FiltersContext.Provider
       value={{
-        STATE_setupFilters,
-        STATE_itemsToFilter,
-        STATE_setItemsToFilter,
-        STATE_filtersOptions,
-        STATE_setFiltersOptions,
-        STATE_filtersValues,
-        STATE_setFiltersValues,
-        STATE_filtersOptionsHandler,
-        STATE_filteredItems,
-        STATE_setFilteredItems,
-        STATE_clearFilters,
+        FILTERS_setupFilters,
+        FILTERS_itemsToFilter,
+        FILTERS_setItemsToFilter,
+        FILTERS_filtersOptions,
+        FILTERS_setFiltersOptions,
+        FILTERS_filtersValues,
+        FILTERS_setFiltersValues,
+        FILTERS_filtersOptionsHandler,
+        FILTERS_filteredItems,
+        FILTERS_setFilteredItems,
+        FILTERS_clearFilters,
       }}
     >
       {children}

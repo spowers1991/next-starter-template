@@ -3,7 +3,7 @@
 import React from "react";
 import type { GridConfig } from "./types/GridConfig";
 import type { Animation } from "@/lib/animations/types/Animation";
-import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRegistration";
+import { useAnimationsRegistration } from "@/lib/animations/hooks/useAnimationsRef";
 
 type GridProps = GridConfig & {
   id?: string | undefined;

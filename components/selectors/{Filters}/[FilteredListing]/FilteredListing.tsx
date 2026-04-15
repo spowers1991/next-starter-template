@@ -17,9 +17,9 @@ export default function FilteredListing({
   children,
 }: FilteredListingProps) {
 
-  const { STATE_filteredItems } = useFilters();
+  const { FILTERS_filteredItems } = useFilters();
 
-  if (!STATE_filteredItems.length) {
+  if (!FILTERS_filteredItems.length) {
     return (
       <div className="text-center text-lg">
         No project available for these filters...
@@ -31,7 +31,7 @@ export default function FilteredListing({
     <Animator
       id={id}
       animations={animations}>
-      {STATE_filteredItems.map((item, index) =>
+      {FILTERS_filteredItems.map((item, index) =>
         children(item, index)
       )}
     </Animator>

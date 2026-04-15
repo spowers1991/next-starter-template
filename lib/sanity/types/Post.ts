@@ -8,7 +8,7 @@ export type Post = {
   slug: { current: string };
   publishedAt: string;
   overview: PortableTextBlock[];
-  poster: {
+  image: {
     _type: "image";
     asset: {
       _ref?: string;

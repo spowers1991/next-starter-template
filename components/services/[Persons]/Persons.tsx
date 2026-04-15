@@ -17,7 +17,7 @@ export default function Persons({ persons }: PersonsProps) {
   return (
     <Section>
       <H1
-      id={`[Persons]`}
+      id={`[Persons]-<H1/>`}
       animations={[
           { 
             name: 'textReveal'
