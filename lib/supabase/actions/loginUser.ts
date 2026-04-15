@@ -15,7 +15,7 @@ export const loginUser = async (email: string, password: string) => {
 
     return { success: true, message: 'Login successful!', user: data.user, sessionToken };
   } catch (err: unknown) {
-    let message = 'An error occurred during login.';
+    let message = err instanceof Error ? err.message : "An unexpected error occurred.";
 
     if (err instanceof Error) {
       message = err.message;

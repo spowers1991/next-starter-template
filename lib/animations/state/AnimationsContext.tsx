@@ -47,7 +47,6 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   useEffect(() => {
-    console.log(ANIMATIONS_entries)
     playAnimations(ANIMATIONS_entries);
   }, [ANIMATIONS_entries]);
 

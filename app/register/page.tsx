@@ -1,9 +1,10 @@
 import RegisterForm from "@/components/html/{Form}/{RegisterForm}/RegisterForm";
+import Main from "@/components/html/{Main}/Main";
 
 export default function RegisterPage() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <Main>
       <RegisterForm />
-    </div>
+    </Main>
   );
 }

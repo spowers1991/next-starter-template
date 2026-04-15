@@ -4,36 +4,36 @@ import { Dispatch, SetStateAction } from "react";
 export const handleFormSubmit = (
   action: (email: string, password: string) => Promise<{ success: boolean; message: string }>,
   formValues: Record<string, string>,
+  setStatus: Dispatch<SetStateAction<"idle" | "success" | "error" | "loading">>,
   setMessage: Dispatch<SetStateAction<string | null>>,
-  setLoading: Dispatch<SetStateAction<boolean>>,
-  successMessage?: string
+  statusMessages?: Record<"idle" | "success" | "error" | "loading", string | null>,
 ) => {
   return async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage(null);
-    setLoading(true);
+    setMessage(statusMessages?.loading ?? null);
+    setStatus("loading");
 
     try {
       const result = await action(formValues.email, formValues.password);
 
       if (!result.success) {
-        setMessage(result.message);
-        setLoading(false);
+        setMessage(result.message || statusMessages?.error || null);
+        setStatus("error");
         return;
       }
 
-      setMessage(successMessage || "Action successful!");
-      setLoading(false);
-    } catch (err: unknown) {
-        let message = 'An error occurred during login.';
-        setMessage(message || "An unexpected error occurred.");
-        setLoading(false);
-        if (err instanceof Error) {
-          message = err.message;
-          setMessage(err.message || "An unexpected error occurred.");
-          setLoading(false);
-        }
+      setMessage(result.message || statusMessages?.success || null);
+      setStatus("success");
 
+    } catch (err: unknown) {
+      let message = err instanceof Error ? err.message : "An unexpected error occurred.";
+      setMessage(message || statusMessages?.error || null);
+      setStatus("error");
+      if (err instanceof Error) {
+        message = err.message;
+        setMessage(err.message || statusMessages?.error || null);
+        setStatus("error");
+      }
       return { success: false, message };
     }
   };
