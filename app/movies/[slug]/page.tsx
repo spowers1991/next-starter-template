@@ -16,14 +16,14 @@ export const revalidate = 60; // ISR seconds
 export async function generateStaticParams() {
   return generateStaticParamsForType("movie", ["slug"]);
 }
-/*
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const movie = await getMovie(slug);
 
   // Pass the full movie object directly to setMetadata (which handles image conversion)
-  return setMetadata(movie);
-}*/
+  return setMetadata(movie as any);
+}
 
 export default async function MoviePage({ params }: PageProps) {
   const { slug } = await params;

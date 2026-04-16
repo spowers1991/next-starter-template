@@ -28,6 +28,6 @@ export function buildGenericSchema({
   if (imageUrl) {
     jsonLd.image = imageUrl;
   }
-
+  console.log(jsonLd, "Built JSON-LD schema");
   return jsonLd;
 }

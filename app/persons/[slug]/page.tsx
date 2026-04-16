@@ -3,6 +3,9 @@ import { getPerson } from "@/services/[Persons]/{Person}/queries/getPerson";
 import Post from "@/components/[Posts]/{Post}/Post";
 import Main from "@/components/html/{Main}/Main";
 
+import type { Metadata } from "next";
+import { setMetadata } from "@/lib/seo/actions/setMetadata";
+
 interface PageProps {
   params: {
     slug: string;
@@ -14,14 +17,14 @@ export const revalidate = 60; // ISR seconds
 export async function generateStaticParams() {
   return generateStaticParamsForType("person", ["slug"]);
 }
-/*
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const person = await getPerson(slug);
 
-  return setMetadata(person);
+  return setMetadata(person as any);
 }
-*/
+
 export default async function PersonPage({ params }: PageProps) {
   const { slug } = await params;
 

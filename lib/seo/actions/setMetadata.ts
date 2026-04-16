@@ -1,10 +1,17 @@
 import { Metadata } from "next";
 import { urlForImage } from "@/lib/sanity/helpers/image";
+import { portableTextToString } from "@/lib/sanity/helpers/portableTextToString";
 
-export function setMetadata(item: Metadata & { image?: ImageBitmap } | null): Metadata {
-  const title = item?.title ?? "Movie Not Found";
-  const description = item?.description ?? "No description available.";
-  const imageUrl = item?.image ? urlForImage(item.image).url() : null;
+export function setMetadata(page: Metadata & { poster?: ImageBitmap, image?: ImageBitmap, overview?: any } | null): Metadata {
+
+  const title = page?.title ?? "Movie Not Found";
+  const overviewText = page?.overview ? portableTextToString(page.overview) : undefined;
+  const description = overviewText || page?.description || "No description available.";
+  const posterUrl = page?.poster ? urlForImage(page.poster).url() : null;
+  const imageUrl = page?.image ? urlForImage(page.image).url() : null;
+  const finalImageUrl = posterUrl || imageUrl;
+
+  console.log(page, "Metadata page");
 
   return {
     title,
@@ -12,14 +19,14 @@ export function setMetadata(item: Metadata & { image?: ImageBitmap } | null): Me
     openGraph: {
       title,
       description,
-      images: imageUrl ? [{ url: imageUrl }] : [],
+        images: finalImageUrl ? [{ url: finalImageUrl }] : [],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: imageUrl ? [imageUrl] : [],
+        images: finalImageUrl ? [finalImageUrl] : [],
     },
   };
 }
