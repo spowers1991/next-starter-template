@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const person = await getPerson(slug);
 
-  return setMetadata(person as any);
+  return setMetadata(person as Metadata);
 }
 
 export default async function PersonPage({ params }: PageProps) {

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const movie = await getMovie(slug);
 
   // Pass the full movie object directly to setMetadata (which handles image conversion)
-  return setMetadata(movie as any);
+  return setMetadata(movie as Metadata);
 }
 
 export default async function MoviePage({ params }: PageProps) {

@@ -30,6 +30,7 @@ export default function MoviesFilters({ movies }: MovieProps) {
         <FiltersOptions />
           <FilteredListing
             id={`[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>`}
+            classNames="grid grid-cols-3 gap-4"
             animations={
               [{
                 name: 'fadeUpChildren',
