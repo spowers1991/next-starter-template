@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const slug = body.slug?.current;
 
   // Determine which path(s) to revalidate
-  let pathsToRevalidate: string[] = [];
+  const pathsToRevalidate: string[] = [];
   if (docType && typeToPath[docType]) {
     // Revalidate the archive/listing page
     pathsToRevalidate.push(typeToPath[docType]);
