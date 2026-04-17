@@ -62,4 +62,6 @@ export interface ThemeStyles {
   rt?: string;
   rp?: string;
   wbr?: string;
+  checkbox?: string;
+  card?: string;
 }

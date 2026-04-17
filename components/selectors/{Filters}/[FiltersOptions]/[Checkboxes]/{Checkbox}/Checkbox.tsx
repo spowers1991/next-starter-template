@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import CustomCheckbox from "./{Radio}/custom/CustomCheckbox";
 
 interface CheckboxProps {
   option: string;
@@ -18,8 +19,8 @@ function Checkbox({ option, checked, onChange } : CheckboxProps) {
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
       />
-      <div className="relative w-6 h-6 bg-gray-200 border-white border-2 peer-checked:bg-[#434bed]"></div>
-      <span className="ml-1 text-gray-700 peer-checked:text-[#333] py-[11px] sm:py-[12px] uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]">
+      <CustomCheckbox />
+      <span className="ml-1 py-[11px] sm:py-[12px] uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]">
         {option}
       </span>
     </label>

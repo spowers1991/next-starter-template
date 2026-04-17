@@ -49,6 +49,7 @@
     "ruby": "ruby-base text-[#CBD5E1]",
     "rt": "ruby-text text-xs text-[#94A3B8]",
     "rp": "ruby-fallback text-xs text-[#64748B]",
-    "wbr": ""
+    "wbr": "",
+    "checkbox": "relative w-6 h-6 bg-gray-200 border-white border-2 peer-checked:bg-[#434bed]"
   }
 }

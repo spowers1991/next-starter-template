@@ -89,7 +89,7 @@
     "button-outline": "inline-flex items-center gap-2 px-4 py-2 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50",
     "button-text": "inline-flex items-center gap-2 px-3 py-2 text-blue-600 hover:underline",
     "button-icon": "inline-flex items-center justify-center p-2 rounded-md hover:bg-slate-100",
-    "checkbox": "h-4 w-4 text-blue-600 border border-slate-300 rounded",
+    "checkbox": "relative w-6 h-6 bg-gray-200 border-white border-2 peer-checked:bg-[#434bed]",
     "radio": "h-4 w-4 text-blue-600 border border-slate-300 rounded-full",
     "switch": "relative inline-flex items-center h-6 rounded-full w-11 bg-slate-200",
     "range": "w-full",
