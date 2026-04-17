@@ -1,6 +1,8 @@
 {
   "name": "Theme Aurora-Flux",
+  "font": "poppins",
   "styles": {
+    "html": "font-sans",
     "body": "font-sans text-base leading-relaxed bg-gradient-to-br from-[#020617] via-[#0F172A] to-[#1E293B] text-[#E5E7EB]",
     "header": "w-full bg-gradient-to-r from-[#020617] via-[#0F172A] to-[#020617] flex items-center justify-between border-b border-[#1E293B] backdrop-blur-md",
     "container": "max-w-6xl mx-auto px-4",
