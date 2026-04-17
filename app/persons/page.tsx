@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
 import Persons from "@/components/services/[Persons]/Persons"; 
 import Main from "@/components/html/{Main}/Main";
 
-export const metadata: Metadata = setMetadata({
-  title: "Movie Archive",
-  description: "Browse all movies from our Sanity collection.",
+export const metadata: Metadata = createMetadata({
+  title: "Person Archive",
+  description: "Browse all people from our Sanity collection.",
 });
 
-export default async function MoviesArchivePage() {
+export default async function PersonsArchivePage() {
 
   const persons = await getPersons();
 

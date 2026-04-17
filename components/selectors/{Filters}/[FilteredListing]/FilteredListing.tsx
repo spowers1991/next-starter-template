@@ -8,12 +8,14 @@ import { Animation } from "@/lib/animations/types/Animation";
 interface FilteredListingProps {
   id: string | null,
   animations: Animation[]
+  classNames?: string;
   children: (item: unknown, index: number) => React.ReactNode;
 }
 
 export default function FilteredListing({
   id,
   animations,
+  classNames,
   children,
 }: FilteredListingProps) {
 
@@ -30,7 +32,8 @@ export default function FilteredListing({
   return (
     <Animator
       id={id}
-      animations={animations}>
+      animations={animations}
+      classNames={classNames}>
       {FILTERS_filteredItems.map((item, index) =>
         children(item, index)
       )}

@@ -1,5 +1,3 @@
-// lib/seo/structured_data/buildGenericSchema.ts
-
 import type { JsonLd } from "@/lib/seo/types/JsonLd";
 
 interface GenericStructuredDataInput {
@@ -10,7 +8,7 @@ interface GenericStructuredDataInput {
   imageUrl?: string;
 }
 
-export function buildGenericSchema({
+export function createGenericSchema({
   type,
   title,
   description,
@@ -28,6 +26,6 @@ export function buildGenericSchema({
   if (imageUrl) {
     jsonLd.image = imageUrl;
   }
-
+  console.log(jsonLd, "Created JSON-LD schema");
   return jsonLd;
 }

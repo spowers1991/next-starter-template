@@ -1,3 +1,4 @@
+'use client';
 // components/SEO/JsonLdScript.tsx
 interface JsonLdScriptProps {
   json: unknown;

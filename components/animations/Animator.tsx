@@ -23,7 +23,7 @@ const Animator = forwardRef<AnimatorHandle, AnimatorProps>(
     );
 
     return (
-      <div className="grid grid-cols-3 gap-4" ref={containerRef}>
+      <div className={`${classNames}`} ref={containerRef}>
         {children}
       </div>
     );
