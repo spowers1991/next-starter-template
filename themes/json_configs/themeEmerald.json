@@ -1,5 +1,6 @@
 {
   "name": "Theme Emerald-Forest",
+  "font": "poppins",
   "meta": {
     "primary": "bg-gradient-to-r from-[#10B981] to-[#34D399] text-[#022C22]",
     "surface": "bg-[#022C22]/80 text-[#D1FAE5]",
@@ -13,7 +14,8 @@
     }
   },
   "styles": {
-    "body": "font-sans text-base leading-relaxed bg-gradient-to-br from-[#020617] via-[#052E2B] to-[#022C22] text-[#D1FAE5]",
+    "html": "font-poppins",
+    "body": "font-poppins text-base leading-relaxed bg-gradient-to-br from-[#020617] via-[#052E2B] to-[#022C22] text-[#D1FAE5]",
     "container": "max-w-6xl mx-auto px-4",
     "main": "mx-auto px-4 py-8",
     "section": "mx-0 my-12",
@@ -22,7 +24,8 @@
     "nav-link": "text-[#A7F3D0] hover:text-[#34D399]",
 
     "h1": "text-5xl bg-gradient-to-r from-[#34D399] to-[#6EE7B7] text-transparent bg-clip-text mb-10",
-
+    "h2": "text-3xl text-[#A7F3D0] mb-6",
+    "h3": "text-2xl text-[#A7F3D0] mb-4",
     "ul": "mb-4 list-none pl-6",
     "ol": "mb-4 list-decimal pl-6",
     "li": "mb-2",

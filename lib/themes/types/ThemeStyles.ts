@@ -1,4 +1,5 @@
 export interface ThemeStyles {
+  html?: string;
   body?: string;
   header?: string;
   main?: string;

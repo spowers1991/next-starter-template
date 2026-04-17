@@ -1,5 +1,6 @@
 {
   "name": "Theme Sunset-Ember",
+  "font": "poppins",
   "meta": {
     "primary": "bg-gradient-to-r from-[#F97316] to-[#FACC15] text-black",
     "surface": "bg-[#2A140F]/80 text-[#FED7AA]",
@@ -13,6 +14,7 @@
     }
   },
   "styles": {
+    "html": "font-sans",
     "body": "font-sans text-base leading-relaxed bg-gradient-to-br from-[#1C0F0A] via-[#3B1F1A] to-[#0F172A] text-[#FDE68A] antialiased",
     "container": "max-w-6xl mx-auto px-4",
     "main": "mx-auto px-4 py-8",
@@ -27,6 +29,8 @@
 
     "h1": "text-5xl bg-gradient-to-r from-[#F97316] to-[#FACC15] text-transparent bg-clip-text mb-10",
     "h2": "text-4xl text-[#FDBA74] mb-6",
+    "h3": "text-2xl text-[#FDBA74] mb-4", 
+    "h4": "text-xl text-[#FDBA74] mb-3",
     "select": "w-full px-3 py-2 border border-slate-300 rounded-md text-[#fff] bg-[#1C0F0A]/90",
     "option": "text-[#111]",
     "checkbox": "relative w-6 h-6 bg-[#2A140F] border-[#F97316] border-2 peer-checked:bg-gradient-to-r from-[#F97316] to-[#FACC15]",

@@ -7,6 +7,7 @@ import MoviesFilters from "./{MoviesFilters}/MoviesFilters";
 import H1 from "@/components/html/{H1}/H1";
 import Section from "@/components/html/{Section}/Section";
 import Grid from "@/components/layout/grid/{Grid}/Grid";
+import Animator from "@/components/animations/Animator";
 
 interface MovieProps {
   movies: Movie[];
@@ -15,7 +16,10 @@ interface MovieProps {
 export default function Movies({ movies }: MovieProps) {
   return (
     <Section>
-
+      <Animator 
+        id={`[Movies]_<Animator/>`}
+        animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
+      >
       <H1
       id={`[Movies]_<H1/>`}
       animations={[
@@ -29,14 +33,7 @@ export default function Movies({ movies }: MovieProps) {
 
       <MoviesFilters movies={movies} />
 
-      <Grid cols={4} gap={4}>
-        {movies.map((movie) => (
-          <Link key={movie._id} href={`/movies/${movie.slug.current}`}>
-            {movie.title}
-          </Link>
-        ))}
-      </Grid>
-
+      </Animator>
     </Section>
   );
 }

@@ -37,9 +37,7 @@ function Post( { data: post } : PostProps) {
         {post?.image &&
           <Animator
             id={`{Post}_<Image/>`}
-            animations={[
-              { name: 'fadeIn', config: { delay: 0.4, duration: 1 } }
-            ]}
+            animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
           >
             <Image
               src={urlForImage(post?.image).width(800).height(600).url()}  
@@ -47,6 +45,7 @@ function Post( { data: post } : PostProps) {
               width={800}
               height={600}
               priority
+              style={{ height: "auto" }}
             />
           </Animator>
         }

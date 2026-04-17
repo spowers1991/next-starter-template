@@ -7,6 +7,7 @@ import H3 from "@/components/html/{H3}/H3";
 import Section from "@/components/html/{Section}/Section";
 import GridRepeater from "@/components/layout/grid/{GridRepeater}/GridRepeater";
 import type { Post } from "@/lib/sanity/types/Post";
+import Animator from "@/components/animations/Animator";
 
 interface PersonsProps {
   persons: Post[]; 
@@ -26,17 +27,22 @@ export default function Persons({ persons }: PersonsProps) {
       >
         Persons
       </H1>
-      <GridRepeater
-        items={persons}
-        renderItem={(person) => (
-          <Link key={person._id} href={`/persons/${person.slug.current}`}>
-            <H3>
-              {person.name}
-            </H3>
-          </Link>
-        )}
-        cols={4}
-      />
+      <Animator 
+        id={`[Movies]_<Animator/>`}
+        animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
+        >
+        <GridRepeater
+          items={persons}
+          renderItem={(person) => (
+            <Link key={person._id} href={`/persons/${person.slug.current}`}>
+              <H3>
+                {person.name}
+              </H3>
+            </Link>
+          )}
+          cols={4}
+        />
+      </Animator>
     </Section>
   );
 }

@@ -1,4 +1,8 @@
+
 @import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/orbitron/400.css";
 
 html {
   overflow-x: hidden;

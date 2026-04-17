@@ -11,6 +11,8 @@ import { FiltersProvider } from "@/lib/filters/state/FiltersContext";
 import { AnimationsProvider } from "@/lib/animations/state/AnimationsContext";
 import { getMovies } from "@/services/[Movies]/queries/getMovies"; 
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
+import Fonts from "@/fonts/Fonts";
+
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const movies = await getMovies();

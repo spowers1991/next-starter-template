@@ -1,5 +1,6 @@
 {
   "name": "material-tailwind-starter-expanded",
+  "font": "inter",
   "meta": {
     "primary": "bg-blue-600 text-white",
     "surface": "bg-white text-slate-800",
@@ -13,7 +14,7 @@
     }
   },
   "styles": {
-    "body": "font-sans text-base bg-slate-50 text-slate-900 antialiased",
+    "body": "font-inter text-base bg-slate-50 text-slate-900 antialiased",
     "container": "max-w-6xl mx-auto px-4",
     "main": "mx-auto px-4 py-8",
     "section": "mx-0 my-12",
@@ -23,8 +24,8 @@
     "nav-link": "text-sm text-slate-700 hover:text-blue-600 px-3 py-2 rounded-md transition",
     "nav-link-active": "text-sm px-3 py-2 rounded-md bg-blue-50 text-blue-700",
     "brand": "text-lg font-semibold text-slate-900",
-    "h1": "text-4xl font-extrabold text-slate-900 mb-6 leading-tight",
-    "h2": "text-3xl font-semibold text-slate-800 mb-4",
+    "h1": "text-5xl font-extrabold text-slate-900 mb-6 leading-tight",
+    "h2": "text-4xl font-semibold text-slate-800 mb-4",
     "h3": "text-2xl font-semibold text-slate-800 mb-3",
     "h4": "text-xl font-medium text-slate-800 mb-2",
     "h5": "text-lg font-medium text-slate-800 mb-2",

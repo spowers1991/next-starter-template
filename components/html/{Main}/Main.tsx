@@ -12,7 +12,7 @@ function Main( { children } : MainProps ) {
   const { THEMES_activeTheme } = useThemes();
 
   return (
-    <main className={`${THEMES_activeTheme.styles.main}`}>
+    <main className={`${THEMES_activeTheme.styles.main} min-h-[100vh]`}>
       {children}
     </main>
   );
