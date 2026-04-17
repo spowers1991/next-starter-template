@@ -2,9 +2,9 @@ import RegisterForm from "@/components/html/{Form}/{RegisterForm}/RegisterForm";
 import Main from "@/components/html/{Main}/Main";
 
 import { Metadata } from "next";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 
-export const metadata: Metadata = setMetadata({
+export const metadata: Metadata = createMetadata({
   title: "Register",
   description: "Create a new account to access exclusive features.",
 });

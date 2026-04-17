@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { urlForImage } from "@/lib/sanity/helpers/image";
 import { portableTextToString } from "@/lib/sanity/helpers/portableTextToString";
 
-export function setMetadata(page: Metadata & { poster?: ImageBitmap, image?: ImageBitmap, overview?: unknown } | null): Metadata {
+export function createMetadata(page: Metadata & { poster?: ImageBitmap, image?: ImageBitmap, overview?: unknown } | null): Metadata {
 
   const title = page?.title ?? "Movie Not Found";
   const overviewText = page?.overview ? portableTextToString(page.overview) : undefined;

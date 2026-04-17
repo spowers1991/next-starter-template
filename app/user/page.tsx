@@ -2,9 +2,9 @@ import Main from "@/components/html/{Main}/Main";
 import User from "@/components/services/{User}/User";
 
 import { Metadata } from "next";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 
-export const metadata: Metadata = setMetadata({
+export const metadata: Metadata = createMetadata({
   title: "User Profile",
   description: "View and manage your user profile.",
 });

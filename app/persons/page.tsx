@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
 import Persons from "@/components/services/[Persons]/Persons"; 
 import Main from "@/components/html/{Main}/Main";
 
-export const metadata: Metadata = setMetadata({
+export const metadata: Metadata = createMetadata({
   title: "Person Archive",
   description: "Browse all people from our Sanity collection.",
 });

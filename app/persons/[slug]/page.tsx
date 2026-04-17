@@ -4,7 +4,7 @@ import Post from "@/components/[Posts]/{Post}/Post";
 import Main from "@/components/html/{Main}/Main";
 
 import type { Metadata } from "next";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 
 interface PageProps {
   params: {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const person = await getPerson(slug);
 
-  return setMetadata(person as Metadata);
+  return createMetadata(person as Metadata);
 }
 
 export default async function PersonPage({ params }: PageProps) {

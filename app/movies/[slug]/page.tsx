@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
 import { getMovie } from "@/services/[Movies]/{Movie}/queries/getMovie";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 import Movie from "@/components/services/[Movies]/{Movie}/Movie";
 import Main from "@/components/html/{Main}/Main";
+import JsonLdScript from "@/lib/seo/components/JsonLdScript";
+import { createMovieLdJson } from "@/lib/seo/actions/create/createMovieLdJson";
+import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
 
 interface PageProps {
   params: {
@@ -22,21 +25,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const movie = await getMovie(slug);
 
   // Pass the full movie object directly to setMetadata (which handles image conversion)
-  return setMetadata(movie as Metadata);
+  return createMetadata(movie as Metadata);
 }
 
 export default async function MoviePage({ params }: PageProps) {
   const { slug } = await params;
-
   const movie = await getMovie(slug);
 
   if (!movie) {
     return <p className="text-center text-gray-500">Movie not found</p>;
   }
 
+  const schema = createMovieLdJson(movie as MovieType);
+ 
   return (
-    <Main>
-      <Movie data={movie} />
-    </Main>
+    <>
+      <JsonLdScript json={schema} />
+      <Main>
+        <Movie data={movie} />
+      </Main>
+    </>
   );
 }

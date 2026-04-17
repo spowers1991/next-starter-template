@@ -2,10 +2,10 @@ import Main from "@/components/html/{Main}/Main";
 import LoginForm from "@/components/html/{Form}/{LoginForm}/LoginForm";
 
 import { Metadata } from "next";
-import { setMetadata } from "@/lib/seo/actions/setMetadata";
+import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 
 
-export const metadata: Metadata = setMetadata({
+export const metadata: Metadata = createMetadata({
   title: "Login",
   description: "Login to access your account.",
 });
