@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import CustomCheckbox from "./{Radio}/custom/CustomCheckbox";
+import CustomCheckbox from "./custom/CustomCheckbox";
 
 interface CheckboxProps {
   option: string;

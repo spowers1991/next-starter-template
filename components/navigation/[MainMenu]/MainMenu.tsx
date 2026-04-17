@@ -10,7 +10,7 @@ const { MOVIES_movies } = useMovies();
 const items = MOVIES_movies;
 
   return (
-    <div className="flex w-full py-3 px-3">
+    <div className="flex w-full flex-col py-3 px-3 gap-4">
       <div>
         <ThemeSelector />
       </div>

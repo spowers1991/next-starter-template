@@ -21,8 +21,9 @@ export function fadeUpChildren(
     {
       opacity: 1,
       y: 0,
-      stagger: 0.1,
-      duration: 0.4,
+      stagger: config?.stagger || 0.1,
+      duration: config?.duration || 0.4,
+      delay: config?.delay || 0,
       ease: "power2.out",
     }
   );

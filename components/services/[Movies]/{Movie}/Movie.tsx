@@ -11,6 +11,7 @@ import Section from "@/components/html/{Section}/Section";
 import Article from "@/components/html/{Article}/Article";
 import CastMembers from "./[CastMembers]/CastMembers";
 import CrewMembers from "./[CrewMembers]/CrewMembers";
+import Animator from "@/components/animations/Animator";
 
 interface MoviePageProps {
   data: Movie;
@@ -28,54 +29,60 @@ export default function MoviePage({ data }: MoviePageProps) {
         {title}
       </H1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div className="relative w-full aspect-[2/3] overflow-hidden rounded-lg shadow-lg">
-          {data.poster?.asset?.url ? (
-            <Image
-              src={data.poster.asset.url}
-              alt={title}
-              fill
-              className="object-cover"
-            />
-          ) : (
-            <div className="w-full h-full bg-gray-300 grid place-items-center text-gray-600">
-              No poster available
-            </div>
-          )}
+      <Animator 
+        id={`{Movie}/<Animator/>`}
+        animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="relative w-full aspect-[2/3] overflow-hidden rounded-lg shadow-lg">
+            {data.poster?.asset?.url ? (
+              <Image
+                src={data.poster.asset.url}
+                alt={title}
+                fill
+                className="object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-300 grid place-items-center text-gray-600">
+                No poster available
+              </div>
+            )}
+          </div>
+
+          <div className="md:col-span-2 space-y-6">
+            <Article>
+              <H2>
+                Summary
+              </H2>
+              <P>
+                <Span>
+                  Release Date:
+                </Span>{" "}
+                {new Date(data.releaseDate).toLocaleDateString()}
+              </P>
+              <P>
+                <Span>
+                  Popularity:
+                </Span>
+                {data.popularity}
+              </P>
+            </Article>
+
+            <Article>
+              <H2>
+                Overview
+              </H2>
+              <PortableText value={data.overview} />
+            </Article>
+
+            <CastMembers castMembers={data.castMembers} />
+
+            <CrewMembers crewMembers={data.crewMembers} />
+
+          </div>
         </div>
+      </Animator>
 
-        <div className="md:col-span-2 space-y-6">
-          <Article>
-            <H2>
-              Summary
-            </H2>
-            <P>
-              <Span>
-                Release Date:
-              </Span>{" "}
-              {new Date(data.releaseDate).toLocaleDateString()}
-            </P>
-            <P>
-              <Span>
-                Popularity:
-              </Span>
-              {data.popularity}
-            </P>
-          </Article>
-
-          <Article>
-            <H2>
-              Overview
-            </H2>
-            <PortableText value={data.overview} />
-          </Article>
-
-          <CastMembers castMembers={data.castMembers} />
-
-          <CrewMembers crewMembers={data.crewMembers} />
-
-        </div>
-      </div>
     </Section>
   );
 }

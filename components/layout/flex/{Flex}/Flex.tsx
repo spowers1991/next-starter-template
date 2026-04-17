@@ -7,20 +7,16 @@ export default function Flex({
   children,
   className = "",
   cols = 2,
-  gap = 0,
-  direction = "row",
-  wrap = true,
+  gap = 4,  
 }: FlexProps) {
-  const flexDirectionClass = `flex-${direction}`;
-  const flexWrapClass = wrap ? "flex-wrap" : "";
-  const basisClass = cols ? `w-1/${cols}` : "";
+  const colsClass = cols ? `w-full mb-12 md:mb-0 md:w-1/${cols}` : "";
   const gapClass = `gap-${gap}`;
   return (
     <div
-      className={`flex ${flexDirectionClass} ${flexWrapClass} ${gapClass} ${className}`}
+      className={`flex flex-col md:flex-row ${gapClass} ${className}`}
     >
       {Children.map(children, (child, index) => (
-        <div key={index} className={basisClass}>
+        <div key={index} className={colsClass}>
           {child}
         </div>
       ))}
