@@ -2,6 +2,8 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import type { Theme } from "../types/Theme";
+import type { ThemeStyles } from "../types/ThemeStyles";
+import { setThemeStyles as ACTIONS_setThemeStyles } from "../actions/set/setThemeStyles";
 
 import ThemeArray, { Themes } from "@/themes/Themes"; // built-in themes
 
@@ -10,6 +12,7 @@ interface ThemeContextType {
   THEMES_activeTheme: Theme;
   THEMES_registerThemes: (themes: Theme[]) => void;
   THEMES_setThemeByName: (name: string) => void;
+  THEMES_setThemeStyles: (styles: Partial<ThemeStyles>, themeIdOrName?: string) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
@@ -17,6 +20,7 @@ const ThemeContext = createContext<ThemeContextType>({
   THEMES_activeTheme: ThemeArray[0],
   THEMES_registerThemes: () => {},
   THEMES_setThemeByName: () => {},
+  THEMES_setThemeStyles: () => {},
 });
 
 interface ThemeProviderProps {
@@ -51,6 +55,17 @@ export const ThemeProvider = ({ children, themes = [] }: ThemeProviderProps) => 
     }
   };
 
+  const THEMES_setThemeStyles = (styles: Partial<ThemeStyles>, themeIdOrName?: string) => {
+    const { updatedTheme, updatedThemes } = ACTIONS_setThemeStyles({
+      styles,
+      themeIdOrName,
+      activeTheme: THEMES_activeTheme,
+      themes: THEMES_themes,
+    });
+    THEMES_setTheme(updatedTheme);
+    THEMES_setThemes(updatedThemes);
+  };
+
   return (
     <ThemeContext.Provider
       value={{
@@ -58,6 +73,7 @@ export const ThemeProvider = ({ children, themes = [] }: ThemeProviderProps) => 
         THEMES_activeTheme,
         THEMES_registerThemes,
         THEMES_setThemeByName,
+        THEMES_setThemeStyles,
       }}
     >
       {children}

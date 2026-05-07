@@ -40,7 +40,7 @@
     "h4": "text-2xl font-medium text-[#94A3B8] mb-3",
     "h5": "text-xl font-medium text-[#94A3B8] mb-2",
     "h6": "text-lg font-medium text-[#64748B] mb-2 uppercase tracking-wider",
-    "button": "inline-flex items-center gap-2 px-6 py-3 bg-[#0EA5E9] text-white rounded-lg hover:bg-[#38BDF8] transition shadow-md",
+    "button":  "mb-4 inline-flex items-center gap-2 px-6 py-3 bg-[#0EA5E9] text-white rounded-lg hover:bg-[#38BDF8] transition shadow-md",
     "btn-secondary": "inline-flex items-center gap-2 px-4 py-2 bg-transparent border border-[#334155] text-[#CBD5E1] rounded-md hover:bg-[#021025] transition",
     "input": "w-full px-4 py-2 border border-[#334155] rounded-lg bg-[#020617] text-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:border-[#22D3EE]",
     "textarea": "w-full px-4 py-2 border border-[#334155] rounded-lg bg-[#020617] text-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:border-[#22D3EE]",

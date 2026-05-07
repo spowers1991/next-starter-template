@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 import MoviesFilters from "./{MoviesFilters}/MoviesFilters";
+
 import H1 from "@/components/html/{H1}/H1";
 import Section from "@/components/html/{Section}/Section";
-import Grid from "@/components/layout/grid/{Grid}/Grid";
+
 import Animator from "@/components/animations/Animator";
 
 interface MovieProps {
@@ -14,6 +14,7 @@ interface MovieProps {
 }
 
 export default function Movies({ movies }: MovieProps) {
+  
   return (
     <Section>
       <Animator 
@@ -24,7 +25,11 @@ export default function Movies({ movies }: MovieProps) {
       id={`[Movies]_<H1/>`}
       animations={[
           { 
-            name: 'textReveal'
+            name: 'textReveal',
+            config: {
+              duration: 0.01,
+              delay: 0.1,
+            }
           }
         ]} 
       >

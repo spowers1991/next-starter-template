@@ -20,12 +20,24 @@ interface MoviePageProps {
 export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
 
+  const functionName = () => {
+    const newCLass = "text-red-500";
+    return newCLass;
+  }
+  const anotherFunctionName = () => {
+    console.log("Another function executed!");
+  }
+
   return (
     <Section>
 
+      <P functions={[functionName, anotherFunctionName]}>
+        This is a movie page for {title}.
+      </P>
+
       <H1 
       id={`{Movie}_<H1/>`}
-      animations={[{name: "textReveal"}]}>
+      animations={[{ name: "textReveal", config: { duration: 0.1, delay: 0.1 } }]}>
         {title}
       </H1>
 
@@ -57,13 +69,15 @@ export default function MoviePage({ data }: MoviePageProps) {
               <P>
                 <Span>
                   Release Date:
-                </Span>{" "}
+                </Span>
+                &nbsp;
                 {new Date(data.releaseDate).toLocaleDateString()}
               </P>
               <P>
                 <Span>
                   Popularity:
                 </Span>
+                &nbsp;
                 {data.popularity}
               </P>
             </Article>

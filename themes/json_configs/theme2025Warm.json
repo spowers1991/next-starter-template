@@ -16,7 +16,7 @@
     "h4": "text-2xl font-medium text-[#D97706] mb-3",
     "h5": "text-xl font-medium text-[#F59E0B] mb-2",
     "h6": "text-lg font-medium text-[#FBBF24] mb-2 uppercase tracking-wide",
-    "button": "inline-flex items-center gap-2 px-6 py-3 bg-[#F97316] text-white rounded-md hover:bg-[#EA580C] transition",
+    "button":  "mb-4 inline-flex items-center gap-2 px-6 py-3 bg-[#F97316] text-white rounded-md hover:bg-[#EA580C] transition",
     "checkbox": "relative w-6 h-6 bg-gray-200 border-white border-2 peer-checked:bg-[#EA580C]",
     "input": "w-full px-4 py-2 border border-[#FCD34D] rounded-md text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-[#F97316]",
     "textarea": "w-full px-4 py-2 border border-[#FCD34D] rounded-md text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-[#F97316]",

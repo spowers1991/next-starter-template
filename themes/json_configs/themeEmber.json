@@ -48,7 +48,7 @@
     "card-title": "text-[#FDE68A]",
     "card-body": "text-[#FED7AA]",
 
-    "button": "px-4 py-2 rounded bg-gradient-to-r from-[#F97316] to-[#FACC15] text-black",
+    "button":  "mb-4 px-4 py-2 rounded bg-gradient-to-r from-[#F97316] to-[#FACC15] text-black",
 
     "footer": "text-center text-[#FDBA74] py-6"
   }
