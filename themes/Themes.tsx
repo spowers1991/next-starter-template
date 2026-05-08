@@ -4,6 +4,7 @@ import themeEmberJSON from "@/themes/json_configs/themeEmber.json"
 import themeEmeraldJSON from "@/themes/json_configs/themeEmerald.json"
 import themeVioletJSON from "@/themes/json_configs/themeViolet.json"
 import themeCoralJSON from "@/themes/json_configs/themeCoral.json"
+import midnightEmberJSON from "@/themes/json_configs/midnightEmber.json"
 
 import type { Theme } from "@/lib/themes/types/Theme";
 
@@ -22,6 +23,7 @@ export const themeEmber = withId(themeEmberJSON, "themeEmber");
 export const themeEmerald = withId(themeEmeraldJSON, "themeEmerald");
 export const themeViolet = withId(themeVioletJSON, "themeViolet");
 export const themeCoral = withId(themeCoralJSON, "themeCoral");
+export const midnightEmber = withId(midnightEmberJSON, "midnightEmber");
 
 export const Themes: Record<string, Theme> = {
   materialTheme,
@@ -29,7 +31,8 @@ export const Themes: Record<string, Theme> = {
   themeEmber,
   themeEmerald,
   themeViolet,
-  themeCoral
+  themeCoral,
+  midnightEmber,
 };
 
 export const ThemeArray: Theme[] = Object.values(Themes);

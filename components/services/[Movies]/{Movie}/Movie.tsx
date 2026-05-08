@@ -20,18 +20,10 @@ interface MoviePageProps {
 export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
 
-  const functionName = () => {
-    const newCLass = "text-red-500";
-    return newCLass;
-  }
-  const anotherFunctionName = () => {
-    console.log("Another function executed!");
-  }
-
   return (
     <Section>
 
-      <P functions={[functionName, anotherFunctionName]}>
+      <P>
         This is a movie page for {title}.
       </P>
 
