@@ -8,7 +8,7 @@ import FilteredListing from "@/components/selectors/{Filters}/[FilteredListing]/
 import FiltersCard from "@/components/selectors/{Filters}/[FilteredListing]/{FiltersCard}/FiltersCard";
 import Flex from "@/components/layout/flex/{Flex}/Flex";
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
-import Button from "@/components/html/{Button}/Button";
+import ClearFiltersButton from "./selectors/ClearFiltersButton";
 
 
 interface MovieProps {
@@ -28,16 +28,8 @@ export default function MoviesFilters({ movies }: MovieProps) {
         },
       ]}
     >
-      
-      <Button 
-        name={"services/[Movies]/{MoviesFilters}/MoviesFilters/<Button/>:clearFilters"}
-        events={[
-          { name: "clearFilters", type: "onClick" },
-          { name: "restartAnimations", type: "onClick" },
-        ]} 
-        options={{ iconWidth: 30, iconImage: "/images/svg/arrow-right.svg" }}>
-          Clear Filters
-      </Button>
+
+      <ClearFiltersButton />
 
       <Flex cols={2} gap={4}>
         <FiltersOptions />

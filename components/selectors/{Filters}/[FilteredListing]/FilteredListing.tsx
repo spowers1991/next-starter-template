@@ -3,7 +3,7 @@
 import React from "react";
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 import Animator from "@/components/animations/Animator";
-import { Animation } from "@/lib/animations/types/Animation";
+import type { Animation } from "@/lib/animations/types/Animation";
 
 interface FilteredListingProps {
   id: string | null,
