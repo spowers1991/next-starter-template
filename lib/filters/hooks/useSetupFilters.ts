@@ -10,5 +10,5 @@ export const useSetupFilters = (
   useEffect(() => {
     FILTERS_setItemsToFilter(itemsToFilter);
     FILTERS_setFiltersOptions(filtersOptions);
-  }, [itemsToFilter, filtersOptions, FILTERS_setItemsToFilter, FILTERS_setFiltersOptions]);
+  }, []);
 };
