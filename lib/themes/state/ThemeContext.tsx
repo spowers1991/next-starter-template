@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useCallback } from "react";
 import type { Theme } from "../types/Theme";
 import type { ThemeStyles } from "../types/ThemeStyles";
 import { setThemeStyles as ACTIONS_setThemeStyles } from "../actions/set/setThemeStyles";
@@ -55,16 +55,19 @@ export const ThemeProvider = ({ children, themes = [] }: ThemeProviderProps) => 
     }
   };
 
-  const THEMES_setThemeStyles = (styles: Partial<ThemeStyles>, themeIdOrName?: string) => {
-    const { updatedTheme, updatedThemes } = ACTIONS_setThemeStyles({
-      styles,
-      themeIdOrName,
-      activeTheme: THEMES_activeTheme,
-      themes: THEMES_themes,
-    });
-    THEMES_setTheme(updatedTheme);
-    THEMES_setThemes(updatedThemes);
-  };
+  const THEMES_setThemeStyles = useCallback(
+    (styles: Partial<ThemeStyles>, themeIdOrName?: string) => {
+      const { updatedTheme, updatedThemes } = ACTIONS_setThemeStyles({
+        styles,
+        themeIdOrName,
+        activeTheme: THEMES_activeTheme,
+        themes: THEMES_themes,
+      });
+      THEMES_setTheme(updatedTheme);
+      THEMES_setThemes(updatedThemes);
+    },
+    [THEMES_activeTheme, THEMES_themes]
+  );
 
   return (
     <ThemeContext.Provider

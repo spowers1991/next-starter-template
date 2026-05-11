@@ -32,14 +32,14 @@ export function setThemeStyles({
 
   if (!themeIdOrName) {
     const merged = mergeThemeStyles(activeTheme, styles);
-    updatedTheme = shallowEqual(activeTheme.styles, merged.styles) ? activeTheme : merged;
+    updatedTheme = shallowEqual(activeTheme.styles as Record<string, unknown>, merged.styles as Record<string, unknown>) ? activeTheme : merged;
     return { updatedTheme, updatedThemes };
   }
 
   updatedThemes = themes.map((theme) => {
     if (theme.id === themeIdOrName || theme.name === themeIdOrName) {
       const merged = mergeThemeStyles(theme, styles);
-      if (shallowEqual(theme.styles, merged.styles)) return theme;
+      if (shallowEqual(theme.styles as Record<string, unknown>, merged.styles as Record<string, unknown>)) return theme;
       if (theme.id === activeTheme.id) updatedTheme = merged;
       return merged;
     }

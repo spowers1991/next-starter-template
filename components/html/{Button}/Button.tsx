@@ -7,13 +7,15 @@ import Flex from "@/components/layout/flex/{Flex}/Flex";
 import { useClickEvents } from "./hooks/useClickEvents";
 
 interface ButtonProps {
-  name: string;
+  name?: string;
+  options?: { type?: "button" | "submit" | "reset", disabled?: boolean, iconWidth?: number; iconImage?: string };
+  events?: { name: string; type: string, handler?: () => void }[];
   children: React.ReactNode;
-  events?: { name: string; type: string }[];
-  options?: { iconWidth?: number; iconImage?: string };
 }
 
-function Button({ name, children, events, options }: ButtonProps) {
+function Button({ name, options, events, children }: ButtonProps) {
+
+  const buttonName = "BUTTON_" + (name || "default");
   
   const { THEMES_activeTheme } = useThemes();
 
@@ -21,7 +23,10 @@ function Button({ name, children, events, options }: ButtonProps) {
 
   return (
     <button
+      type={options?.type || "button"}
+      aria-label={buttonName}
       onClick={handleClick}
+      disabled={options?.disabled}
       className={`group ${THEMES_activeTheme.styles.button} w-[unset]`}
     >
       <Flex align={"center"} gap={2}>
@@ -30,7 +35,7 @@ function Button({ name, children, events, options }: ButtonProps) {
         </span>
         <SVG 
           src={options?.iconImage || "/images/svg/arrow-right.svg"}
-          alt="Cart" 
+          alt={buttonName+"_icon"} 
           width={options?.iconWidth} 
           height={options?.iconWidth} 
           className={`group-hover:translate-x-1 transition-all duration-300`} 

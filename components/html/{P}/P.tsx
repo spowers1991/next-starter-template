@@ -5,8 +5,9 @@ import { useThemes } from "@/lib/themes/state/ThemeContext";
 import { useP } from "./hooks/useP";
 
 interface PProps {
+  name?: string;
+  functions?: { name?: string; type?: string; handler?: () => void | undefined }[];
   children: ReactNode;
-  functions?: { name?: string; type?: string; handler?: () => void | unknown | undefined }[];
 }
 
 export default function P({ children, functions }: PProps) {

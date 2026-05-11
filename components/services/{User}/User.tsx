@@ -18,7 +18,9 @@ export default function User() {
             You are logged in as {user?.email}.
           </p>
         </div>
-        <Button onClick={() => {supabase.auth.signOut()}}>
+        <Button name={"logout"} 
+          events={[{ name: "logout", type: "onClick", handler: () => supabase.auth.signOut() }]}
+          options={{ iconImage: "/images/svg/logout.svg", iconWidth: 20 }}>
           Logout
         </Button>
       </div>

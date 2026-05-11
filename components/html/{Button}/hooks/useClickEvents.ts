@@ -2,7 +2,7 @@
 import { useFilters } from "@/lib/filters/state/FiltersContext";
 import { useAnimations } from "@/lib/animations/state/AnimationsContext";
 
-export function useClickEvents(events?: { name: string; type: string }[]) {
+export function useClickEvents(events?: { name: string; type: string, handler?: () => void }[]) {
 
   const { FILTERS_clearFilters } = useFilters();
   const { ANIMATIONS_update } = useAnimations();
@@ -20,6 +20,9 @@ export function useClickEvents(events?: { name: string; type: string }[]) {
             config: { status: "restart" }
           }
         ]);
+      }
+      if(event?.type === "onClick" && event?.name === "logout") {
+        event.handler?.();
       }
     }
     // Add more event handling logic here as needed

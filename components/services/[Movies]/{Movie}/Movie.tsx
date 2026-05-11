@@ -12,6 +12,8 @@ import Article from "@/components/html/{Article}/Article";
 import CastMembers from "./[CastMembers]/CastMembers";
 import CrewMembers from "./[CrewMembers]/CrewMembers";
 import Animator from "@/components/animations/Animator";
+import { useSwapStylesforPathName } from "@/components/html/{P}/actions/set/useSwapStylesforPathName";
+import { matchPathNames } from "@/components/html/{P}/actions/set/matchPathNames";
 
 interface MoviePageProps {
   data: Movie;
@@ -23,18 +25,21 @@ export default function MoviePage({ data }: MoviePageProps) {
   return (
     <Section>
 
-      <P>
+      <P functions={[ 
+        { name: "swapStylesforPathName", 
+          type: "theme", 
+          handler: () => matchPathNames(
+            { pathNameToMatch: "/movies/the-dark-tower", styles: { p: "text-red-500" }, themeName: "materialTheme" }
+            ) } ]}>
         This is a movie page for {title}.
       </P>
 
-      <H1 
-      id={`{Movie}_<H1/>`}
-      animations={[{ name: "textReveal", config: { duration: 0.1, delay: 0.1 } }]}>
+      <H1 id={`{Movie}_<H1/>`}
+        animations={[{ name: "textReveal", config: { duration: 0.1, delay: 0.1 } }]}>
         {title}
       </H1>
 
-      <Animator 
-        id={`{Movie}/<Animator/>`}
+      <Animator id={`{Movie}/<Animator/>`}
         animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
