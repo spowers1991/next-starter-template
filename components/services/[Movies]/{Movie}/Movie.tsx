@@ -13,7 +13,6 @@ import CastMembers from "./[CastMembers]/CastMembers";
 import CrewMembers from "./[CrewMembers]/CrewMembers";
 import Animator from "@/components/animations/Animator";
 import { useSwapStylesforPathName } from "@/components/html/{P}/actions/set/useSwapStylesforPathName";
-import { matchPathNames } from "@/components/html/{P}/actions/set/matchPathNames";
 
 interface MoviePageProps {
   data: Movie;
@@ -22,15 +21,16 @@ interface MoviePageProps {
 export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
 
+  const swapStylesforPathName = useSwapStylesforPathName({ pathNameToMatch: "/movies/the-dark-tower", styles: { p: "text-red-500" }, themeName: "materialTheme" });
+
   return (
     <Section>
 
       <P functions={[ 
         { name: "swapStylesforPathName", 
           type: "theme", 
-          handler: () => matchPathNames(
-            { pathNameToMatch: "/movies/the-dark-tower", styles: { p: "text-red-500" }, themeName: "materialTheme" }
-            ) } ]}>
+          handler: () => swapStylesforPathName }
+      ]}>
         This is a movie page for {title}.
       </P>
 
