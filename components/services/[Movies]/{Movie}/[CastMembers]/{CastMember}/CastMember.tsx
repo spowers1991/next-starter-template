@@ -11,9 +11,9 @@ interface CastMemberProps {
 
 export default function CastMember({ castMember }: CastMemberProps) {
   const personRef = castMember.person._ref;
-  const { persons } = usePersons();
+  const { PERSONS_persons } = usePersons();
 
-  const person = persons.find((p: Person) => p._id === personRef);
+  const person = PERSONS_persons.find((p: Person) => p._id === personRef);
   if (!person) return null;
 
   return (

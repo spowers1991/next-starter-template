@@ -29,7 +29,6 @@ export function fadeUpChildren(
   );
 
    if (config?.status === 'restart') {
-    console.log('restarting timeline');
     tlRef.current?.restart();
   } else {
     tlRef.current?.play();

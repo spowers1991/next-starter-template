@@ -9,11 +9,12 @@ import { useClickEvents } from "./hooks/useClickEvents";
 interface ButtonProps {
   name?: string;
   options?: { type?: "button" | "submit" | "reset", disabled?: boolean, iconWidth?: number; iconImage?: string };
+  onClick?: () => void;
   events?: { name: string; type: string, handler?: () => void }[];
   children: React.ReactNode;
 }
 
-function Button({ name, options, events, children }: ButtonProps) {
+function Button({ name, options, onClick, events, children }: ButtonProps) {
 
   const buttonName = "BUTTON_" + (name || "default");
   
@@ -25,7 +26,7 @@ function Button({ name, options, events, children }: ButtonProps) {
     <button
       type={options?.type || "button"}
       aria-label={buttonName}
-      onClick={handleClick}
+      onClick={onClick ? onClick : handleClick}
       disabled={options?.disabled}
       className={`group ${THEMES_activeTheme.styles.button} w-[unset]`}
     >

@@ -1,48 +1,45 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import H1 from "@/components/html/{H1}/H1"
-import H3 from "@/components/html/{H3}/H3";
 import Section from "@/components/html/{Section}/Section";
-import GridRepeater from "@/components/layout/grid/{GridRepeater}/GridRepeater";
-import type { Post } from "@/lib/sanity/types/Post";
 import Animator from "@/components/animations/Animator";
+import type { Person } from "@/services/[Persons]/{Person}/types/Person";
+
+import PersonsGrid from "@/components/services/[Persons]/{PersonsGrid}/PersonsGrid";
 
 interface PersonsProps {
-  persons: Post[]; 
+  persons: Person[]; 
 }
 
 export default function Persons({ persons }: PersonsProps) {
 
+  const personsList = persons || [];
+
   return (
-    <Section>
-      <H1
-      id={`[Persons]-<H1/>`}
-      animations={[
-          { 
-            name: 'textReveal'
-          }
-        ]} 
-      >
-        Persons
-      </H1>
-      <Animator 
-        id={`[Movies]_<Animator/>`}
-        animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
+    <Animator 
+      id={`[Persons]_<Animator/>`}
+      animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
+    >
+
+      <Section>
+
+        <H1
+          id={`[Persons]_<H1/>`}
+          animations={[
+            { 
+              name: 'fadeIn', 
+              config: { duration: 1, delay: 0.1 }
+            }
+          ]} 
         >
-        <GridRepeater
-          items={persons}
-          renderItem={(person) => (
-            <Link key={person._id} href={`/persons/${person.slug.current}`}>
-              <H3>
-                {person.name}
-              </H3>
-            </Link>
-          )}
-          cols={4}
-        />
-      </Animator>
-    </Section>
+          Persons
+        </H1>
+
+        <PersonsGrid />
+
+      </Section>
+
+    </Animator>
   );
 }

@@ -1,4 +1,4 @@
-import RegisterForm from "@/components/html/{Form}/{RegisterForm}/RegisterForm";
+import RegisterForm from "@/components/forms/{RegisterForm}/RegisterForm";
 import Main from "@/components/html/{Main}/Main";
 
 import { Metadata } from "next";

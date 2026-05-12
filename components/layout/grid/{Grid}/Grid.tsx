@@ -24,7 +24,7 @@ function Grid({
   const componentName = `<Grid/>`;
   const animationRef = useAnimationsRegistration(id, animations, componentName);
 
-  const gridColsClass = `grid-cols-1 md:grid-cols-${cols}`;
+  const gridColsClass = `grid-cols-1 md:grid-cols-${cols} mb-12`;
   const gridRowsClass = rows ? `grid-rows-1 md:grid-rows-${rows}` : "";
   const gapClass = `gap-${gap}`;
 

@@ -2,9 +2,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { FiltersConfig } from "../types/FiltersConfig";
-import { useSetupFilters } from "../hooks/useSetupFilters";
-import { updateFilters } from "../actions/updateFilters";
-import { filtersOptionsHandler as handleFiltersOptions } from "../actions/filtersOptionsHandler"; 
+import { useSetupFilters as ACTIONS_useSetupFilters } from "../hooks/useSetupFilters";
+import { updateFilters as ACTIONS_updateFilters } from "../actions/updateFilters";
+import { filtersOptionsHandler as ACTIONS_handleFiltersOptions } from "../actions/filtersOptionsHandler"; 
 
 interface FiltersContextType {
   FILTERS_setupFilters:  (itemsToFilter: object[], filtersOptions: FiltersConfig[]) => void;
@@ -29,11 +29,11 @@ export const FiltersProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [FILTERS_filteredItems, FILTERS_setFilteredItems] = useState<object[]>([]);
 
   const FILTERS_setupFilters = ( itemsToFilter: object[], filtersOptions: FiltersConfig[]) => {
-    useSetupFilters(itemsToFilter, filtersOptions, FILTERS_setItemsToFilter, FILTERS_setFiltersOptions);
+    ACTIONS_useSetupFilters(itemsToFilter, filtersOptions, FILTERS_setItemsToFilter, FILTERS_setFiltersOptions);
   };
 
   const FILTERS_filtersOptionsHandler = ( propertyPath: string, selectedOptions: string[]) => {
-    handleFiltersOptions(propertyPath, selectedOptions, FILTERS_setFiltersValues);
+    ACTIONS_handleFiltersOptions(propertyPath, selectedOptions, FILTERS_setFiltersValues);
   };
 
   const FILTERS_clearFilters = () => {
@@ -41,7 +41,7 @@ export const FiltersProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   useEffect(() => {
-    updateFilters(FILTERS_itemsToFilter, FILTERS_filtersValues, FILTERS_setFilteredItems);
+    ACTIONS_updateFilters(FILTERS_itemsToFilter, FILTERS_filtersValues, FILTERS_setFilteredItems);
   }, [FILTERS_itemsToFilter, FILTERS_filtersValues]);
 
   return (

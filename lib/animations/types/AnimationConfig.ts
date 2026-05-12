@@ -3,5 +3,5 @@ export interface AnimationConfig {
   delay?: number;
   duration?: number;
   stagger?: number;
-  status?: 'restart' | 'play';
+  status?: 'restart' | 'play' | 'pause' | 'stop';
 }

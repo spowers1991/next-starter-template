@@ -1,30 +1,10 @@
-
-import { useFilters } from "@/lib/filters/state/FiltersContext";
-import { useAnimations } from "@/lib/animations/state/AnimationsContext";
-
 export function useClickEvents(events?: { name: string; type: string, handler?: () => void }[]) {
-
-  const { FILTERS_clearFilters } = useFilters();
-  const { ANIMATIONS_update } = useAnimations();
 
   return () => {
     for (const event of events || []) {
-      console.log(events, "events in useClickEvents");
-      if (event?.type === "onClick" && event?.name === "clearFilters") {
-        FILTERS_clearFilters();
-      }
-      if (event?.type === "onClick" && event?.name === "restartAnimations") {
-        ANIMATIONS_update([
-          {
-            id: 'ANIMATION_[Movies]_<H1/>',
-            config: { status: "restart" }
-          }
-        ]);
-      }
-      if(event?.type === "onClick" && event?.name === "logout") {
+      if(event?.type === "onClick" && typeof event.handler === "function") {
         event.handler?.();
       }
     }
-    // Add more event handling logic here as needed
   };
 }

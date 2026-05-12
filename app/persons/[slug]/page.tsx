@@ -1,6 +1,6 @@
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
 import { getPerson } from "@/services/[Persons]/{Person}/queries/getPerson";
-import Post from "@/components/[Posts]/{Post}/Post";
+import Person from "@/components/services/[Persons]/{Person}/Person";
 import Main from "@/components/html/{Main}/Main";
 
 import type { Metadata } from "next";
@@ -36,7 +36,7 @@ export default async function PersonPage({ params }: PageProps) {
 
   return (
     <Main>
-      <Post data={person} />
+      <Person data={person} />
     </Main>
   );
 }
