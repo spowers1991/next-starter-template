@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import H1 from "@/components/html/{H1}/H1";
 import H2 from "@/components/html/{H2}/H2";
-import P from "@/components/html/{P}/P"
+import P from "@/components/html/{P}/P";
 import Span from "@/components/html/{Span}/Span";
 import Section from "@/components/html/{Section}/Section";
 import Article from "@/components/html/{Article}/Article";

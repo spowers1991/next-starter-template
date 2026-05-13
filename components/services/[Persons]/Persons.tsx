@@ -12,9 +12,7 @@ interface PersonsProps {
   persons: Person[]; 
 }
 
-export default function Persons({ persons }: PersonsProps) {
-
-  const personsList = persons || [];
+export default function Persons({  }: PersonsProps) {
 
   return (
     <Animator 

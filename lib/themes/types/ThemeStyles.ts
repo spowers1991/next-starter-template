@@ -17,7 +17,10 @@ export interface ThemeStyles {
   h5?: string;
   h6?: string;
 
-  button?: string;
+  button?: string | {
+    variants?: Record<string, string>;
+  };
+  
   input?: string;
   textarea?: string;
   select?: string;

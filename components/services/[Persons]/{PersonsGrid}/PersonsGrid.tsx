@@ -28,11 +28,12 @@ export default function PersonsGrid() {
             </H3>
 
             <Button
+              themeVariant="primary"
               events={[
                 { name: "toggleGrid", type: "onClick", handler: () => PERSONS_togglePersonsGrid(movie._id) },
                 { name: "restartAnimation", type: "onClick", handler: () => ANIMATIONS_update([
                   { 
-                    id: `[Persons]_<H1/>`,
+                    id: `ANIMATION_[Persons]_<H1/>`,
                     config: { status: "restart"}
                   } 
                 ])}
@@ -56,6 +57,7 @@ export default function PersonsGrid() {
                             ? ref.replace(/_/g, " ").replace(/[-_]/g, " ").replace("person", "")
                             : "Unknown"}
                         </span>
+                        &nbsp;as&nbsp;
                         <span className="font-semibold">
                           {castMember?.characterName ?? "Unknown"}
                         </span>
