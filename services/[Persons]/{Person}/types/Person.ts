@@ -1,11 +1,13 @@
 import type { Post } from "@/lib/sanity/types/Post";
-import { SanityReference } from "@/lib/sanity/types/SanityReference"
-import { RefObject } from "react";
 
-export interface Person extends Post{
+import { SanityReference } from "@/lib/sanity/types/SanityReference";
+
+export interface Person{
+  _id: string;
+  _type: "person";
   name: string;
   characterName: string;
-  person: SanityReference
+  person?: SanityReference;
   slug: {
     current: string;
   };
@@ -13,7 +15,7 @@ export interface Person extends Post{
     _type: "image";
     asset: {
       _ref?: string;
-      _type: "reference";
+      _type?: "reference";
       _id?: string;
       url?: string;
     };

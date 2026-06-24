@@ -18,6 +18,7 @@ export const ANIMATIONS_update = (
               config: { ...animation.config, ...target.config }
             }
           );
+          console.log(ANIMATIONS_entry)
           animateTimeline(
             ANIMATIONS_entry.containerRef,
             ANIMATIONS_entry.timeline,

@@ -39,7 +39,7 @@
 
     "card": "bg-[#451A03]/80 border border-[#9A3412] rounded-2xl p-6",
 
-    "button": "bg-gradient-to-r from-[#FB7185] to-[#F59E0B] text-[#451A03] px-4 py-2 rounded",
+    "button": "mb-4 bg-gradient-to-r from-[#FB7185] to-[#F59E0B] text-[#451A03] px-4 py-2 rounded uppercase text-sm",
 
     "footer": "text-center text-[#FDBA74] py-6"
   }

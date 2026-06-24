@@ -5,13 +5,14 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import H1 from "@/components/html/{H1}/H1";
 import H2 from "@/components/html/{H2}/H2";
-import P from "@/components/html/{P}/P"
+import P from "@/components/html/{P}/P";
 import Span from "@/components/html/{Span}/Span";
 import Section from "@/components/html/{Section}/Section";
 import Article from "@/components/html/{Article}/Article";
 import CastMembers from "./[CastMembers]/CastMembers";
 import CrewMembers from "./[CrewMembers]/CrewMembers";
 import Animator from "@/components/animations/Animator";
+import { useSwapStylesforPathName } from "@/components/html/{P}/actions/set/useSwapStylesforPathName";
 
 interface MoviePageProps {
   data: Movie;
@@ -20,17 +21,25 @@ interface MoviePageProps {
 export default function MoviePage({ data }: MoviePageProps) {
   const title = data.title || data.name;
 
+  const swapStylesforPathName = useSwapStylesforPathName({ pathNameToMatch: "/movies/the-dark-tower", styles: { p: "text-red-500" }, themeName: "materialTheme" });
+
   return (
     <Section>
 
-      <H1 
-      id={`{Movie}_<H1/>`}
-      animations={[{name: "textReveal"}]}>
+      <P functions={[ 
+        { name: "swapStylesforPathName", 
+          type: "theme", 
+          handler: () => swapStylesforPathName }
+      ]}>
+        This is a movie page for {title}.
+      </P>
+
+      <H1 id={`{Movie}_<H1/>`}
+        animations={[{ name: "textReveal", config: { duration: 0.1, delay: 0.1 } }]}>
         {title}
       </H1>
 
-      <Animator 
-        id={`{Movie}/<Animator/>`}
+      <Animator id={`{Movie}/<Animator/>`}
         animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -57,13 +66,15 @@ export default function MoviePage({ data }: MoviePageProps) {
               <P>
                 <Span>
                   Release Date:
-                </Span>{" "}
+                </Span>
+                &nbsp;
                 {new Date(data.releaseDate).toLocaleDateString()}
               </P>
               <P>
                 <Span>
                   Popularity:
                 </Span>
+                &nbsp;
                 {data.popularity}
               </P>
             </Article>

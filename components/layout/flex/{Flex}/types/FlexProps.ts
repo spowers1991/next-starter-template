@@ -7,4 +7,5 @@ export interface FlexProps {
   gap?: number;
   direction?: "row" | "col";
   wrap?: boolean;
+  align?: "start" | "center" | "end";
 }

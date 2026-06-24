@@ -13,10 +13,10 @@ interface CrewMemberProps {
 }
 
 export default function CrewMember({ crewMember }: CrewMemberProps) {
-  const { persons } = usePersons();
+  const { PERSONS_persons } = usePersons();
   const personRef = crewMember.person?._ref;
 
-  const person = persons.find((p) => p._id === personRef);
+  const person = PERSONS_persons.find((p) => p._id === personRef);
   if (!person) return null;
   return (
     <div className="flex items-center gap-3">

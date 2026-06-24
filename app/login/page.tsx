@@ -1,5 +1,5 @@
 import Main from "@/components/html/{Main}/Main";
-import LoginForm from "@/components/html/{Form}/{LoginForm}/LoginForm";
+import LoginForm from "@/components/forms/{LoginForm}/LoginForm";
 
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/seo/actions/create/createMetadata";

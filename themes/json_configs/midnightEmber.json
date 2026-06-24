@@ -17,7 +17,7 @@
     "h4": "text-2xl font-medium text-[#A8A29E] mb-3",
     "h5": "text-xl font-medium text-[#A8A29E] mb-2",
     "h6": "text-lg font-medium text-[#78716C] mb-2 uppercase tracking-wider",
-    "button": "inline-flex items-center gap-2 px-6 py-3 bg-[#F59E0B] text-[#020617] rounded-lg hover:bg-[#FBBF24] transition shadow-md",
+    "button": "mb-4 inline-flex items-center gap-2 px-6 py-3 bg-[#F59E0B] text-[#020617] rounded-lg hover:bg-[#FBBF24] transition shadow-md uppercase text-sm",
     "input": "w-full px-4 py-2 border border-[#292524] rounded-lg bg-[#020617] text-[#FAFAF9] focus:outline-none focus:ring-2 focus:ring-[#FBBF24] focus:border-[#FBBF24]",
     "textarea": "w-full px-4 py-2 border border-[#292524] rounded-lg bg-[#020617] text-[#FAFAF9] focus:outline-none focus:ring-2 focus:ring-[#FBBF24] focus:border-[#FBBF24]",
     "select": "w-full px-4 py-2 border border-[#292524] rounded-lg bg-[#020617] text-[#FAFAF9] focus:outline-none focus:ring-2 focus:ring-[#FBBF24] focus:border-[#FBBF24]",

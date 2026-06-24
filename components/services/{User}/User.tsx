@@ -4,7 +4,7 @@ import { useUser } from '@/services/[Users]/{User}/state/UserContext';
 import { supabase } from "@/lib/supabase/supabaseClient";
 
 import Button from "@/components/html/{Button}/Button";
-import LoginForm from "@/components/html/{Form}/{LoginForm}/LoginForm";
+import LoginForm from "@/components/forms/{LoginForm}/LoginForm";
 
 export default function User() {
 
@@ -18,7 +18,9 @@ export default function User() {
             You are logged in as {user?.email}.
           </p>
         </div>
-        <Button onClick={() => {supabase.auth.signOut()}}>
+        <Button name={"logout"} 
+          events={[{ name: "logout", type: "onClick", handler: () => supabase.auth.signOut() }]}
+          options={{ iconImage: "/images/svg/logout.svg", iconWidth: 20 }}>
           Logout
         </Button>
       </div>

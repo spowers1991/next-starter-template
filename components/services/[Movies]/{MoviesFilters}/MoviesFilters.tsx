@@ -8,6 +8,8 @@ import FilteredListing from "@/components/selectors/{Filters}/[FilteredListing]/
 import FiltersCard from "@/components/selectors/{Filters}/[FilteredListing]/{FiltersCard}/FiltersCard";
 import Flex from "@/components/layout/flex/{Flex}/Flex";
 import ContentCard from "@/components/content/{ContentCard}/ContentCard";
+import ClearFiltersButton from "./selectors/ClearFiltersButton";
+
 
 interface MovieProps {
   movies: Movie[];
@@ -26,10 +28,13 @@ export default function MoviesFilters({ movies }: MovieProps) {
         },
       ]}
     >
+
+      <ClearFiltersButton />
+
       <Flex cols={2} gap={4}>
         <FiltersOptions />
           <FilteredListing
-            id={`[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>`}
+            id={`services/[Movies]/{MoviesFilters}/MoviesFilters/<FilteredListing/>`}
             classNames="grid grid-cols-1 md:grid-cols-3 gap-4"
             animations={
               [{

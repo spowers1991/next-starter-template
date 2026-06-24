@@ -87,7 +87,7 @@
     "select": "w-full px-3 py-2 border border-slate-300 rounded-md bg-white text-slate-900 min-w-[200px] text-[#fff]  bg-[rgba(0,0,0,0.3)]",
     "option": "text-slate-900",
     "optgroup": "font-semibold text-slate-800",
-    "button": "inline-flex items-center gap-2 px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition",
+    "button":  "inline-flex items-center gap-2 px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition mb-4 uppercase text-sm",
     "button-outline": "inline-flex items-center gap-2 px-4 py-2 rounded-md border border-slate-300 text-slate-700 hover:bg-slate-50",
     "button-text": "inline-flex items-center gap-2 px-3 py-2 text-blue-600 hover:underline",
     "button-icon": "inline-flex items-center justify-center p-2 rounded-md hover:bg-slate-100",

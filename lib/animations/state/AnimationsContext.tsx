@@ -10,8 +10,8 @@ import React, {
 
 import type { AnimationsEntry } from "../types/AnimationsEntry";
 import type { AnimationTarget } from "../types/AnimationTarget";
-import { ANIMATIONS_register as ANIMATIONS_register_action } from "../actions/ANIMATIONS_register";
-import { ANIMATIONS_update as ANIMATIONS_update_action } from "../actions/ANIMATIONS_update";
+import { ANIMATIONS_register as ACTIONS_Register } from "../actions/ANIMATIONS_register";
+import { ANIMATIONS_update as ACTIONS_Update } from "../actions/ANIMATIONS_update";
 import { playAnimations } from "../actions/playAnimations";
 
 interface AnimationsContextType {
@@ -33,7 +33,7 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
   const ANIMATIONS_register = useCallback(
     (entries: AnimationsEntry[]) => {
       ANIMATIONS_setEntries(prevEntries =>
-        ANIMATIONS_register_action(prevEntries, entries)
+        ACTIONS_Register(prevEntries, entries)
       );
     },
     [] // ← safe because we only use setState functional form
@@ -41,7 +41,7 @@ export const AnimationsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const ANIMATIONS_update = useCallback(
     (targets: AnimationTarget[]) => {
-      ANIMATIONS_update_action(ANIMATIONS_entries, targets);
+      ACTIONS_Update(ANIMATIONS_entries, targets);
     },
     [ANIMATIONS_entries]
   );
