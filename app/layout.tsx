@@ -9,6 +9,7 @@ import { MoviesProvider } from "@/services/[Movies]/state/MoviesContext";
 import { PersonsProvider } from "@/services/[Persons]/state/PersonsContext";
 import { FiltersProvider } from "@/lib/filters/state/FiltersContext";
 import { AnimationsProvider } from "@/lib/animations/state/AnimationsContext";
+import { GroqProvider } from "@/lib/groq/state/GroqContext";
 import { getMovies } from "@/services/[Movies]/queries/getMovies"; 
 import { getPersons } from "@/services/[Persons]/queries/getPersons";
 
@@ -23,14 +24,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <PersonsProvider initialPersons={persons}>
           <MoviesProvider initialMovies={movies}>
             <FiltersProvider>
-              <AnimationsProvider>
-                <Html>
-                  <Body>
-                    <Header />
-                      {children}
-                  </Body>
-                </Html>
-              </AnimationsProvider>
+              <GroqProvider>
+                <AnimationsProvider>
+                  <Html>
+                    <Body>
+                      <Header />
+                        {children}
+                    </Body>
+                  </Html>
+                </AnimationsProvider>
+              </GroqProvider>
             </FiltersProvider>
           </MoviesProvider>
         </PersonsProvider>

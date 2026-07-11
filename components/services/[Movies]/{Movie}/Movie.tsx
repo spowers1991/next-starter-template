@@ -1,24 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
-import Image from "next/image";
-import { PortableText } from "@portabletext/react";
 import H1 from "@/components/html/{H1}/H1";
-import H2 from "@/components/html/{H2}/H2";
 import P from "@/components/html/{P}/P";
-import Span from "@/components/html/{Span}/Span";
 import Section from "@/components/html/{Section}/Section";
-import Article from "@/components/html/{Article}/Article";
-import CastMembers from "./[CastMembers]/CastMembers";
-import CrewMembers from "./[CrewMembers]/CrewMembers";
 import Animator from "@/components/animations/Animator";
 import { useSwapStylesforPathName } from "@/components/html/{P}/actions/set/useSwapStylesforPathName";
+
+import MoviesPoster from "./{MoviesPoster}/MoviesPoster";
+import MoviesArticle from "./{MoviesArticle}/MoviesArticle";
+import Banner from "@/components/content/{Banner}/Banner";
+import Grid from "@/components/layout/grid/{Grid}/Grid";
 
 interface MoviePageProps {
   data: Movie;
 }
 
 export default function MoviePage({ data }: MoviePageProps) {
+
+  const [content] = useState(data);
+
   const title = data.title || data.name;
 
   const swapStylesforPathName = useSwapStylesforPathName({ pathNameToMatch: "/movies/the-dark-tower", styles: { p: "text-red-500" }, themeName: "materialTheme" });
@@ -42,56 +44,14 @@ export default function MoviePage({ data }: MoviePageProps) {
       <Animator id={`{Movie}/<Animator/>`}
         animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="relative w-full aspect-[2/3] overflow-hidden rounded-lg shadow-lg">
-            {data.poster?.asset?.url ? (
-              <Image
-                src={data.poster.asset.url}
-                alt={title}
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-gray-300 grid place-items-center text-gray-600">
-                No poster available
-              </div>
-            )}
-          </div>
 
-          <div className="md:col-span-2 space-y-6">
-            <Article>
-              <H2>
-                Summary
-              </H2>
-              <P>
-                <Span>
-                  Release Date:
-                </Span>
-                &nbsp;
-                {new Date(data.releaseDate).toLocaleDateString()}
-              </P>
-              <P>
-                <Span>
-                  Popularity:
-                </Span>
-                &nbsp;
-                {data.popularity}
-              </P>
-            </Article>
+        <Grid className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <MoviesPoster movie={data} />
+          <MoviesArticle movie={data} />
+        </Grid>
 
-            <Article>
-              <H2>
-                Overview
-              </H2>
-              <PortableText value={data.overview} />
-            </Article>
-
-            <CastMembers castMembers={data.castMembers} />
-
-            <CrewMembers crewMembers={data.crewMembers} />
-
-          </div>
-        </div>
+        <Banner content={content} />
+        
       </Animator>
 
     </Section>
