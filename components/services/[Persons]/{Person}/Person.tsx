@@ -42,10 +42,10 @@ function Person( { data: person } : PersonProps) {
             <Image
               src={urlForImage(person?.image).url()}  
               alt={person?.name}
-              width={800}
-              height={600}
+              width={350}
+              height={500}
               priority
-              style={{ height: "auto" }}
+              className="h-auto w-auto"
             />
           </Animator>
         }

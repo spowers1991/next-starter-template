@@ -8,6 +8,7 @@ interface BannerProps {
 }
 
 export default function Banner({ content: _content }: BannerProps) {
+  
   const keywords = useMemo(
     () => (typeof _content === "string" ? [_content] : ["How are you?"]),
     [_content]

@@ -14,7 +14,6 @@ interface MovieProps {
 }
 
 export default function Movies({ movies }: MovieProps) {
-  
   return (
     <Section>
       <Animator 

@@ -43,3 +43,6 @@ next-env.d.ts
 supabase.txt
 groq.txt
 openai.txt
+
+dist
+.sanity

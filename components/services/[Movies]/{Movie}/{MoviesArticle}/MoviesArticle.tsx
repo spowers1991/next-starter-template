@@ -17,7 +17,6 @@ interface MoviesArticleProps {
 }
 
 export default function MoviesArticle({ movie }: MoviesArticleProps) {
-  const { THEMES_activeTheme } = useThemes();
 
   return (
     <Article>

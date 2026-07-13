@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import H3 from "@/components/html/{H3}/H3";
-import { GROQ_useGroq } from "@/lib/groq/actions/hooks/useGroq";
+import { useGroqResponse } from "@/lib/groq/actions/hooks/useGroqResponse";
 import { useThemes } from "@/lib/themes/state/ThemeContext";
 
 interface GroqResponseProps {
@@ -15,7 +15,7 @@ export default function GroqResponse({ keywords }: GroqResponseProps) {
   const responseRef = useRef<HTMLDivElement | null>(null);
   const keywordsKey = useMemo(() => keywords, [keywords]);
 
-  GROQ_useGroq({
+  useGroqResponse({
     keywords: keywordsKey,
     responseRef,
     onMessage: (nextResponse: string) => {

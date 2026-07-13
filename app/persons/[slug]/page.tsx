@@ -6,11 +6,7 @@ import Main from "@/components/html/{Main}/Main";
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/seo/actions/create/createMetadata";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+interface PageProps { params: Promise<{ slug: string }>; }
 
 export const revalidate = 60; // ISR seconds
 

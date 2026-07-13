@@ -9,7 +9,7 @@ type GROQ_useGroq_Options = {
   responseRef?: React.RefObject<HTMLDivElement | null>;
 };
 
-export function GROQ_useGroq(options?: GROQ_useGroq_Options) {
+export function useGroqResponse(options?: GROQ_useGroq_Options) {
   const { GROQ_fetchGroq } = useGroq();
   const { keywords, onMessage, responseRef } = options ?? {};
   const keywordsKey = useMemo(() => (keywords ?? []).join("|"), [keywords]);
@@ -25,6 +25,6 @@ export function GROQ_useGroq(options?: GROQ_useGroq_Options) {
         onMessageRef.current?.(message);
       },
     });
-  }, [GROQ_fetchGroq, keywordsKey, responseRef]);
+  }, [GROQ_fetchGroq, keywords, keywordsKey, responseRef]);
 
 }
