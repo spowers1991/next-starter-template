@@ -10,6 +10,20 @@ import CrewMembers from "../[CrewMembers]/CrewMembers";
 import Article from "@/components/html/{Article}/Article";
 import H2 from "@/components/html/{H2}/H2";
 
+const formatDateUTC = (value?: string) => {
+    if (!value) return "Unknown";
+
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "Unknown";
+
+    return new Intl.DateTimeFormat("en-GB", {
+        timeZone: "UTC",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).format(date);
+};
+
 
 interface MoviesArticleProps {
   movie: Movie;
@@ -29,7 +43,7 @@ export default function MoviesArticle({ movie }: MoviesArticleProps) {
                         Release Date:
                     </Span>
                     &nbsp;
-                    {new Date(movie?.releaseDate).toLocaleDateString()}
+                    {formatDateUTC(movie?.releaseDate)}
                 </P>
                 <P>
                 <Span>
