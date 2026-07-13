@@ -1,5 +1,65 @@
 import {defineField, defineType} from 'sanity'
 
+export const castMemberType = defineType({
+  name: 'castMember',
+  title: 'Cast Member',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'characterName',
+      title: 'Character Name',
+      type: 'string',
+    }),
+    defineField({
+      name: 'externalCreditId',
+      title: 'External Credit ID',
+      type: 'string',
+    }),
+    defineField({
+      name: 'externalId',
+      title: 'External ID',
+      type: 'number',
+    }),
+    defineField({
+      name: 'person',
+      title: 'Person',
+      type: 'reference',
+      to: [{type: 'person'}],
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'characterName',
+      subtitle: 'person.name',
+    },
+  },
+})
+
+export const crewMemberType = defineType({
+  name: 'crewMember',
+  title: 'Crew Member',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'department',
+      title: 'Department',
+      type: 'string',
+    }),
+    defineField({
+      name: 'person',
+      title: 'Person',
+      type: 'reference',
+      to: [{type: 'person'}],
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'department',
+      subtitle: 'person.name',
+    },
+  },
+})
+
 export const movieType = defineType({
   name: 'movie',
   title: 'Movie',
@@ -54,57 +114,13 @@ export const movieType = defineType({
       name: 'castMembers',
       title: 'Cast Members',
       type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'characterName',
-              title: 'Character Name',
-              type: 'string',
-            },
-            {
-              name: 'person',
-              title: 'Person',
-              type: 'reference',
-              to: [{type: 'person'}],
-            },
-          ],
-          preview: {
-            select: {
-              title: 'characterName',
-            },
-          },
-        },
-      ],
+      of: [{type: 'castMember'}],
     }),
     defineField({
       name: 'crewMembers',
       title: 'Crew Members',
       type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'department',
-              title: 'Department',
-              type: 'string',
-            },
-            {
-              name: 'person',
-              title: 'Person',
-              type: 'reference',
-              to: [{type: 'person'}],
-            },
-          ],
-          preview: {
-            select: {
-              title: 'department',
-            },
-          },
-        },
-      ],
+      of: [{type: 'crewMember'}],
     }),
   ],
 })

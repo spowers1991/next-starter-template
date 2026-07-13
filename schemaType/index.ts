@@ -1,5 +1,5 @@
 import {postType} from './postType'
 import {personType} from './personType'
-import {movieType} from './movieType'
+import {movieType, castMemberType, crewMemberType} from './movieType'
 
-export const schemaTypes = [postType, personType, movieType]
+export const schemaTypes = [postType, personType, castMemberType, crewMemberType, movieType]

@@ -19,10 +19,10 @@ export default function MoviesPoster({ movie }: MoviesPosterProps) {
             <Image
             src={posterUrl}
             alt={movie.title || movie.name}
-      width={800}
-      height={1200}
-        priority
-      className="h-auto w-full object-cover"
+            width={800}
+            height={1200}
+            priority
+            className="h-auto w-full object-cover"
             />
         ) : (
       <div className="grid aspect-[2/3] w-full place-items-center bg-gray-300 text-gray-600">
