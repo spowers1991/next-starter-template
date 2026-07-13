@@ -7,7 +7,6 @@ import Span from "@/components/html/{Span}/Span";
 import { PortableText } from "@portabletext/react";
 import CastMembers from "../[CastMembers]/CastMembers";
 import CrewMembers from "../[CrewMembers]/CrewMembers";
-import { useThemes } from "@/lib/themes/state/ThemeContext";
 import Article from "@/components/html/{Article}/Article";
 import H2 from "@/components/html/{H2}/H2";
 
