@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
+import React from "react";
+import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
 import H1 from "@/components/html/{H1}/H1";
 import P from "@/components/html/{P}/P";
 import Section from "@/components/html/{Section}/Section";
@@ -14,14 +14,12 @@ import Banner from "@/components/content/{Banner}/Banner";
 import Grid from "@/components/layout/grid/{Grid}/Grid";
 
 interface MoviePageProps {
-  data: Movie;
+  movie: MovieType;
 }
 
-export default function MoviePage({ data }: MoviePageProps) {
+export default function MoviePage({ movie }: MoviePageProps) {
 
-  const [content] = useState(data);
-
-  const title = data.title || data.name;
+  const title = movie?.title || movie?.name;
 
   const swapStylesforPathName = useSwapStylesforPathName({ pathNameToMatch: "/movies/the-dark-tower", styles: { p: "text-red-500" }, themeName: "materialTheme" });
 
@@ -46,11 +44,11 @@ export default function MoviePage({ data }: MoviePageProps) {
       >
 
         <Grid className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <MoviesPoster movie={data} />
-          <MoviesArticle movie={data} />
+          <MoviesPoster movie={movie as MovieType} />
+          <MoviesArticle movie={movie as MovieType} />
         </Grid>
 
-        <Banner content={content} />
+        <Banner content={movie as MovieType} />
         
       </Animator>
 

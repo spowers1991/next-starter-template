@@ -7,10 +7,17 @@ import { handleFormSubmit } from "@/lib/forms/actions/handleFormSubmit";
 import Form from "@/components/html/{Form}/Form";
 import FormField from "@/components/html/{Form}/{FormField}/FormField";
 
+import { useRedirect } from "@/lib/next/router/hooks/useRedirect";
+import { useUser } from "@/services/[Users]/{User}/state/UserContext";
+
 export default function RegisterForm() {
   const [formValues, setFormValues] = useState<Record<string, string>>({});
   const [message, setMessage] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "success" | "error" | "loading">("idle");
+
+  // Redirect to /user if already logged in
+  const { user } = useUser(); 
+  useRedirect(user, '/user');
 
   const statusMessages: Record<"idle" | "success" | "error" | "loading", string | null> = {
     idle: null,

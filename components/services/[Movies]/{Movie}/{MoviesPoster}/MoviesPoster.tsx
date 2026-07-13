@@ -11,14 +11,14 @@ interface MoviesPosterProps {
 }
 
 export default function MoviesPoster({ movie }: MoviesPosterProps) {
-  const posterUrl = safeImageUrl(movie.poster);
+  const posterUrl = safeImageUrl(movie?.poster);
 
   return (
   <div className="w-full overflow-hidden rounded-lg shadow-lg">
         {posterUrl ? (
             <Image
             src={posterUrl}
-            alt={movie.title || movie.name}
+            alt={movie?.title || movie?.name}
             width={800}
             height={1200}
             priority

@@ -38,7 +38,7 @@ export default async function MoviePage({ params }: PageProps) {
     <>
       <JsonLdScript json={schema} />
       <Main>
-        <Movie data={movie} />
+        <Movie movie={movie} />
       </Main>
     </>
   );

@@ -29,24 +29,24 @@ export default function MoviesArticle({ movie }: MoviesArticleProps) {
                         Release Date:
                     </Span>
                     &nbsp;
-                    {new Date(movie.releaseDate).toLocaleDateString()}
+                    {new Date(movie?.releaseDate).toLocaleDateString()}
                 </P>
                 <P>
                 <Span>
                     Popularity:
                 </Span>
                     &nbsp;
-                    {movie.popularity}
+                    {movie?.popularity}
                 </P>
             </div>
             <div>
                 <H2>
                 Overview
                 </H2>
-                <PortableText value={movie.overview} />
+                <PortableText value={movie?.overview} />
             </div>
-            <CastMembers castMembers={movie.castMembers} />
-            <CrewMembers crewMembers={movie.crewMembers} />
+            <CastMembers castMembers={movie?.castMembers} />
+            <CrewMembers crewMembers={movie?.crewMembers} />
         </div>
     </Article>
   );

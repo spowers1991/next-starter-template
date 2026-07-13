@@ -1,5 +1,5 @@
 {
-  "name": "sanity-test",
+  "name": "Sanity",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "studio:dev": "sanity dev",
     "studio:build": "sanity build",
     "studio:deploy": "sanity deploy",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },

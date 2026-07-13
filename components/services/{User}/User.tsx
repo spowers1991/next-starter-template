@@ -20,7 +20,7 @@ export default function User() {
         </div>
         <Button name={"logout"} 
           events={[{ name: "logout", type: "onClick", handler: () => supabase.auth.signOut() }]}
-          options={{ iconImage: "/images/svg/logout.svg", iconWidth: 20 }}>
+          options={{ iconImage: "/images/svg/arrow-right.svg", iconWidth: 20 }}>
           Logout
         </Button>
       </div>
