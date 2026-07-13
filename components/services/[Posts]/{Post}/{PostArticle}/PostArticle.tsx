@@ -7,20 +7,7 @@ import Span from "@/components/html/{Span}/Span";
 import { PortableText } from "@portabletext/react";
 import Article from "@/components/html/{Article}/Article";
 import H2 from "@/components/html/{H2}/H2";
-
-const formatDateUTC = (value?: string) => {
-  if (!value) return "Unknown";
-
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "Unknown";
-
-  return new Intl.DateTimeFormat("en-GB", {
-    timeZone: "UTC",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-};
+import { formatDateUTC } from "@/lib/parsers/date/formatDateUTC";
 
 
 interface PostArticleProps {
