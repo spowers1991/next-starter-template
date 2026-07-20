@@ -15,8 +15,8 @@ export default function LoginForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error" | "loading">("idle");
   const [message, setMessage] = useState<string | null>(null);
 
-  const { user } = useUser();
   // Redirect to /user if already logged in
+  const { user } = useUser();
   useRedirect(user, '/user');
 
   const statusMessages: Record<"idle" | "success" | "error" | "loading", string | null> = {

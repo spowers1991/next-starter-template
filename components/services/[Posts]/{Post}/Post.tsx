@@ -1,27 +1,28 @@
 "use client";
 
 import React from "react";
-import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
-import MoviesFilters from "./{MoviesFilters}/MoviesFilters";
+import type { Post } from "@/services/[Posts]/{Post}/types/Post";
 
 import H1 from "@/components/html/{H1}/H1";
 import Section from "@/components/html/{Section}/Section";
 
 import Animator from "@/components/animations/Animator";
+import PostArticle from "./{PostArticle}/PostArticle";
+import PostPoster from "./{PostPoster}/PostPoster";
 
-interface MovieProps {
-  movies: Movie[];
+interface PostProps {
+  post: Post;
 }
 
-export default function Movies({ movies }: MovieProps) {
+export default function Post({ post }: PostProps) {
   return (
     <Section>
       <Animator 
-        id={`[Movies]_<Animator/>`}
+        id={`[Post]_<Animator/>`}
         animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
       >
       <H1
-      id={`[Movies]_<H1/>`}
+      id={`[Post]_<H1/>`}
       animations={[
           { 
             name: 'textReveal',
@@ -32,10 +33,12 @@ export default function Movies({ movies }: MovieProps) {
           }
         ]} 
       >
-        Movies
+        Post
       </H1>
 
-      <MoviesFilters movies={movies} />
+      <PostPoster post={post} />
+      &nbsp;
+      <PostArticle post={post} />
 
       </Animator>
     </Section>

@@ -16,7 +16,7 @@ interface PostsProps {
   posts: Post[]; 
 }
 
-export default function Persons({ posts }: PostsProps) {
+export default function Posts({ posts }: PostsProps) {
   const pathname = usePathname()
   const cleanPath = removeLeadingSlash(pathname);
   return (

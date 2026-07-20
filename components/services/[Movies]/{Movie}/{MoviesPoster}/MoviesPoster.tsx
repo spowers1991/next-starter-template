@@ -3,7 +3,7 @@
 import React from "react";
 import type { Movie } from "@/services/[Movies]/{Movie}/types/Movie";
 import Image from "next/image";
-import { useThemes } from "@/lib/themes/state/ThemeContext";
+import { safeImageUrl } from "@/lib/sanity/helpers/image";
 
 
 interface MoviesPosterProps {
@@ -11,19 +11,21 @@ interface MoviesPosterProps {
 }
 
 export default function MoviesPoster({ movie }: MoviesPosterProps) {
-  const { THEMES_activeTheme } = useThemes();
+  const posterUrl = safeImageUrl(movie?.poster);
 
   return (
-    <div className="relative w-full aspect-[2/3] overflow-hidden rounded-lg shadow-lg">
-        {movie.poster?.asset?.url ? (
+  <div className="w-full overflow-hidden rounded-lg shadow-lg">
+        {posterUrl ? (
             <Image
-            src={movie.poster.asset.url}
-            alt={movie.title || movie.name}
-            fill
-            className="object-cover"
+            src={posterUrl}
+            alt={movie?.title || movie?.name}
+            width={800}
+            height={1200}
+            priority
+            className="h-auto w-full object-cover"
             />
         ) : (
-            <div className="w-full h-full bg-gray-300 grid place-items-center text-gray-600">
+      <div className="grid aspect-[2/3] w-full place-items-center bg-gray-300 text-gray-600">
             No poster available
             </div>
         )}

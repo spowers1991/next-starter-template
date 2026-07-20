@@ -8,11 +8,7 @@ import JsonLdScript from "@/lib/seo/components/JsonLdScript";
 import { createMovieLdJson } from "@/lib/seo/actions/create/createMovieLdJson";
 import type { Movie as MovieType } from "@/services/[Movies]/{Movie}/types/Movie";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+interface PageProps { params: Promise<{ slug: string }>; }
 
 export const revalidate = 60; // ISR seconds
 
@@ -42,7 +38,7 @@ export default async function MoviePage({ params }: PageProps) {
     <>
       <JsonLdScript json={schema} />
       <Main>
-        <Movie data={movie} />
+        <Movie movie={movie} />
       </Main>
     </>
   );

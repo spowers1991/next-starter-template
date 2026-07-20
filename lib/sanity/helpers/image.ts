@@ -1,10 +1,21 @@
 // /sanity/lib/image.ts
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import { sanityClient } from "@/lib/sanity/api/client";
 
-const builder = imageUrlBuilder(sanityClient);
+const builder = createImageUrlBuilder(sanityClient);
+
+type SanityImageSource = Parameters<typeof builder.image>[0];
 
 export function urlForImage(source: SanityImageSource) {
   return builder.image(source);
+}
+
+export function safeImageUrl(source: SanityImageSource | null | undefined) {
+  if (!source) return null;
+
+  try {
+    return builder.image(source).url();
+  } catch {
+    return null;
+  }
 }

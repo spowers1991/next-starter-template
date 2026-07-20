@@ -1,6 +1,6 @@
 import { generateStaticParamsForType } from "@/lib/sanity/ssg/generateStaticParams";
-import { getPerson } from "@/services/[Persons]/{Person}/queries/getPerson";
-import Person from "@/components/services/[Persons]/{Person}/Person";
+import { getPost } from "@/services/[Posts]/{Post}/queries/getPost";
+import Post from "@/components/services/[Posts]/{Post}/Post";
 import Main from "@/components/html/{Main}/Main";
 
 import type { Metadata } from "next";
@@ -11,28 +11,28 @@ interface PageProps { params: Promise<{ slug: string }>; }
 export const revalidate = 60; // ISR seconds
 
 export async function generateStaticParams() {
-  return generateStaticParamsForType("person", ["slug"]);
+  return generateStaticParamsForType("post", ["slug"]);
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const person = await getPerson(slug);
+  const post = await getPost(slug);
 
-  return createMetadata(person as Metadata);
+  return createMetadata(post as Metadata);
 }
 
-export default async function PersonPage({ params }: PageProps) {
+export default async function PostPage({ params }: PageProps) {
   const { slug } = await params;
 
-  const person = await getPerson(slug);
+  const post = await getPost(slug);
 
-  if (!person) {
-    return <p className="text-center text-gray-500">Person not found</p>;
+  if (!post) {
+    return <p className="text-center text-gray-500">Post not found</p>;
   }
 
   return (
     <Main>
-      <Person data={person} />
+      <Post post={post} />
     </Main>
   );
 }

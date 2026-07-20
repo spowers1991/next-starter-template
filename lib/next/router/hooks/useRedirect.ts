@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { User } from '@supabase/supabase-js';
 
-export function useRedirect(auth: User | boolean | null, path: string) {
+export function useRedirect(truthy: unknown | boolean | null, path: string) {
+
   const router = useRouter();
 
   useEffect(() => {
-    if (auth) {
+    if (truthy) {
       router.replace(path);
     }
-    
-  }, [auth, path, router]);
+  }, [truthy, path, router]);
+  
 }
