@@ -48,7 +48,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
           <MoviesArticle movie={movie as MovieType} />
         </Grid>
 
-        <Banner content={movie as MovieType} />
+        {/* <Banner content={movie as MovieType} /> */}
         
       </Animator>
 
