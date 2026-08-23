@@ -10,7 +10,6 @@ import { useSwapStylesforPathName } from "@/components/html/{P}/actions/set/useS
 
 import MoviesPoster from "./{MoviesPoster}/MoviesPoster";
 import MoviesArticle from "./{MoviesArticle}/MoviesArticle";
-import Banner from "@/components/content/{Banner}/Banner";
 import Grid from "@/components/layout/grid/{Grid}/Grid";
 
 interface MoviePageProps {
@@ -48,7 +47,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
           <MoviesArticle movie={movie as MovieType} />
         </Grid>
 
-        <Banner content={movie as MovieType} />
+        {/* <Banner content={movie as MovieType} /> */}
         
       </Animator>
 
