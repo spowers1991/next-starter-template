@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { Post } from "@/services/[Posts]/{Post}/types/Post";
-import Image from "next/image";
+import SanityImage from "@/components/assets/{SanityImage}/SanityImage";
 import { safeImageUrl } from "@/lib/sanity/helpers/image";
 
 
@@ -16,7 +16,7 @@ export default function PostPoster({ post }: PostPosterProps) {
   return (
   <div className="w-full overflow-hidden">
         {posterUrl ? (
-            <Image
+            <SanityImage
             src={posterUrl}
             alt={post?.title || post?.name}
             width={450}
