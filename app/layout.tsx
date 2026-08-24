@@ -1,4 +1,5 @@
 import "@/css/globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/lib/themes/state/ThemeContext";
 import Themes from "@/themes/Themes";
 import Header from "@/components/html/{Header}/Header";
@@ -30,6 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     <Body>
                       <Header />
                         {children}
+                      <SpeedInsights />
                     </Body>
                   </Html>
                 </AnimationsProvider>
