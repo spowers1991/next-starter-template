@@ -30,7 +30,7 @@ export default function SanityImage({
       : undefined;
 
   return (
-    <div className={`relative bg-gray-200 ${containerClassName ?? ""}`}>
+    <div className={`relative ${containerClassName ?? ""}`}>
       <Image
         {...props}
         priority={priority}
