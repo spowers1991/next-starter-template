@@ -41,9 +41,6 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "allowScripts": {
-    "babylonjs": true
-  },
   "overrides": {
     "vite": "7.3.6"
   }
