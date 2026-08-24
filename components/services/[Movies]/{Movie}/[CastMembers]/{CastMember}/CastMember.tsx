@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SanityImage from "@/components/assets/{SanityImage}/SanityImage";
 import Link from "next/link";
 import Span from "@/components/html/{Span}/Span";
 import { usePersons } from "@/services/[Persons]/state/PersonsContext";
@@ -20,12 +20,13 @@ export default function CastMember({ castMember }: CastMemberProps) {
     <div className="flex items-center gap-3">
       {person?.image?.asset?.url ? (
         <Link href={`/persons/${person.slug.current}`}>
-          <Image
+          <SanityImage
             src={person.image.asset.url}
             alt={person.name}
             width={50}
             height={50}
             className="rounded-md object-cover"
+            containerClassName="rounded-md w-[50px] h-[50px]"
           />
         </Link>
       ) : (

@@ -4,7 +4,7 @@ import React from "react";
 import H1 from "@/components/html/{H1}/H1";
 import Article from "@/components/html/{Article}/Article";
 import Section from "@/components/html/{Section}/Section";
-import Image from 'next/image'
+import SanityImage from "@/components/assets/{SanityImage}/SanityImage";
 import { urlForImage } from "@/lib/sanity/helpers/image";
 import Animator from "@/components/animations/Animator";
 
@@ -39,7 +39,7 @@ function Person( { data: person } : PersonProps) {
             id={`{Person}_<Image/>`}
             animations={[{name: "fadeIn", config: { duration: 3, delay: 0.1 }}]}
           >
-            <Image
+            <SanityImage
               src={urlForImage(person?.image).url()}  
               alt={person?.name}
               width={350}
